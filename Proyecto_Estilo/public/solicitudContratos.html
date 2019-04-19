@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Solicitud de contratos</title>
+
+  <!-- PARA LOS CALENDARIOS -->
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+
+<script>
+  
+  $(function () {
+  //Array para dar formato en español
+  $.datepicker.regional['es'] = 
+   {
+   closeText: 'Cerrar', 
+   prevText: 'Previo', 
+   nextText: 'Próximo',
+   
+   monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio',
+   'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+   monthNamesShort: ['Ene','Feb','Mar','Abr','May','Jun',
+   'Jul','Ago','Sep','Oct','Nov','Dic'],
+   monthStatus: 'Ver otro mes', yearStatus: 'Ver otro año',
+   dayNames: ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],
+   dayNamesShort: ['Dom','Lun','Mar','Mie','Jue','Vie','Sáb'],
+   dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sa'],
+   dateFormat: 'dd/mm/yy', firstDay: 0, 
+   initStatus: 'Selecciona la fecha', isRTL: false};
+  $.datepicker.setDefaults($.datepicker.regional['es']);
+  
+  //miDate: fecha de comienzo D=días | M=mes | Y=año
+  //maxDate: fecha tope D=días | M=mes | Y=año
+     $( "#datepicker" ).datepicker({ minDate: "-0D", maxDate: "+1M +10D" });
+  });
+  </script>
+
+<script>
+  
+  $(function () {
+  //Array para dar formato en español
+  $.datepicker.regional['es'] = 
+   {
+   closeText: 'Cerrar', 
+   prevText: 'Previo', 
+   nextText: 'Próximo',
+   
+   monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio',
+   'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+   monthNamesShort: ['Ene','Feb','Mar','Abr','May','Jun',
+   'Jul','Ago','Sep','Oct','Nov','Dic'],
+   monthStatus: 'Ver otro mes', yearStatus: 'Ver otro año',
+   dayNames: ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],
+   dayNamesShort: ['Dom','Lun','Mar','Mie','Jue','Vie','Sáb'],
+   dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sa'],
+   dateFormat: 'dd/mm/yy', firstDay: 0, 
+   initStatus: 'Selecciona la fecha', isRTL: false};
+  $.datepicker.setDefaults($.datepicker.regional['es']);
+  
+  //miDate: fecha de comienzo D=días | M=mes | Y=año
+  //maxDate: fecha tope D=días | M=mes | Y=año
+     $( "#datepicker2" ).datepicker();
+  });
+  </script>
+
+  <!-- PARA EL BOTÓN DE ENVIAR -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css" />
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/business-casual.min.css" rel="stylesheet">
+
+  <!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="images/icons/form.ico"/>
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor2/bootstrap/css/bootstrap.min.css">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor2/animate/animate.css">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor2/css-hamburgers/hamburgers.min.css">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor2/animsition/css/animsition.min.css">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor2/select2/select2.min.css">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor2/daterangepicker/daterangepicker.css">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor2/noui/nouislider.min.css">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+
+</head>
+
+<body>
+
+  <h1 class="site-heading text-center text-white d-none d-lg-block">
+    <span class="site-heading-upper text-primary mb-3"><img src="img/MRG.png" width="350" height="200"></span>
+    
+    <!-- <span class="site-heading-lower">Business Casual</span> -->
+  </h1>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none" href="#">Start Bootstrap</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="index.html">Contratos Personal
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item  px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="responsables.html">Responsables</a>
+          </li>
+          <li class="nav-item active px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="interesados.html">Interesados</a>
+          </li>
+          <li class="nav-item px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="store.html">Store</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<!-- Aquí se termina el índice y comienza el cuerpo -->
+
+<div class="container-contact100">
+  <div class="wrap-contact100">
+    <form class="contact100-form validate-form" action="/solicitudContratos" method="POST">
+      <span class="contact100-form-title">
+        Rellene el siguiente formulario
+      <br><br>
+        <p class="text-justify" class="mb-3" style="color:#FF0000";>
+           <B>ATENCIÓN:</B>
+        </p>
+        <p class="text-justify" class="mb-3">
+           <B> Una vez haya cumplimentado el modelo de instancia deberá presentarla acompañada de toda la documentación requerida en la convocatoria (ver punto 7 de las Bases de la Convocatoria). Esta instancia puede presentarla por Registro de la Universidad de Sevilla u otro medio legalmente reconocido. A continuación, deberá enviar como documento escaneado en un solo correo electrónico la copia de la instancia con el sello de registro de entrada y el resto de los méritos o documentación presentados, a los correos lbenitez1@us.es y adelinalopez@us.es. En el Asunto del correo se indicará: Mes y año de la convocatoria y referencia del Anexo de la convocatoria.</B>
+        </p>
+      </span> 
+
+        
+<div class="wrap-input100 validate-input ">
+  <span class="label-input100" style="color:#e6a756";>DATOS PERSONALES</span>
+</div> 
+
+      <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
+        <span class="label-input100">Primer apellido *</span>
+        <input class="input100" type="text" name="primer" placeholder="Primer apellido" maxlength="20">
+      </div>
+
+      <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
+        <span class="label-input100">Segundo apellido *</span>
+        <input class="input100" type="text" name="segundo" placeholder="Segundo apellido" maxlength="20">
+      </div>
+
+      <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
+        <span class="label-input100">Nombre *</span>
+        <input class="input100" type="text" name="nombre" placeholder="Nombre" maxlength="20">
+      </div>
+
+      <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
+        <span class="label-input100">DNI/Pasaporte*</span>
+        <input class="input100" type="text" name="dni" placeholder="Ejemplo: 29514456H" maxlength="20">
+      </div>
+
+      <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
+          <span class="label-input100">Nacionalidad*</span>
+          <input class="input100" type="text" name="nacionalidad" placeholder="Ejemplo: España" maxlength="20">
+      </div>
+
+      <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
+          <span class="label-input100">Fecha de Nacimiento*</span>
+          <input  id="datepicker2" pattern="\d{1,2}/\d{1,2}/\d{4}" type="text" required name="nacimiento" placeholder="dd-mm-aaaa" style="background-color:#F7F6F6;width:350px;height:35px;font-family:Montserrat-Bold;">
+      </div>
+
+      <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
+          <span class="label-input100">Dirección Postal*</span>
+          <input class="input100" type="text" name="direccion" placeholder="Ejemplo: Calle, Nº, Bloque" maxlength="50">
+      </div>
+
+      <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
+          <span class="label-input100">Ciudad*</span>
+          <input class="input100" type="text" name="ciudad" placeholder="Ejemplo: Sevilla" maxlength="20">
+      </div>
+
+      <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
+          <span class="label-input100">Código Postal*</span>
+          <input class="input100" type="text" name="codigo" placeholder="Ejemplo: 41008" maxlength="10">
+      </div>
+
+      <!-- <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
+          <span class="label-input100">Provincia *</span>
+          <input class="input100" type="text" name="provinvia" placeholder="Ejemplo: Sevilla" maxlength="20">
+      </div> -->
+
+      <div class="wrap-input100 input100-select bg1 rs1-wrap-input100">
+        <span class="label-input100">Provincia *</span> 
+        <div>
+          <select class="js-select2" name="provincia">
+    <option value='alava'>Álava</option>
+    <option value='albacete'>Albacete</option>
+    <option value='alicante'>Alicante/Alacant</option>
+    <option value='almeria'>Almería</option>
+    <option value='asturias'>Asturias</option>
+    <option value='avila'>Ávila</option>
+    <option value='badajoz'>Badajoz</option>
+    <option value='barcelona'>Barcelona</option>
+    <option value='burgos'>Burgos</option>
+    <option value='caceres'>Cáceres</option>
+    <option value='cadiz'>Cádiz</option>
+    <option value='cantabria'>Cantabria</option>
+    <option value='castellon'>Castellón/Castelló</option>
+    <option value='ceuta'>Ceuta</option>
+    <option value='ciudadreal'>Ciudad Real</option>
+    <option value='cordoba'>Córdoba</option>
+    <option value='cuenca'>Cuenca</option>
+    <option value='girona'>Girona</option>
+    <option value='laspalmas'>Las Palmas</option>
+    <option value='granada'>Granada</option>
+    <option value='guadalajara'>Guadalajara</option>
+    <option value='guipuzcoa'>Guipúzcoa</option>
+    <option value='huelva'>Huelva</option>
+    <option value='huesca'>Huesca</option>
+    <option value='illesbalears'>Illes Balears</option>
+    <option value='jaen'>Jaén</option>
+    <option value='acoruña'>A Coruña</option>
+    <option value='larioja'>La Rioja</option>
+    <option value='leon'>León</option>
+    <option value='lleida'>Lleida</option>
+    <option value='lugo'>Lugo</option>
+    <option value='madrid'>Madrid</option>
+    <option value='malaga'>Málaga</option>
+    <option value='melilla'>Melilla</option>
+    <option value='murcia'>Murcia</option>
+    <option value='navarra'>Navarra</option>
+    <option value='ourense'>Ourense</option>
+    <option value='palencia'>Palencia</option>
+    <option value='pontevedra'>Pontevedra</option>
+    <option value='salamanca'>Salamanca</option>
+    <option value='segovia'>Segovia</option>
+    <option value='sevilla'>Sevilla</option>
+    <option value='soria'>Soria</option>
+    <option value='tarragona'>Tarragona</option>
+    <option value='santacruztenerife'>Santa Cruz de Tenerife</option>
+    <option value='teruel'>Teruel</option>
+    <option value='toledo'>Toledo</option>
+    <option value='valencia'>Valencia/Valéncia</option>
+    <option value='valladolid'>Valladolid</option>
+    <option value='vizcaya'>Vizcaya</option>
+    <option value='zamora'>Zamora</option>
+    <option value='zaragoza'>Zaragoza</option>
+          </select>
+          <div class="dropDownSelect2"></div>
+        </div>
+      </div>
+
+      <div class="wrap-input100 validate-input ">
+          <span class="label-input100" style="color:#e6a756";>CONTACTO</span>
+      </div> 
+
+      <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Introduzca su Email (e@a.x)">
+          <span class="label-input100">Email *</span>
+          <input class="input100" type="text" name="email" placeholder="Introduzca su email">
+      </div>
+
+      <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
+          <span class="label-input100">Teléfono Móvil*</span>
+          <input class="input100" type="phone" name="tlf" placeholder="Ejemplo:657487533" >
+      </div>
+
+      <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar vacío">
+          <span class="label-input100">Teléfono fijo*</span>
+          <input class="input100" type="phone" name="tlfFijo" placeholder="Ejemplo:954370007" >
+      </div>
+    
+      <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar vacío">
+          <span class="label-input100">Titulación académica*</span>
+          <input class="input100" type="text" name="titulacion" placeholder="Ejemplo:Ingeniero del Software" maxlength="50">
+      </div>
+      
+      <div class="wrap-input100 validate-input ">
+          <span class="label-input100" style="color:#e6a756";>REFERENCIA DE LA PLAZA QUE SE SOLICITA</span>
+      </div> 
+
+      <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar vacío">
+          <span class="label-input100">Convocatoria (Título) *</span>
+          <input class="input100" type="text" name="convocatoria" placeholder="Título de la Convocatoria" maxlength="50">
+      </div>
+         <!-- F9F9F9 -->
+      <div class="wrap-input100 validate-input bg1 rs1-wrap-input100">
+          <span class="label-input100">Fecha Publicación*</span><br>
+          <input  type="text" pattern="\d{1,2}/\d{1,2}/\d{4}" id="datepicker" required name="fechapublicacion" placeholder="dd-mm-aaaa" style="background-color:#F7F6F6;width:350px;height:35px;font-family:Montserrat-Bold;">
+      </div> 
+
+
+      <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar vacío">
+          <span class="label-input100">Título Plaza *</span>
+          <input class="input100" type="text" name="tituloPlaza" placeholder="Título de la plaza" maxlength="50">
+      </div>
+
+      <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar vacío">
+          <span class="label-input100">Referencia *</span>
+          <input class="input100" type="text" name="referenciaContratos" placeholder="Ejemplo: CGL2017-90770-REDE">
+      </div>
+
+      <div class="wrap-input100 validate-input bg0 rs1-alert-validate" data-validate = "Esta campo no puede estar en blanco">
+        <span class="label-input100">Observaciones *</span>
+        <textarea class="input100" name="observaciones" placeholder="Redacta tus observaciones aquí..." maxlength="1300"></textarea>
+      </div>
+
+      <div class="form-check">
+          <input type="checkbox" required name="RGPD" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1"><a href="./anexoContratacion">Aceptos los términos y condiciones de uso</a></label>
+        </div>
+      <!-- <samp>
+      <input type="checkbox" required name="RGPD" id=RGPD ><label for="RGDP"><a href="./anexoContratacion">Aceptos los términos y condiciones de uso</a></label>
+    </samp> -->
+
+
+  <!-- Esto es para que se descargue el pdf -->
+  <a href="iphone_user_guide.pdf" download="iPhone User's Guide.PDF">click me</a>
+
+      <!-- Este es el botón de enviar -->
+       <div class="container-contact100-form-btn">
+        <button type="submit" class="contact100-form-btn">
+          <span>
+            Enviar formulario por correo electrónico
+            <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+          </span>
+          
+        </button> 
+      </div> 
+
+      <!-- Lo del mensaje de success -->
+<!-- <input type=button onclick="pregunta()" value="Enviar" class="contact100-form-btn">
+<script language="JavaScript"> 
+function pregunta(){  
+swal({
+  title: "Success!",
+  text: "Redirecting in 2 seconds.",
+  type: "success",
+  timer: 2000,
+  showConfirmButton: false
+}, function(){
+      window.location.href = "./about.html";
+});
+     } 
+</script> -->
+
+
+    </form>
+    
+</div>
+</div>
+
+
+
+<!--===============================================================================================-->
+<!-- <script src="vendor2/jquery/jquery-3.2.1.min.js"></script> -->
+<!--===============================================================================================-->
+<script src="vendor2/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+<script src="vendor2/bootstrap/js/popper.js"></script>
+<script src="vendor2/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+<script src="vendor2/select2/select2.min.js"></script>
+<script>
+  $(".js-select2").each(function(){
+    $(this).select2({
+      minimumResultsForSearch: 20,
+      dropdownParent: $(this).next('.dropDownSelect2')
+    });
+
+
+    $(".js-select2").each(function(){
+      $(this).on('select2:close', function (e){
+        if($(this).val() == "Please chooses") {
+          $('.js-show-service').slideUp();
+        }
+        else {
+          $('.js-show-service').slideUp();
+          $('.js-show-service').slideDown();
+        }
+      });
+    });
+  })
+</script>
+<!--===============================================================================================-->
+<script src="vendor2/daterangepicker/moment.min.js"></script>
+<script src="vendor2/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+<script src="vendor2/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+<script src="vendor2/noui/nouislider.min.js"></script>
+<script>
+    var filterBar = document.getElementById('filter-bar');
+
+    noUiSlider.create(filterBar, {
+        start: [ 1500, 3900 ],
+        connect: true,
+        range: {
+            'min': 1500,
+            'max': 7500
+        }
+    });
+
+    var skipValues = [
+    document.getElementById('value-lower'),
+    document.getElementById('value-upper')
+    ];
+
+    filterBar.noUiSlider.on('update', function( values, handle ) {
+        skipValues[handle].innerHTML = Math.round(values[handle]);
+        $('.contact100-form-range-value input[name="from-value"]').val($('#value-lower').html());
+        $('.contact100-form-range-value input[name="to-value"]').val($('#value-upper').html());
+    });
+</script>
+<!--===============================================================================================-->
+<script src="js/main.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-23581568-13');
+</script>
+
+<!-- Aquí se termina el cuerpo y empieza el footer -->
+<footer class="footer text-faded text-center py-5">
+  <div class="container">
+    <p class="m-0 small">Copyright &copy; Organización MRG 2019</p>
+  </div>
+</footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <!-- <script src="vendor2/jquery/jquery.min.js"></script> -->
+  <script src="vendor2/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
