@@ -1,91 +1,172 @@
-<h1>hola</h1>
+<!DOCTYPE html>
+<html lang="en">
 
-<!-- <embed id="plugin" src="output_Anexo_Contratacion.pdf" type="application/x-google-chrome-pdf" stream-url="chrome-extension://mhjfbmdgcfjbbpaeojofohoefgiehjai/6150b55b-f749-46e9-851c-3cf84258331a" width="800" height="600"></embed>   -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-<!-- <object  data="./AnexoContratacion.pdf"></object>   -->
-<!-- <body>
-<div id="content">
-<embed id="plugin" type="application/x-google-chrome-pdf" src="output_Anexo_Contratacion.pdf" stream-url="chrome-extension://mhjfbmdgcfjbbpaeojofohoefgiehjai/6150b55b-f749-46e9-851c-3cf84258331a" headers="Accept-Ranges: bytes
-Content-Disposition: inline; filename*=UTF-8''GDPR.pdf
-Content-Length: 6764126
-Content-Type: application/pdf
-Date: Fri, 05 Apr 2019 16:52:33 GMT
-ETag: &quot;46d869a4d42e63f4e061c9ba3de248f5&quot;
-Last-Modified: Wed, 20 Mar 2019 11:10:40 GMT
-Server: AmazonS3
-x-amz-id-2: d50loiSaO4Sj+ONh4/P63pOr0weFFLU1zFPiJa/nLjVG/h0FAzJY5J96njsFtRlJUun7JfXXj6E=
-x-amz-request-id: 8AE91BED3A1236EF
-x-amz-version-id: Q49Mz52j7RxBweGRPKrLt7ILROHua4ix
-" background-color="0xFF525659" top-toolbar-height="56" javascript="allow" full-frame=""> 
-</div>
-<script src="pdf_fitting_type.js"></script>
-<script src="toolbar_manager.js"></script>
-<script src="viewport.js"></script>
-<script src="open_pdf_params_parser.js"></script>
-<script src="navigator.js"></script>
-<script src="viewport_scroller.js"></script>
-<script src="zoom_manager.js"></script>
-<script src="gesture_detector.js"></script>
-<script src="pdf_scripting_api.js"></script>
-<script src="chrome://resources/js/assert.js"></script>
-<script src="chrome://resources/js/load_time_data.js"></script>
-<script src="chrome://resources/js/util.js"></script>
-<script src="chrome://resources/js/promise_resolver.js"></script>
-<script src="browser_api.js"></script>
-<script src="metrics.js"></script>
-<script src="pdf_viewer.js"></script>
-
-</body> -->
+  <title>Anexo de Contratación</title>
 
 
-<!-- <embed controller="true" src="./output_Anexo_Contratacion.pdf" alt="" width="100%" id="PDFEmbedID" scale="tofit" height="670" type="application/pdf" name="PDFEmbed"> -->
+  <!-- PARA EL BOTÓN DE ENVIAR -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css" />
 
-     <div class="item clearfix" id="${id}">
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-        <h3 id="anonymous_element_11">
-         <span class="reorder editmode hideme"><span><img src="https://d1e7kr0efngifs.cloudfront.net/3600.0.0-rel.11+318243c/images/ci/icons/generic_updown.gif" alt=""></span></span>
-       
-       
-            Si este elemento no se abre automáticamente, puede <a href="./AnexoContratacion.pdf" target="_blank">abrir aquí</a>
-        </h3>
-          
-        </div> 
-  
-<script>
+  <!-- Custom fonts for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/business-casual.min.css" rel="stylesheet">
+
+  <!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="images/icons/form.ico"/>
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor2/bootstrap/css/bootstrap.min.css">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor2/animate/animate.css">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor2/css-hamburgers/hamburgers.min.css">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor2/animsition/css/animsition.min.css">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor2/select2/select2.min.css">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor2/daterangepicker/daterangepicker.css">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor2/noui/nouislider.min.css">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+
+</head>
+
+<body>
+
+  <h1 class="site-heading text-center text-white d-none d-lg-block">
+    <span class="site-heading-upper text-primary mb-3"><img src="img/MRG.png" width="350" height="200"></span>
     
-var server 	= email.server.connect({
-   user:    "organizacionMRG@gmail.com", 
-   password:"Oedanone2019", 
-   host:    "smtp.gmail.com", 
-   ssl:     true
-});
+    <!-- <span class="site-heading-lower">Business Casual</span> -->
+  </h1>
 
-$(function correo() {
-    server.send({
-  text:    "Anexo de contratación", 
-  from:    "you <organizacionMRG@gmail.com>", 
-  to:      "someone <marruigut@alum.us.es>",
-  subject: "Nuevo anexo de contratación",
-  attachment: 
-   [
-      {data:"<html>Se adjunta el anexo de contratación enviado por:<B> "+req.body.email+"</B></html>", alternative:true},
-      {path:"output_Anexo_Contratacion.pdf", type:"application/pdf", name:"Anexo_Contratacion.pdf"}
-   ]
-}, function(err, message) { console.log(err || message); });
-    res.sendFile(path.join(__dirname,'/public/responsables.html'));
-});
-</script>
-        <form class="contact100-form validate-form" action="/anexoContratacion" method="POST">
-             <!-- Este es el botón de enviar -->
-       <div class="container-contact100-form-btn">
-        <button type="submit" onclick="correo()" class="contact100-form-btn" >
-          <span>
-            Enviar formulario por correo electrónico
-            <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
-          </span>
-        </button> 
-      </div> 
-        </form>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none" href="#">Inicio</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="index.html">Contratos Personal
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item active px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="responsables.html">Responsables</a>
+          </li>
+          <li class="nav-item px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="interesados.html">Interesados</a>
+          </li>
+          <li class="nav-item px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="store.html">Store</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<!-- Aquí se termina el índice y comienza el cuerpo -->
+<div class="intro-text left-0 text-center bg-faded p-5 rounded">
+    <h2 class="section-heading mb-4">
+      <span class="section-heading-upper">ANEXO DE CONTRATACIÓN</span>
+      <span class="section-heading-lower"></span>
+    </h2>
+    <p class="text-justify" class="mb-3">
+        En esta sección podrá visualizar el PDF generado con los datos que usted ha proporcionado. Si está de acuerdo con el resultado podrá enviar el PDF directamente a nuestro correo electrónico pulsando el botón llamado, enviar por correo electrónico. En el caso, de que no esté de acuerdo podrá volver hacia atrás y rellenar el formulario de nuevo, sin ninguna consecuencia. 
+    </p>
+    
+  </div>
+
+  <div class="intro-text left-0 text-left bg-faded p-5 rounded">
+      <img src="images/one.png" width="50" height="50" > <p class="text-justify" class="mb-3">
+          En esta sección podrá visualizar el PDF generado con los datos que usted ha proporcionado. Si está de acuerdo con el resultado podrá enviar el PDF directamente a nuestro correo electrónico pulsando el botón llamado, enviar por correo electrónico. En el caso, de que no esté de acuerdo podrá volver hacia atrás y rellenar el formulario de nuevo, sin ninguna consecuencia. 
+      </p>
+      
+      <form class="contact100-form validate-form" action="/visualizacion" method="POST">
+        <!-- Este es el botón de enviar -->
+    <div class="container-contact100-form-btn bg-faded p-3 rounded">
+    <button type="submit" class="contact100-form-btn2" >
+     <span>
+       Visualizar PDF generado
+       <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+     </span>
+    </button> 
+    </div> 
+    </form>
+  </div>
+  
+  <!-- <div class="wrap-contact100">
+  <form class="contact100-form validate-form" action="/visualizacion" method="POST">
+    
+<div class="container-contact100-form-btn">
+<button type="submit" class="contact100-form-btn2" >
+ <span>
+   Visualizar PDF generado
+   <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+ </span>
+</button> 
+</div> 
+</form>
+</div> -->
+
+<div class="intro-text left-0 text-left bg-faded p-5 rounded">
+    <img src="images/two.png" width="50" height="50" ></span>
+<form class="contact100-form validate-form" action="/enviarCorreo" method="POST">
+
+  
+
+  <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Introduzca su Email (e@a.x)">
+      <span class="label-input100">Email *</span>
+      <input class="input100" type="text" required name="email" placeholder="Introduzca su email" maxlength="50">
+  </div>
+
+
+     <!-- Este es el botón de enviar -->
+<div class="container-contact100-form-btn">
+<button type="submit" class="contact100-form-btn2" >
+  <span>
+    Enviar formulario por correo electrónico
+    <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+  </span>
+</button> 
+</div> 
+</form>
+</div>
+<br>
+
+
+<!-- Aquí se termina el cuerpo y empieza el footer -->
+<footer class="footer text-faded text-center py-5">
+    <div class="container">
+      <p class="m-0 small">Copyright &copy; Organización MRG 2019</p>
+    </div>
+  </footer>
+
+</body>
+</html>
+  
+
+        
 
 
 

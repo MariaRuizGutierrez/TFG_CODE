@@ -41,6 +41,10 @@ app.use(bodyParser.json());
 app.use("/",express.static(path.join(__dirname,"public")));
 
 
+app.set('port', process.env.PORT || 3300);
+app.set('host', process.env.YOUR_HOST || '0.0.0.0');
+
+
 app.get('/', function(req, res){
   res.send('principal.html');
 });
@@ -83,9 +87,33 @@ app.get('/actaComision', function(req, res){
   res.sendFile(path.join(__dirname,'/public/actaComision.html'));
 });
 
+app.post('/visualizacion', function(request, response){
+  var tempFile="./output_Anexo_Contratacion.pdf";
+  fs.readFile(tempFile, function (err,data){
+     response.contentType("application/pdf");
+     response.send(data);
+  });
+});
 
-app.set('port', process.env.PORT || 3300);
-app.set('host', process.env.YOUR_HOST || '0.0.0.0');
+app.post('/enviarCorreo', function(req, res){
+  server.send({
+  text:    "Anexo de contratación", 
+  from:    "you <organizacionMRG@gmail.com>", 
+  to:      "someone <marruigut@alum.us.es>",
+  cc:      "else <"+req.body.email+">",
+  subject: "Nuevo anexo de contratación",
+  attachment: 
+   [
+      {data:"<html>Se adjunta el anexo de contratación enviado por:<B> "+req.body.email+"</B></html>", alternative:true},
+      {path:"output_Anexo_Contratacion.pdf", type:"application/pdf", name:"Anexo_Contratacion.pdf"}
+   ]
+}, function(err, message) { console.log(err || message); });
+  
+  res.sendFile(path.join(__dirname,'/public/responsables.html'));
+});
+
+
+
 
 
 app.get('/', function(req, res){
@@ -456,7 +484,7 @@ doc.image('public/img/MRG.png', 250, 10, {fit: [110, 110], align: 'center', vali
 
 // Finalize PDF file
 doc.end();
-res.sendFile(path.join(__dirname,'/public/generarPDF.html'));
+res.sendFile(path.join(__dirname,'/public/generarPDF.html'),{datos:req.body.email});
 
 // server.send({
 //   text:    "Anexo de contratación", 
