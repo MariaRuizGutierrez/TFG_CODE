@@ -109,7 +109,7 @@ app.post('/enviarCorreo', function(req, res){
    ]
 }, function(err, message) { console.log(err || message); });
  
-  res.sendFile(path.join(__dirname,'/public/responsables.html'));
+  // res.sendFile(path.join(__dirname,'/public/responsables.html'));
 });
 
 
