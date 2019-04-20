@@ -177,13 +177,9 @@
   </button> 
   </div> 
   </form>
-  </div>
-  </div>
-  <br>
-
-
-<div class="container-contact100">
-  <div class="wrap-contact100">
+<br>
+<br>
+  
     <form class="contact100-form validate-form" action="/enviarCorreo" method="POST">
       <div class="intro-text left-0 text-center bg-faded p-1 rounded">
         <h2 class="section-heading mb-4">
@@ -191,34 +187,70 @@
           <span class="section-heading-lower"></span>
         </h2>
         <p class="text-justify" class="mb-3">
-            En esta sección podrá visualizar el PDF generado con los datos que usted ha proporcionado. Si está de acuerdo con el resultado podrá enviar el PDF directamente a nuestro correo electrónico pulsando el botón llamado, enviar por correo electrónico. En el caso, de que no esté de acuerdo podrá volver hacia atrás y rellenar el formulario de nuevo, sin ninguna consecuencia. 
+            Si está de acuerdo con el PDF generado, envíelo pulsando el botón. Pero antes, debe de introducir su correo electrónico y su número de teléfono, así el mensaje enviado le llegará al correo que nos proporcione.  
         </p>
         <br>
       </div>
 
       <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
         <span class="label-input100">Número de teléfono*</span> 
-        <input class="input100" type="text" name="telefono" placeholder="653467789" maxlength="50">
+        <input class="input100" id ="telefono" type="text" required name="telefono" required pattern="^[9|6|7][0-9]{8}$" placeholder="653467789" maxlength="50">
       </div>
 
       <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Introduzca su Email (e@a.x)">
         <span class="label-input100">Email *</span>
-        <input class="input100" type="text" name="email" placeholder="Introduzca su email" maxlength="50">
+        <input class="input100" id="email" type="email" required name="email" placeholder="Introduzca su email en minúsculas" maxlength="50" required pattern="^[a-z][\w.-]+@\w[\w.-]+\.[\w.-]*[a-z][a-z]$">
       </div>
+      
 
-         <!-- Este es el botón de enviar -->
-<div class="container-contact100-form-btn">
-  <button type="submit" class="contact100-form-btn" >
+<!-- Este es el botón de enviar -->
+ <div class="container-contact100-form-btn">
+  <button type="submit"  class="contact100-form-btn" >
     <span>
       Enviar formulario por correo electrónico
       <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
     </span>
   </button> 
-  </div> 
+  </div>  
+
+  
+  
+<!-- <script language="JavaScript"> 
+function pregunta(){  
+var expresion = /^[a-z][\w.-]+@\w[\w.-]+\.[\w.-]*[a-z][a-z]$/i;
+var expresionTLF= /^[9|6|7][0-9]{8}$/i;
+var email = document.getElementById('email').value;
+var tlf = document.getElementById('telefono').value;
+if (!expresion.test(email)){
+  alert('El correo electrónico no sigue el patrón');
+}
+if(!expresionTLF.test(tlf)){
+  alert('El número de teléfono no sigue el patrón');
+}
+if(!expresionTLF.test(tlf) && !expresion.test(email)){
+  alert('Ni el correo ni el teléfono siguen el patrón');
+}
+if(expresion.test(email) == TRUE && expresionTLF.test(tlf) == TRUE){
+  swal({
+  title: "Success check your email!",
+  text: "Redirecting in 5 seconds.",
+  type: "success",
+  timer: 5000,
+  showConfirmButton: false
+}, function(){
+      window.location.href = "./responsables.html";
+});
+     } 
+}
+
+</script> -->
+
+
   </form>
   </div>
   </div>
-  <br>
+
+  
 
 <!-- Aquí se termina el cuerpo y empieza el footer -->
 <footer class="footer text-faded text-center py-5">

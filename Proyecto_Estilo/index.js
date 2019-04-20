@@ -98,17 +98,17 @@ app.post('/visualizacion', function(request, response){
 app.post('/enviarCorreo', function(req, res){
   server.send({
   text:    "Anexo de contratación", 
-  from:    "you <organizacionMRG@gmail.com>", 
-  to:      "someone <marruigut@alum.us.es>",
-  cc:      "else <"+req.body.email+">",
+  from:    "organizacionMRG <organizacionMRG@gmail.com>", 
+  to:      "empleado <marruigut@alum.us.es>",
+  cc:      "usted <"+req.body.email+">",
   subject: "Nuevo anexo de contratación",
   attachment: 
    [
-      {data:"<html>Se adjunta el anexo de contratación enviado por:<B> "+req.body.email+"</B></html>", alternative:true},
+      {data:"<html>Se adjunta el anexo de contratación enviado por:<B> "+req.body.email+"</B> con número de teléfono: <B> "+req.body.telefono+"</B> </html>", alternative:true},
       {path:"output_Anexo_Contratacion.pdf", type:"application/pdf", name:"Anexo_Contratacion.pdf"}
    ]
 }, function(err, message) { console.log(err || message); });
-  
+ 
   res.sendFile(path.join(__dirname,'/public/responsables.html'));
 });
 
