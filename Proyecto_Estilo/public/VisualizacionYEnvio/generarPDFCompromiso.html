@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Anexo de Contratación</title>
+  <title>Compromiso del IP</title>
 
 
   <!-- PARA EL BOTÓN DE ENVIAR -->
@@ -51,111 +51,10 @@
 </head>
 
 <body>
-
-  <!-- <h1 class="site-heading text-center text-white d-none d-lg-block">
-    <span class="site-heading-upper text-primary mb-3"><img src="img/MRG.png" width="350" height="200"></span>
-    
-    
-  </h1> -->
-
-  <!-- Navigation -->
-  <!-- <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
-    <div class="container">
-      <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none" href="#">Inicio</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav mx-auto">
-          <li class="nav-item px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="index.html">Contratos Personal
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item active px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="responsables.html">Responsables</a>
-          </li>
-          <li class="nav-item px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="interesados.html">Interesados</a>
-          </li>
-          <li class="nav-item px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="store.html">Store</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav> -->
-
-<!-- <div class="intro-text left-0 text-center bg-faded p-5 rounded">
-    <h2 class="section-heading mb-4">
-      <span class="section-heading-upper">ANEXO DE CONTRATACIÓN</span>
-      <span class="section-heading-lower"></span>
-    </h2>
-    <p class="text-justify" class="mb-3">
-        En esta sección podrá visualizar el PDF generado con los datos que usted ha proporcionado. Si está de acuerdo con el resultado podrá enviar el PDF directamente a nuestro correo electrónico pulsando el botón llamado, enviar por correo electrónico. En el caso, de que no esté de acuerdo podrá volver hacia atrás y rellenar el formulario de nuevo, sin ninguna consecuencia. 
-    </p>
-    
-  </div> -->
-
-  <!-- <div class="intro-text left-0 text-left bg-faded p-5 rounded">
-      <img src="images/one.png" width="50" height="50" > <p class="text-justify" class="mb-3">
-          En esta sección podrá visualizar el PDF generado con los datos que usted ha proporcionado. Si está de acuerdo con el resultado podrá enviar el PDF directamente a nuestro correo electrónico pulsando el botón llamado, enviar por correo electrónico. En el caso, de que no esté de acuerdo podrá volver hacia atrás y rellenar el formulario de nuevo, sin ninguna consecuencia. 
-      </p>
-      
-      <form class="contact100-form validate-form" action="/visualizacion" method="POST">
-      
-    <div class="container-contact100-form-btn bg-faded p-3 rounded">
-    <button type="submit" class="contact100-form-btn2" >
-     <span>
-       Visualizar PDF generado
-       <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
-     </span>
-    </button> 
-    </div> 
-    </form>
-  </div> -->
   
-  <!-- <div class="wrap-contact100">
-  <form class="contact100-form validate-form" action="/visualizacion" method="POST">
-    
-<div class="container-contact100-form-btn">
-<button type="submit" class="contact100-form-btn2" >
- <span>
-   Visualizar PDF generado
-   <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
- </span>
-</button> 
-</div> 
-</form>
-</div> -->
-
-<!-- <div class="intro-text left-0 text-left bg-faded p-5 rounded">
-    <img src="images/two.png" width="50" height="50" ></span>
-<form class="contact100-form validate-form" action="/enviarCorreo" method="POST">
-
-  
-
-  <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Introduzca su Email (e@a.x)">
-      <span class="label-input100">Email *</span>
-      <input class="input100" type="text" required name="email" placeholder="Introduzca su email" maxlength="50">
-  </div>
-
-
-    
-<div class="container-contact100-form-btn">
-<button type="submit" class="contact100-form-btn2" >
-  <span>
-    Enviar formulario por correo electrónico
-    <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
-  </span>
-</button> 
-</div> 
-</form>
-</div>
-<br> -->
 <div class="container-contact100">
   <div class="wrap-contact100">
-    <form class="contact100-form validate-form" action="/visualizacion" method="POST">
+    <form class="contact100-form validate-form" action="/visualizacionCompromisoIP" method="POST">
       <div class="intro-text left-0 text-center bg-faded p-1 rounded">
         <h2 class="section-heading mb-4">
           <span class="section-heading-upper"> <img src="images/one.png" width="50" height="50" ></span></span>
@@ -180,7 +79,7 @@
 <br>
 <br>
   
-    <form class="contact100-form validate-form" action="/enviarCorreo" method="POST">
+    <form class="contact100-form validate-form" action="/enviarCorreoCompromisoIP" method="POST">
       <div class="intro-text left-0 text-center bg-faded p-1 rounded">
         <h2 class="section-heading mb-4">
           <span class="section-heading-upper"> <img src="images/two.png" width="50" height="50" ></span></span>
@@ -229,10 +128,10 @@ if (!expresion.test(email) || !expresionTLF.test(tlf) ){
 // }
 else{
   swal({
-  title: "Success check your email!",
-  text: "Redirecting in 5 seconds.",
+  title: "El formulario fue enviado con éxito. ¡Revisa tu email!",
+  text: "Redireccionando en 4 segundos.",
   type: "success",
-  timer: 5000,
+  timer: 4000,
   showConfirmButton: false
 }, function(){
       window.location.href = "./responsables.html";

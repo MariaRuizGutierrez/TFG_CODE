@@ -49,45 +49,67 @@ app.get('/', function(req, res){
   res.send('principal.html');
 });
 
+app.get('/', function(req, res){
+  res.send('index.html');
+});
 
 app.get('/anexoContratacion', function(req, res){
-  res.sendFile(path.join(__dirname,'/public/anexoContratacion.html'));
+  res.sendFile(path.join(__dirname,'/public/Formularios/anexoContratacion.html'));
 });
 
 
 app.get('/solicitudContratos', function(req, res){
-  res.sendFile(path.join(__dirname,'/public/solicitudContratos.html'));
+  res.sendFile(path.join(__dirname,'/public/Formularios/solicitudContratos.html'));
 });
 
 app.get('/solicitud', function(req, res){
-  res.sendFile(path.join(__dirname,'/public/solicitud.html'));
+  res.sendFile(path.join(__dirname,'/public/Formularios/solicitud.html'));
 });
 
 app.get('/terminosYCondiciones', function(req, res){
-  res.sendFile(path.join(__dirname,'/public/terminosYCondiciones.html'));
+  res.sendFile(path.join(__dirname,'/public/Formularios/terminosYCondiciones.html'));
+});
+
+app.get('/compromisoPRL', function(req, res){
+  res.sendFile(path.join(__dirname,'/public/Formularios/compromisoPRL.html'));
 });
 
 app.get('/compromiso', function(req, res){
-  res.sendFile(path.join(__dirname,'/public/compromiso.html'));
+  res.sendFile(path.join(__dirname,'/public/Formularios/compromiso.html'));
 });
 
 app.get('/relacionProvisional', function(req, res){
-  res.sendFile(path.join(__dirname,'/public/relacionProvisional.html'));
+  res.sendFile(path.join(__dirname,'/public/Formularios/relacionProvisional.html'));
 });
 
 app.get('/relacionDefinitiva', function(req, res){
-  res.sendFile(path.join(__dirname,'/public/relacionDefinitiva.html'));
+  res.sendFile(path.join(__dirname,'/public/Formularios/relacionDefinitiva.html'));
 });
 
 app.get('/candidatosEntrevistas', function(req, res){
-  res.sendFile(path.join(__dirname,'/public/candidatosEntrevistas.html'));
+  res.sendFile(path.join(__dirname,'/public/Formularios/candidatosEntrevistas.html'));
 });
 
 app.get('/actaComision', function(req, res){
-  res.sendFile(path.join(__dirname,'/public/actaComision.html'));
+  res.sendFile(path.join(__dirname,'/public/Formularios/actaComision.html'));
 });
 
-app.post('/visualizacion', function(request, response){
+// Aquí es es donde el usuario visualiza e envía el anexo de contratación
+app.get('/generarPDF', function(req, res){
+  res.sendFile(path.join(__dirname,'/public/VisualizacionYEnvio/generarPDF.html'));
+});
+
+// Aquí es es donde el usuario visualiza e envía el compromiso del ip
+app.get('/generarPDFCompromiso', function(req, res){
+  res.sendFile(path.join(__dirname,'/public/VisualizacionYEnvio/generarPDFCompromiso.html'));
+});
+
+// Aquí es es donde el usuario visualiza e envía el compromiso prl del ip
+app.get('/generarPDFCompromisoPRL', function(req, res){
+  res.sendFile(path.join(__dirname,'/public/VisualizacionYEnvio/generarPDFCompromisoPRL.html'));
+});
+
+app.post('/visualizacionAnexoContratacion', function(request, response){
   var tempFile="./output_Anexo_Contratacion.pdf";
   fs.readFile(tempFile, function (err,data){
      response.contentType("application/pdf");
@@ -95,7 +117,7 @@ app.post('/visualizacion', function(request, response){
   });
 });
 
-app.post('/enviarCorreo', function(req, res){
+app.post('/enviarCorreoAnexoContratacion', function(req, res){
   server.send({
   text:    "Anexo de contratación", 
   from:    "organizacionMRG <organizacionMRG@gmail.com>", 
@@ -112,14 +134,55 @@ app.post('/enviarCorreo', function(req, res){
   // res.sendFile(path.join(__dirname,'/public/responsables.html'));
 });
 
-
-
-
-
-app.get('/', function(req, res){
-    res.send('index.html');
+app.post('/visualizacionCompromisoIP', function(request, response){
+  var tempFile="./output_Compromiso_IP.pdf";
+  fs.readFile(tempFile, function (err,data){
+     response.contentType("application/pdf");
+     response.send(data);
   });
+});
+
+app.post('/enviarCorreoCompromisoIP', function(req, res){
+  server.send({
+  text:    "Anexo II Compromiso IP", 
+  from:    "organizacionMRG <organizacionMRG@gmail.com>", 
+  to:      "empleado <marruigut@alum.us.es>",
+  cc:      "usted <"+req.body.email+">",
+  subject: "Nuevo Anexo II Compromiso IP",
+  attachment: 
+   [
+      {data:"<html>Se adjunta el anexo II Compromiso IP enviado por:<B> "+req.body.email+"</B> con número de teléfono: <B> "+req.body.telefono+"</B> </html>", alternative:true},
+      {path:"output_Compromiso_IP.pdf", type:"application/pdf", name:"AnexoII_Compromiso_IP.pdf"}
+   ]
+}, function(err, message) { console.log(err || message); });
  
+  // res.sendFile(path.join(__dirname,'/public/responsables.html'));
+});
+
+app.post('/visualizacionCompromisoPRLIP', function(request, response){
+  var tempFile="./output_Compromiso_IP_PRL.pdf";
+  fs.readFile(tempFile, function (err,data){
+     response.contentType("application/pdf");
+     response.send(data);
+  });
+});
+
+app.post('/enviarCorreoCompromisoPRLIP', function(req, res){
+  server.send({
+  text:    "Anexo III Compromiso PRL IP", 
+  from:    "organizacionMRG <organizacionMRG@gmail.com>", 
+  to:      "empleado <marruigut@alum.us.es>",
+  cc:      "usted <"+req.body.email+">",
+  subject: "Nuevo Anexo III Compromiso PRL IP",
+  attachment: 
+   [
+      {data:"<html>Se adjunta el anexo III Compromiso IP PRL enviado por:<B> "+req.body.email+"</B> con número de teléfono: <B> "+req.body.telefono+"</B> </html>", alternative:true},
+      {path:"output_Compromiso_IP_PRL.pdf", type:"application/pdf", name:"AnexoIII_Compromiso_IP_PRL.pdf"}
+   ]
+}, function(err, message) { console.log(err || message); });
+ 
+  // res.sendFile(path.join(__dirname,'/public/responsables.html'));
+});
 
   //PDF DE ANEXO DE CONTRATACIÓN
   app.post('/anexoContratacion', function(req, res){
@@ -484,7 +547,7 @@ doc.image('public/img/MRG.png', 250, 10, {fit: [110, 110], align: 'center', vali
 
 // Finalize PDF file
 doc.end();
-res.sendFile(path.join(__dirname,'/public/generarPDF.html'),{datos:req.body.email});
+res.sendFile(path.join(__dirname,'/public/VisualizacionYEnvio/generarPDF.html'),{datos:req.body.email});
 
 // server.send({
 //   text:    "Anexo de contratación", 
@@ -499,380 +562,6 @@ res.sendFile(path.join(__dirname,'/public/generarPDF.html'),{datos:req.body.emai
 // }, function(err, message) { console.log(err || message); });
 //     res.sendFile(path.join(__dirname,'/public/responsables.html'));
   });
-
-
-// Aquí es la generar el pdf del anexo de contratación para que el usuario lo vea antes de enviar por correo 
-app.get('/generarPDF', function(req, res){
-  res.sendFile(path.join(__dirname,'/public/generarPDF.html'));
-});
-
-// Aquí es para que se genere el anexo de contratación pero no se envía por correo
-//   app.post('/generarPDF', function(req, res){
-//     console.log(req.body);
-//     // Aquí empieza la parte de crear el documento 
-//     docu  = "Convocatoria de selección para la contratación temporal de personal "+req.body.personal+" para la ejecución del "+req.body.ejecucion+" de investigación “"+req.body.nombre+", "+req.body.referencia+". En el caso de que la contratación sea financiada por un proyecto de investigación, el contrato se formalizará una vez se publique la resolución definitiva de concesión del proyecto (siendo el gasto para la contratación elegible) y la orgánica disponga de la cuantía para sufragarlo. La Universidad de Sevilla no se hará responsable de aquellas contrataciones que no lleguen a materializarse por no cumplirse los requisitos exigidos."
-//     parrf2 ="Convocatoria del Mes: "+req.body.mes+" y Año: "+req.body.ayo+""
-//     parrf3 ="Referencia: "
-//     parrf4 ="Nº de plazas ofertadas: "+req.body.plazas+" "
-//     parrf5 ="ANEXO"
-//     parrf6 ="Retribuciones"
-//     parrf7="El coste total del contrato, importe bruto de la contratación más el importe total de las cuotas patronales y el importe de la indemnización por finalización de contrato será  de "+req.body.coste+" Euros. El sueldo bruto mensual que percibirá el contratado ascenderá a "+req.body.sueldo+" Euros*. En dicha retribución  se encuentra incluido el prorrateo o parte proporcional de las pagas extras."
-//     parrf8="La dedicación será de "+req.body.horasemanales+" horas semanales. "
-//     parrf9="Duración"
-//     parrf10="La duración del contrato será de "+req.body.duracion+" desde el comienzo del contrato, con sujeción, a la duración del proyecto y la existencia de disponibilidad presupuestaria en el mismo**."
-//     parrf11="Con posibilidad de prórroga/s siempre que no se haya superado la duración del proyecto y exista disponibilidad presupuestaria con cargo al mismo, con sujeción, en todo caso, a lo dispuesto en la normativa laboral sobre la duración máxima de los contratos por obra o servicio determinado, y con informe previo favorable de la actividad realizada por el contratado, por parte del Director/a del Proyecto de Investigación donde se realice el proyecto y del Vicerrector de Investigación. "
-//     parrf12 ="*Sueldo estimado en función de la fecha de inicio de la contratación."
-//     parrf13="**La duración del contrato puede variar o verse afectada en base a la fecha de finalización del proyecto."
-//     parrf14="Valoración de méritos"
-//     parrf15="La Comisión de Valoración será responsable de valorar los méritos y ordenar la realización de las entrevistas si lo considera necesario. Con carácter general valorarán los siguientes méritos acreditados documentalmente y relacionados con las tareas y actividades a realizar, de acuerdo con las siguientes puntuaciones: Titulaciones oficiales directamente relacionadas con las tareas a desarrollar y hasta un máximo de 3 puntos. En el caso de que una determinada titulación o titulaciones sean exigibles como requisito de participación en la convocatoria, únicamente se valorarán aquellas iguales o superiores a la exigida, con los siguientes límites máximos:"
-//     parrf16="• Doctor (Hasta un máximo de 3 puntos) \n • Máster Oficial o Diploma de Estudios Avanzados con la previa titulación de Grado/Licenciatura (Hasta un máximo de 2,7 puntos) \n • Máster con la previa titulación de Grado/Licenciatura (Hasta un máximo de 2,5 puntos) \n • Máster con Diplomatura (Hasta un máximo de 2,3 puntos) \n • Licenciatura (Hasta un máximo de 2,1 punto) \n • Grado (Hasta un máximo de 1,9 puntos) \n • Diplomado Universitario (Hasta un máximo de 1,7 puntos) \n • Técnico Superior de Formación Profesional (Hasta un máximo de 1,5 puntos)"
-//     parrf17="2. Formación relacionada con las tareas a desempeñar (Hasta un máximo de 2 puntos)."
-//     parrf18="3. Experiencia profesional relacionada con las tareas a desarrollar (Hasta un máximo de 2,5 puntos)."
-//     parrf19="4. Entrevista para evaluar la aptitud para el puesto (Hasta un máximo de 2,5 puntos)."
-//     parrf20="Las comisiones de valoración quedarán facultadas para establecer si es necesaria, en función del número de participantes, la realización de la entrevista y la puntuación mínima exigible en los apartados anteriores para su realización, quedando aquellos aspirantes que no la alcancen eliminados del proceso selectivo."
-//     parrf21="La convocatoria para la asistencia a entrevistas se publicará en la página web del Vicerrectorado de Investigación http://investigacion.us.es/investigacion/contratos-personal con una antelación mínima de 48 horas. Junto con la convocatoria de asistencia a las entrevistas se publicarán los criterios genéricos de valoración de las entrevistas tales como: experiencia previa, conocimientos sobre las tareas a desarrollar, aptitud ante la resolución de problemas, etc."
-//     parrf22="Las comisiones de valoración establecerán el umbral mínimo de puntuación para poder ser seleccionado para el contrato."
-//     parrf23="Plazo de presentación de solicitudes"
-//     parrf24="5 días hábiles (10) a contar desde el día siguiente al de la publicación de la presente Convocatoria en la Web del Vicerrectorado de Investigación  http://investigacion.us.es/investigacion/contratos-personal."
-//     parrf25="Contrato ofertado"
-//     parrf26="INVESTIGADOR RESPONSABLE: "+req.body.responsable+""
-//     parrf27="REQUISITOS ESPECÍFICOS: \n \n "+req.body.requisitos+ ""
-//     parrf28="COMISIÓN DE VALORACIÓN: \n \n  "+req.body.comision+""
-//     parrf29="DESTINO: \n \n "+req.body.destino+""
-//     parrf30="CATEGORÍA LABORAL:"+req.body.categoria+""
-//     parrf31="TAREAS A REALIZAR: \n \n "+req.body.tareas+""
-    
-
-//   const doc = new pdf;
-  
-//   doc.pipe(fs.createWriteStream('AnexoContratacion.pdf'));
-
-
-// doc.image('public/img/MRG.png', 250, 10, {fit: [110, 110], align: 'center', valign: 'center'})
-
-//   doc.font('CALIBRI.TTF')
-//    .fontSize(11)
-//    .text(docu, 70,125, {
-//     // height: 100,
-//     width: 465,
-//     align: 'justify',
-    
-//    });
-
-//    doc.font('CALIBRI.TTF')
-//    .fontSize(11)
-//    .text(parrf2, 70,228, {
-//     // height: 100,
-//     width: 465,
-//     align: 'justify'
-
-//    });
-
-//    doc.font('CALIBRI.TTF')
-//    .fontSize(11)
-//    .text(parrf3, 70,248, {
-//     // height: 100,
-//     width: 465,
-//     align: 'justify'
-
-//    });
-
-//    doc.font('CALIBRI.TTF')
-//    .fontSize(11)
-//    .text(parrf4, 70,268, {
-//     // height: 100,
-//     width: 465,
-//     align: 'justify'
-
-//    });
-
-
-//   //  ANEXO
-//    doc.font('CALIBRI.TTF')
-//    .fontSize(11)
-//    .text(parrf5, 70,300, {
-//     // height: 100,
-//     width: 465,
-//     align: 'justify',
-//     underline:(20, 0, {color: 'blue'})
-
-//    });
-
-//   //  RETRIBUCIONES
-//    doc.font('CALIBRI.TTF')
-//    .fontSize(12)
-//    .text(parrf6, 70,330, {
-//     // height: 100,
-//     width: 465,
-//     align: 'justify'
-    
-
-//    });
-
-//    doc.font('CALIBRI.TTF')
-//    .fontSize(11)
-//    .text(parrf7, 70,355, {
-//     // height: 100,
-//     width: 465,
-//     align: 'justify'
-
-//    });
-
-//    doc.font('CALIBRI.TTF')
-//    .fontSize(11)
-//    .text(parrf8, 70,420, {
-//     // height: 100,
-//     width: 465,
-//     align: 'justify'
-
-//    });
-
-// // DURACIÓN
-//    doc.font('CALIBRI.TTF')
-//    .fontSize(12)
-//    .text(parrf9, 70,460, {
-//     // height: 100,
-//     width: 465,
-//     align: 'justify',
-//     highlight: (20, 0, {color: 'blue'})
-
-//    });
- 
-//    doc.font('CALIBRI.TTF')
-//    .fontSize(11)
-//    .text(parrf10, 70,485, {
-//     // height: 100,
-//     width: 465,
-//     align: 'justify',
-
-//    });
-
-//    doc.font('CALIBRI.TTF')
-//    .fontSize(11)
-//    .text(parrf11, 70,525, {
-//     // height: 100,
-//     width: 465,
-//     align: 'justify',
-
-//    });
-
-//    doc.font('CALIBRI.TTF')
-//    .fontSize(11)
-//    .text(parrf12, 70,610, {
-//     // height: 100,
-//     width: 465,
-//     align: 'justify',
-
-//    });
-
-//    doc.font('CALIBRI.TTF')
-//    .fontSize(11)
-//    .text(parrf13, 70,625, {
-//     // height: 100,
-//     width: 465,
-//     align: 'justify',
-
-//    });
-
-//   //  VALORACIÓN
-//    doc.font('CALIBRI.TTF')
-//    .fontSize(11)
-//   //  .fillColor('red')
-//    .text(parrf14, 70,750, {
-//     // height: 100,
-//     width: 465,
-//     align: 'justify',
-//     stroke:19
-//     // oblique:12
-    
-
-//    });
-
-
-//    doc.font('CALIBRI.TTF')
-//    .fontSize(11)
-//   //  .fillColor('red')
-//    .text(parrf15, 70,100, {
-//     // height: 100,
-//     width: 465,
-//     align: 'justify'
-//    });
-   
-//    doc.font('CALIBRI.TTF')
-//    .fontSize(11)
-//    .text(parrf16, 70,210, {
-//     // height: 100,
-//     width: 465,
-//     align: 'justify',
-
-//    });
-
-//   //  ESTO ES DESPUÉS DE LOS PUNTOS
-//    doc.font('CALIBRI.TTF')
-//    .fontSize(11)
-//    .text(parrf17, 70,350, {
-//     // height: 100,
-//     width: 465,
-//     align: 'justify',
-
-//    });
-
-//    doc.font('CALIBRI.TTF')
-//    .fontSize(11)
-//    .text(parrf18, 70,370, {
-//     // height: 100,
-//     width: 465,
-//     align: 'justify',
-
-//    });
-
-//    doc.font('CALIBRI.TTF')
-//    .fontSize(11)
-//    .text(parrf19, 70,390, {
-//     // height: 100,
-//     width: 465,
-//     align: 'justify',
-//    });
-
-//    doc.font('CALIBRI.TTF')
-//    .fontSize(11)
-//    .text(parrf20, 70, 420, {
-//     // height: 100,
-//     width: 465,
-//     align: 'justify',
-
-//    });
-
-//    doc.font('CALIBRI.TTF')
-//    .fontSize(11)
-//    .text(parrf21, 70,490, {
-//     // height: 100,
-//     width: 465,
-//     align: 'justify',
-
-//    });
-
-//    doc.font('CALIBRI.TTF')
-//    .fontSize(11)
-//    .text(parrf22, 70,575, {
-//     // height: 100,
-//     width: 465,
-//     align: 'justify',
-//    });
-
-   
-//    doc.font('CALIBRI.TTF')
-//    .fontSize(11)
-//    .text(parrf23, 70,620, {
-//     // height: 100,
-//     width: 465,
-//     align: 'justify',
-//     stroke:(1) 
-//    });
-
-//    doc.font('CALIBRI.TTF')
-//    .fontSize(11)
-//    .text(parrf24, 70,640, {
-//     // height: 100,
-//     width: 465,
-//     align: 'justify',
-
-//    });
-
-//    //  Contrato ofertado
-//    doc.font('CALIBRI.TTF')
-//    .fontSize(11)
-//    .text(parrf25, 70,900, {
-//     // height: 100,
-//     width: 465,
-//     align: 'justify',
-//     underline:(20, 0, {color: 'blue'})
-
-//    });
-
-//    doc.font('CALIBRI.TTF')
-//    .fontSize(11)
-//    .text(parrf26, 70,150, {
-//     // height: 100,
-//     width: 465,
-//     align: 'justify',
-
-//    });
-
-//   //  REQUISITOS ESPECÍFICOS
-//    doc.font('CALIBRI.TTF')
-//    .fontSize(11)
-//    .text(parrf27, 70,190, {
-//     // height: 100,
-//     width: 465,
-//     align: 'justify',
-
-//    });
-
-//   //  COMISIÓN DE VALORACIÓN
-//    doc.font('CALIBRI.TTF')
-//    .fontSize(11)
-//    .text(parrf28, 70,500, {
-//     // height: 100,
-//     width: 465,
-//     align: 'justify',
-
-//    });
-
-//   //  DESTINO
-//    doc.font('CALIBRI.TTF')
-//    .fontSize(11)
-//    .text(parrf29, 70,580, {
-//     // height: 100,
-//     width: 465,
-//     align: 'justify',
-
-//    });
-
-//   //  CATEGORÍA LABORAL
-//    doc.font('CALIBRI.TTF')
-//    .fontSize(11)
-//    .text(parrf30, 70,660, {
-//     // height: 100,
-//     width: 465,
-//     align: 'justify',
-//    });
-
-
-// // TAREAS A REALIZAR
-//    doc.font('CALIBRI.TTF')
-//    .fontSize(11)
-//    .text(parrf31, 70,900, {
-//     // height: 100,
-//     width: 465,
-//     align: 'justify',
-
-//    });
-
-   
-//    var dat= new Date(); //Obtienes la fecha
-//    var dat4=dat.getFullYear();
-//    var dat5=dat.getMonth() + 1;
-//    var dat2= dat.getDate();
-//    var dat3= dat2.toString();
-//   //  console.log(dat2);
-//    parrf32="En Sevilla, a "+dat2+"/"+dat5+"/"+dat4+""
-
-//    doc.font('CALIBRI.TTF')
-//    .fontSize(11)
-//    .text(parrf32, 70,300, {
-//     // height: 100,
-//     width: 465,
-//     align: 'justify',
-
-//    });
-
-// // Finalize PDF file
-// doc.end();
-
-// res.sendFile(path.join(__dirname,'/public/generarPDF.html'));
-// });
-
 
 
 // Aquí es para crear el pdf del compromiso
@@ -937,17 +626,19 @@ doc2.font('CALIBRI.TTF')
   
  });
 
+
+
  var dat= new Date(); //Obtienes la fecha
    var dat4=dat.getFullYear();
    var dat5=dat.getMonth() + 1;
    var dat2= dat.getDate();
    var dat3= dat2.toString();
   //  console.log(dat2);
-   parrf3="En Sevilla, a "+dat2+"/"+dat5+"/"+dat4+""
+   parrf6="En Sevilla, a "+dat2+"/"+dat5+"/"+dat4+""
 
    doc2.font('CALIBRI.TTF')
    .fontSize(11)
-   .text(parrf3, 70,380, {
+   .text(parrf6, 70,380, {
     // height: 100,
     width: 465,
     align: 'justify',
@@ -957,7 +648,147 @@ doc2.font('CALIBRI.TTF')
 // Finalize PDF file
 doc2.end();
 
-res.sendFile(path.join(__dirname,'/public/responsables.html'));
+res.sendFile(path.join(__dirname,'/public/VisualizacionYEnvio/generarPDFCompromiso.html'));
+});
+
+// Aquí es para crear el pdf del compromiso IP PRL
+app.post('/compromisoPRL', function(req, res){
+  console.log(req.body);
+
+  // Aquí empieza la parte de crear el documento 
+  parrf0 ="ANEXO III"
+  parrf1 = "Don/Doña "+req.body.responsable+""
+  parrf2 ="NIF: "+req.body.nif+""
+  parrf3="Departamento: "+req.body.departamento+""
+  parrf4="Centro: "+req.body.centro+""
+  parrf5="Como Investigador/a responsable del contrato derivado de la plaza de referencia "+req.body.referencia+" ofertada mediante la Convocatoria para la contratación temporal de personal "+req.body.personal+"  con cargo a proyectos de Investigación y en base a la Resolución Rectoral firmada el 20 de septiembre de 2017, por la que se establece el procedimiento de actuación en relación con la contratación temporal de personal investigador o técnico adscrito a proyectos, ayudas, grupos y convenios de investigación, se compromete a:"
+  parrf6 ="• Proporcionar los medios materiales e infraestructuras necesarias para la realización de las tareas a realizar por el contratado/a."
+  parrf7 ="• Responder del correcto desempeño de las tareas del contrato asegurando que las mismas se corresponden o ciñen exclusivamente al objeto del mismo, y que coinciden con las indicadas en la convocatoria. Estas tareas no podrán coincidir en ningún caso con las habituales de la Administración y los Servicios Universitarios cuya ejecución corresponden al personal de plantilla."
+  parrf8 ="• Supervisar el periodo de prueba, en su caso."
+  parrf9 ="• Cumplir las medidas preventivas que establece la “Guía preventiva para el personal contratado en proyectos de investigación de la Universidad de Sevilla”, pudiendo contactar con el Servicio de Prevención de la Universidad de Sevilla para cualquier duda o aclaración."
+  parrf10 ="• Asegurar que el candidato/a que obtenga el puesto tenga información y formación sobre los riesgos de las actividades que vayan a realizar, el lugar de trabajo y conocer cómo actuar ante situaciones de emergencia. Así mismo, deberá aportar certificado médico de aptitud, en su caso."
+
+const doc2 = new pdf;
+
+doc2.pipe(fs.createWriteStream('output_Compromiso_IP_PRL.pdf'));
+
+doc2.image('public/img/MRG.png', 250, 10, {fit: [110, 110], align: 'center', valign: 'center'})
+
+
+doc2.font('CALIBRI.TTF')
+ .fontSize(11)
+ .text(parrf0, 70,125, {
+  // height: 100,
+  width: 465,
+  align: 'center',
+  stroke:19
+  
+ });
+ doc2.font('CALIBRI.TTF')
+ .fontSize(11)
+ .text(parrf1, 70,150, {
+  // height: 100,
+  width: 465,
+  align: 'justify'
+  
+ });
+
+doc2.font('CALIBRI.TTF')
+ .fontSize(11)
+ .text(parrf2, 70,170, {
+  // height: 100,
+  width: 465,
+  align: 'justify',
+  
+ });
+ doc2.font('CALIBRI.TTF')
+ .fontSize(11)
+ .text(parrf3, 70,190, {
+  // height: 100,
+  width: 465,
+  align: 'justify',
+  
+ });
+
+ doc2.font('CALIBRI.TTF')
+ .fontSize(11)
+ .text(parrf4, 70,210, {
+  // height: 100,
+  width: 465,
+  align: 'justify',
+ });
+
+ doc2.font('CALIBRI.TTF')
+ .fontSize(11)
+ .text(parrf5, 70,240, {
+  // height: 100,
+  width: 465,
+  align: 'justify'
+ });
+
+ doc2.font('CALIBRI.TTF')
+ .fontSize(11)
+ .text(parrf6, 70,340, {
+  // height: 100,
+  width: 465,
+  align: 'justify'
+ });
+
+ doc2.font('CALIBRI.TTF')
+ .fontSize(11)
+ .text(parrf7, 70,380, {
+  // height: 100,
+  width: 465,
+  align: 'justify'
+ });
+
+ doc2.font('CALIBRI.TTF')
+ .fontSize(11)
+ .text(parrf8, 70,450, {
+  // height: 100,
+  width: 465,
+  align: 'justify'
+ });
+
+ doc2.font('CALIBRI.TTF')
+ .fontSize(11)
+ .text(parrf9, 70,480, {
+  // height: 100,
+  width: 465,
+  align: 'justify'
+ });
+
+ doc2.font('CALIBRI.TTF')
+ .fontSize(11)
+ .text(parrf10, 70,540, {
+  // height: 100,
+  width: 465,
+  align: 'justify'
+ });
+
+
+
+ var dat= new Date(); //Obtienes la fecha
+   var dat4=dat.getFullYear();
+   var dat5=dat.getMonth() + 1;
+   var dat2= dat.getDate();
+   var dat3= dat2.toString();
+  //  console.log(dat2);
+   parrf11="Sevilla, a "+dat2+"/"+dat5+"/"+dat4+""
+
+   doc2.font('CALIBRI.TTF')
+   .fontSize(11)
+   .text(parrf11, 70,600, {
+    // height: 100,
+    width: 465,
+    align: 'justify',
+
+   });
+
+// Finalize PDF file
+doc2.end();
+
+res.sendFile(path.join(__dirname,'/public/VisualizacionYEnvio/generarPDFCompromisoPRL.html'));
 });
 
 
