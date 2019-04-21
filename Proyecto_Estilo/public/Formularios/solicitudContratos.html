@@ -113,7 +113,7 @@
 <body>
 
   <h1 class="site-heading text-center text-white d-none d-lg-block">
-    <span class="site-heading-upper text-primary mb-3"><img src="img/MRG.png" width="350" height="200"></span>
+    <span class="site-heading-upper text-primary mb-3"><img src="img/MRG.png" width="200" height="100"></span>
     
     <!-- <span class="site-heading-lower">Business Casual</span> -->
   </h1>
@@ -281,22 +281,19 @@
           <span class="label-input100" style="color:#e6a756";>CONTACTO</span>
       </div> 
 
-      <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Introduzca su Email (e@a.x)">
-          <span class="label-input100">Email *</span>
-          <input class="input100" type="text" name="email" placeholder="Introduzca su email">
-      </div>
+      
 
       <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
           <span class="label-input100">Teléfono Móvil*</span>
-          <input class="input100" type="phone" name="tlf" placeholder="Ejemplo:657487533" >
+          <input class="input100" type="phone" name="tlf" placeholder="Ejemplo:657487533" required pattern="^[9|6|7][0-9]{8}$">
       </div>
 
       <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar vacío">
           <span class="label-input100">Teléfono fijo*</span>
-          <input class="input100" type="phone" name="tlfFijo" placeholder="Ejemplo:954370007" >
+          <input class="input100" type="phone" name="tlfFijo" placeholder="Ejemplo:954370007" required pattern="^[9|6|7][0-9]{8}$" >
       </div>
     
-      <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar vacío">
+      <div class="wrap-input100 validate-input bg1 " data-validate = "Este campo no puede estar vacío">
           <span class="label-input100">Titulación académica*</span>
           <input class="input100" type="text" name="titulacion" placeholder="Ejemplo:Ingeniero del Software" maxlength="50">
       </div>
@@ -335,19 +332,13 @@
           <input type="checkbox" required name="RGPD" class="form-check-input" id="exampleCheck1">
           <label class="form-check-label" for="exampleCheck1"><a href="./anexoContratacion">Aceptos los términos y condiciones de uso</a></label>
         </div>
-      <!-- <samp>
-      <input type="checkbox" required name="RGPD" id=RGPD ><label for="RGDP"><a href="./anexoContratacion">Aceptos los términos y condiciones de uso</a></label>
-    </samp> -->
-
-
-  <!-- Esto es para que se descargue el pdf -->
-  <a href="iphone_user_guide.pdf" download="iPhone User's Guide.PDF">click me</a>
+      
 
       <!-- Este es el botón de enviar -->
        <div class="container-contact100-form-btn">
         <button type="submit" class="contact100-form-btn">
           <span>
-            Enviar formulario por correo electrónico
+            Pulse para seguir
             <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
           </span>
           

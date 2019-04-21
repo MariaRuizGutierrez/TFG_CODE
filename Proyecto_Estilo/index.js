@@ -129,6 +129,16 @@ app.get('/generarPDFActaComision', function(req, res){
   res.sendFile(path.join(__dirname,'/public/VisualizacionYEnvio/generarPDFActaComision.html'));
 });
 
+// Aquí es es donde el candidatos visualiza y envía la solicitud de contratos
+app.get('/generarPDFSolicitudContratos', function(req, res){
+  res.sendFile(path.join(__dirname,'/public/VisualizacionYEnvio/generarPDFSolicitudContratos.html'));
+});
+
+// Aquí es es donde el candidatos visualiza y envía la solicitud 
+app.get('/generarPDFSolicitud', function(req, res){
+  res.sendFile(path.join(__dirname,'/public/VisualizacionYEnvio/generarPDFSolicitud.html'));
+});
+
 
 app.post('/visualizacionAnexoContratacion', function(request, response){
   var tempFile="./output_Anexo_Contratacion.pdf";
@@ -295,6 +305,54 @@ app.post('/enviarCorreoActaComision', function(req, res){
    [
       {data:"<html>Se adjunta la siguiente Acta de Comisión enviada por:<B> "+req.body.email+"</B> con número de teléfono: <B> "+req.body.telefono+"</B> </html>", alternative:true},
       {path:"output_Acta_Comision.pdf", type:"application/pdf", name:"Acta_Comision.pdf"}
+   ]
+}, function(err, message) { console.log(err || message); });
+});
+
+
+app.post('/visualizacionSolicitudContratos', function(request, response){
+  var tempFile="./output_Solicitud_Contratos.pdf";
+  fs.readFile(tempFile, function (err,data){
+     response.contentType("application/pdf");
+     response.send(data);
+  });
+});
+
+app.post('/enviarCorreoSolicitudContratos', function(req, res){
+  server.send({
+  text:    "Solicitud contrato", 
+  from:    "organizacionMRG <organizacionMRG@gmail.com>", 
+  to:      "empleado <marruigut@alum.us.es>",
+  cc:      "usted <"+req.body.email+">",
+  subject: "Nueva solicitud de contrato",
+  attachment: 
+   [
+      {data:"<html>Se adjunta la siguiente solicitud de contrato nviada por:<B> "+req.body.email+"</B> con número de teléfono: <B> "+req.body.telefono+"</B> </html>", alternative:true},
+      {path:"output_Solicitud_Contratos.pdf", type:"application/pdf", name:"Solicitud_Contrato.pdf"}
+   ]
+}, function(err, message) { console.log(err || message); });
+});
+
+
+app.post('/visualizacionSolicitud', function(request, response){
+  var tempFile="./output_Solicitud.pdf";
+  fs.readFile(tempFile, function (err,data){
+     response.contentType("application/pdf");
+     response.send(data);
+  });
+});
+
+app.post('/enviarCorreoSolicitud', function(req, res){
+  server.send({
+  text:    "Modelo de instancia para la solicitud", 
+  from:    "organizacionMRG <organizacionMRG@gmail.com>", 
+  to:      "empleado <marruigut@alum.us.es>",
+  cc:      "usted <"+req.body.email+">",
+  subject: "Nuevo Modelo de instancia para la solicitud",
+  attachment: 
+   [
+      {data:"<html>Se adjunta el siguiente Modelo de instancia para la solicitud enviada por:<B> "+req.body.email+"</B> con número de teléfono: <B> "+req.body.telefono+"</B> </html>", alternative:true},
+      {path:"output_Solicitud.pdf", type:"application/pdf", name:"Solicitud.pdf"}
    ]
 }, function(err, message) { console.log(err || message); });
 });
@@ -651,7 +709,7 @@ doc.image('public/img/MRG.png', 250, 10, {fit: [110, 110], align: 'center', vali
    var dat2= dat.getDate();
    var dat3= dat2.toString();
    console.log("maria");
-   parrf32="En Sevilla, a "+dat2+"/"+dat5+"/"+dat4+""
+   parrf32="Sevilla, a "+dat2+"/"+dat5+"/"+dat4+""
 
    doc.font('CALIBRI.TTF')
    .fontSize(11)
@@ -751,7 +809,7 @@ doc2.font('CALIBRI.TTF')
    var dat2= dat.getDate();
    var dat3= dat2.toString();
   //  console.log(dat2);
-   parrf6="En Sevilla, a "+dat2+"/"+dat5+"/"+dat4+""
+   parrf6="Sevilla, a "+dat2+"/"+dat5+"/"+dat4+""
 
    doc2.font('CALIBRI.TTF')
    .fontSize(11)
@@ -999,7 +1057,7 @@ doc.font('CALIBRI.TTF')
    var dat2= dat.getDate();
    var dat3= dat2.toString();
   //  console.log(dat2);
-   parrf8="En Sevilla, a "+dat2+"/"+dat5+"/"+dat4+""
+   parrf8="Sevilla, a "+dat2+"/"+dat5+"/"+dat4+""
 
    doc.font('CALIBRI.TTF')
    .fontSize(11)
@@ -1108,7 +1166,7 @@ doc.font('CALIBRI.TTF')
    var dat2= dat.getDate();
    var dat3= dat2.toString();
   //  console.log(dat2);
-   parrf8="En Sevilla, a "+dat2+"/"+dat5+"/"+dat4+""
+   parrf8="Sevilla, a "+dat2+"/"+dat5+"/"+dat4+""
 
    doc.font('CALIBRI.TTF')
    .fontSize(11)
@@ -1237,7 +1295,7 @@ doc.font('CALIBRI.TTF')
    var dat5=dat.getMonth() + 1;
    var dat2= dat.getDate();
    var dat3= dat2.toString();
-   parrf9="En Sevilla, a "+dat2+"/"+dat5+"/"+dat4+""
+   parrf9="Sevilla, a "+dat2+"/"+dat5+"/"+dat4+""
 
    doc.font('CALIBRI.TTF')
    .fontSize(11)
@@ -1265,12 +1323,12 @@ app.post('/actaComision', function(req, res){
   parrf4 ="ACTA"
   parrf5 ="La Comisión de Valoración para la Convocatoria referida anteriormente:"
   parrf6 ="• Presidente: Apellidos, Nombre. Categoría laboral"
-  parrf7 ="• Vocal 1: : Apellidos, Nombre. Categoría laboral"
-  parrf8 ="• Vocal 12: : Apellidos, Nombre. Categoría laboral"
-  parrf9="se reúne el día "+req.body.dia+" para evaluar los méritos de los candidatos."
+  parrf7 ="• Vocal 1: Apellidos, Nombre. Categoría laboral"
+  parrf8 ="• Vocal 2: Apellidos, Nombre. Categoría laboral"
+  parrf9="se reúne el día "+req.body.dia+" a las "+req.body.hora+" horas para evaluar los méritos de los candidatos."
   parrf10="La Comisión otorga las puntuaciones que se recogen en el Anexo de este Acta y propone la contratación de:"
   parrf11="APELLIDOS, NOMBRE"
-  parrf11=""+req.body.gente+""
+  parrf12=""+req.body.gente+""
   // parrf12="ANEXO"
   // parrf13="Según el Anexo de la Convocatoria, se evalúan los siguientes apartados:"
 
@@ -1291,76 +1349,118 @@ doc.font('CALIBRI.TTF')
   
  });
 
-//  doc.font('CALIBRI.TTF')
-//  .fontSize(11)
-//  .text(parrf2, 70,228, {
-//   // height: 100,
-//   width: 465,
-//   align: 'justify'
+ doc.font('CALIBRI.TTF')
+ .fontSize(11)
+ .text(parrf2, 70,220, {
+  // height: 100,
+  width: 465,
+  align: 'justify'
+ });
 
-//  });
+ doc.font('CALIBRI.TTF')
+ .fontSize(11)
+ .text(parrf3, 70,245, {
+  // height: 100,
+  width: 465,
+  align: 'justify'
+ });
 
-//  doc.font('CALIBRI.TTF')
-//  .fontSize(11)
-//  .text(parrf3, 70,248, {
-//   // height: 100,
-//   width: 465,
-//   align: 'justify'
+ doc.font('CALIBRI.TTF')
+ .fontSize(11)
+ .text(parrf4, 70,275, {
+  // height: 100,
+  width: 465,
+  align: 'justify',
+  stroke:10
+ });
 
-//  });
+ doc.font('CALIBRI.TTF')
+ .fontSize(11)
+ .text(parrf5, 70,300, {
+  // height: 100,
+  width: 465,
+  align: 'justify',
+ });
 
-//  doc.font('CALIBRI.TTF')
-//  .fontSize(11)
-//  .text(parrf4, 70,268, {
-//   // height: 100,
-//   width: 465,
-//   align: 'justify'
+ doc.font('CALIBRI.TTF')
+ .fontSize(11)
+ .text(parrf6, 70,330, {
+  // height: 100,
+  width: 465,
+  align: 'justify'
+ });
 
-//  });
 
-//  doc.font('CALIBRI.TTF')
-//  .fontSize(11)
-//  .text(parrf5, 70,300, {
-//   // height: 100,
-//   width: 465,
-//   align: 'justify',
-//   underline:(20, 0, {color: 'blue'})
+ doc.font('CALIBRI.TTF')
+ .fontSize(11)
+ .text(parrf7, 70,355, {
+  // height: 100,
+  width: 465,
+  align: 'justify'
+ });
 
-//  });
+ doc.font('CALIBRI.TTF')
+ .fontSize(11)
+ .text(parrf8, 70,380, {
+  // height: 100,
+  width: 465,
+  align: 'justify'
+ });
 
-//  doc.font('CALIBRI.TTF')
-//  .fontSize(11)
-//  .text(parrf6, 70,330, {
-//   // height: 100,
-//   width: 465,
-//   align: 'justify'
-//  });
-//  doc.rect(45, 325, 520, 270).stroke();
+ doc.font('CALIBRI.TTF')
+ .fontSize(11)
+ .text(parrf9, 70,410, {
+  // height: 100,
+  width: 465,
+  align: 'justify'
+ });
 
-//  doc.font('CALIBRI.TTF')
-//  .fontSize(11)
-//  .text(parrf7, 70,630, {
-//   // height: 100,
-//   width: 465,
-//   align: 'justify'
-//  });
+ doc.font('CALIBRI.TTF')
+ .fontSize(11)
+ .text(parrf10, 70,440, {
+  // height: 100,
+  width: 465,
+  align: 'justify'
+ });
 
-//  var dat= new Date(); //Obtienes la fecha
-//    var dat4=dat.getFullYear();
-//    var dat5=dat.getMonth() + 1;
-//    var dat2= dat.getDate();
-//    var dat3= dat2.toString();
-//   //  console.log(dat2);
-//    parrf8="En Sevilla, a "+dat2+"/"+dat5+"/"+dat4+""
+ doc.font('CALIBRI.TTF')
+ .fontSize(11)
+ .text(parrf11, 70,480, {
+  // height: 100,
+  width: 465,
+  align: 'justify',
+  stroke:10
+ });
 
-//    doc.font('CALIBRI.TTF')
-//    .fontSize(11)
-//    .text(parrf8, 70,700, {
-//     // height: 100,
-//     width: 465,
-//     align: 'justify',
+ doc.font('CALIBRI.TTF')
+ .fontSize(11)
+ .text(parrf12, 70,510, {
+  // height: 100,
+  width: 465,
+  align: 'justify'
+ });
 
-//    });
+// Para la parte derecha el primer número
+// Para bajarlo o subirlo hay que tocar el segundo número
+// Para la parte izquierda el tercer número
+// Para hacerlo más ancho el cuadro hay que tocar el último numero
+doc.rect(65, 505, 465, 250).stroke();
+
+ var dat= new Date(); //Obtienes la fecha
+   var dat4=dat.getFullYear();
+   var dat5=dat.getMonth() + 1;
+   var dat2= dat.getDate();
+
+   parrf13="Sevilla, a "+dat2+"/"+dat5+"/"+dat4+""
+
+   doc.font('CALIBRI.TTF')
+   .fontSize(11)
+   .text(parrf13, 70,100, {
+    // height: 100,
+    width: 465,
+    align: 'justify',
+
+   });
 
 // Finalize PDF file
 doc.end();
@@ -1627,7 +1727,7 @@ var dat= new Date(); //Obtienes la fecha
    var dat4=dat.getFullYear();
    var dat5=dat.getMonth() + 1;
    var dat2= dat.getDate();
-   parrf23="En Sevilla, a "+dat2+"/"+dat5+"/"+dat4+""
+   parrf23="Sevilla, a "+dat2+"/"+dat5+"/"+dat4+""
 
    doc.font('CALIBRI.TTF')
    .fontSize(11)
@@ -1646,20 +1746,8 @@ var dat= new Date(); //Obtienes la fecha
 
 // Finalize PDF file
 doc.end();
-res.sendFile(path.join(__dirname,'/public/interesados.html'));
+res.sendFile(path.join(__dirname,'/public/VisualizacionYEnvio/generarPDFSolicitudContratos.html'));
 
-// server.send({
-//   text:    "Solicitud de contratos", 
-//   from:    "you <organizacionMRG@gmail.com>", 
-//   to:      "someone <marruigut@alum.us.es>",
-//   cc:      "else <"+req.body.email+">",
-//   subject: "Nueva solicitud de contratos",
-//   attachment: 
-//    [
-//       {data:"<html>Se adjunta la solucitud de contratos enviado por:<B> "+req.body.email+"</B></html>", alternative:true},
-//       {path:"output_Solicitud_Contratos.pdf", type:"application/pdf", name:"Solicitud_Contrato.pdf"}
-//    ]
-// }, function(err, message) { console.log(err || message); });
 });
 
 
@@ -1681,7 +1769,6 @@ app.post('/solicitud', function(req, res){
   parrf10="Provincia: "+req.body.provincia+""
   parrf11="Dirección Postal: "+req.body.direccion+""
   docu2  = "CONTACTO"
-  parrf12 ="Correo electrónico: "+req.body.email+""
   parrf13="Teléfono móvil: "+req.body.tlf+""
   parrf14= "Teléfono fijo: "+req.body.tlfFijo+""
   parrf15= "Área de Conocimiento por la que concurre: "+req.body.areaconocimiento+""
@@ -1803,14 +1890,6 @@ doc.font('CALIBRI.TTF')
   stroke: 19
  });
 
- // Correo electrónico
-doc.font('CALIBRI.TTF')
-.fontSize(11)
-.text(parrf12, 70,300, {
- width: 465,
- align: 'justify'
-});
-
  // Teléfono móvil
  doc.font('CALIBRI.TTF')
  .fontSize(11)
@@ -1877,7 +1956,7 @@ var dat= new Date(); //Obtienes la fecha
    var dat4=dat.getFullYear();
    var dat5=dat.getMonth() + 1;
    var dat2= dat.getDate();
-   parrf23="En Sevilla, a "+dat2+"/"+dat5+"/"+dat4+""
+   parrf23="Sevilla, a "+dat2+"/"+dat5+"/"+dat4+""
 
    doc.font('CALIBRI.TTF')
    .fontSize(11)
@@ -1896,7 +1975,7 @@ var dat= new Date(); //Obtienes la fecha
 
 // Finalize PDF file
 doc.end();
-res.sendFile(path.join(__dirname,'/public/interesados.html'));
+res.sendFile(path.join(__dirname,'/public/VisualizacionYEnvio/generarPDFSolicitud.html'));
 
 // server.send({
 //   text:    "Solicitud de contratos", 
