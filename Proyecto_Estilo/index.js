@@ -94,20 +94,41 @@ app.get('/actaComision', function(req, res){
   res.sendFile(path.join(__dirname,'/public/Formularios/actaComision.html'));
 });
 
-// Aquí es es donde el usuario visualiza e envía el anexo de contratación
+// Aquí es es donde el usuario visualiza y envía el anexo de contratación
 app.get('/generarPDF', function(req, res){
   res.sendFile(path.join(__dirname,'/public/VisualizacionYEnvio/generarPDF.html'));
 });
 
-// Aquí es es donde el usuario visualiza e envía el compromiso del ip
+// Aquí es es donde el usuario visualiza y envía el compromiso del ip
 app.get('/generarPDFCompromiso', function(req, res){
   res.sendFile(path.join(__dirname,'/public/VisualizacionYEnvio/generarPDFCompromiso.html'));
 });
 
-// Aquí es es donde el usuario visualiza e envía el compromiso prl del ip
+// Aquí es es donde el usuario visualiza y envía el compromiso prl del ip
 app.get('/generarPDFCompromisoPRL', function(req, res){
   res.sendFile(path.join(__dirname,'/public/VisualizacionYEnvio/generarPDFCompromisoPRL.html'));
 });
+
+// Aquí es es donde el usuario visualiza y envía la relacion PROVISIONAL  de aspirantes admitidos y excluidos
+app.get('/generarPDFRelacionProvisional', function(req, res){
+  res.sendFile(path.join(__dirname,'/public/VisualizacionYEnvio/generarPDFRelacionProvisional.html'));
+});
+
+// Aquí es es donde el usuario visualiza y envía la relacion DEFINITIVA  de aspirantes admitidos y excluidos
+app.get('/generarPDFRelacionDefinitiva', function(req, res){
+  res.sendFile(path.join(__dirname,'/public/VisualizacionYEnvio/generarPDFRelacionDefinitiva.html'));
+});
+
+// Aquí es es donde el usuario visualiza y envía la lista de los candidatos seleccionados a entrevistas
+app.get('/generarPDFCandidatosEntrevistas', function(req, res){
+  res.sendFile(path.join(__dirname,'/public/VisualizacionYEnvio/generarPDFCandidatosEntrevistas.html'));
+});
+
+// Aquí es es donde el usuario visualiza y envía el acta de comision
+app.get('/generarPDFActaComision', function(req, res){
+  res.sendFile(path.join(__dirname,'/public/VisualizacionYEnvio/generarPDFActaComision.html'));
+});
+
 
 app.post('/visualizacionAnexoContratacion', function(request, response){
   var tempFile="./output_Anexo_Contratacion.pdf";
@@ -183,6 +204,102 @@ app.post('/enviarCorreoCompromisoPRLIP', function(req, res){
  
   // res.sendFile(path.join(__dirname,'/public/responsables.html'));
 });
+
+
+app.post('/visualizacionRelacionProvisional', function(request, response){
+  var tempFile="./output_Relacion_Provisional.pdf";
+  fs.readFile(tempFile, function (err,data){
+     response.contentType("application/pdf");
+     response.send(data);
+  });
+});
+
+app.post('/enviarCorreoRelacionProvisional', function(req, res){
+  server.send({
+  text:    "Relacion provisional", 
+  from:    "organizacionMRG <organizacionMRG@gmail.com>", 
+  to:      "empleado <marruigut@alum.us.es>",
+  cc:      "usted <"+req.body.email+">",
+  subject: "Nueva Relacion Provisional",
+  attachment: 
+   [
+      {data:"<html>Se adjunta la siguiente relacion provisional enviado por:<B> "+req.body.email+"</B> con número de teléfono: <B> "+req.body.telefono+"</B> </html>", alternative:true},
+      {path:"output_Relacion_Provisional.pdf", type:"application/pdf", name:"Relacion_Provisional.pdf"}
+   ]
+}, function(err, message) { console.log(err || message); });
+});
+
+
+app.post('/visualizacionRelacionDefinitiva', function(request, response){
+  var tempFile="./output_Relacion_Definitiva.pdf";
+  fs.readFile(tempFile, function (err,data){
+     response.contentType("application/pdf");
+     response.send(data);
+  });
+});
+
+app.post('/enviarCorreoRelacionDefinitiva', function(req, res){
+  server.send({
+  text:    "Relacion Definitiva", 
+  from:    "organizacionMRG <organizacionMRG@gmail.com>", 
+  to:      "empleado <marruigut@alum.us.es>",
+  cc:      "usted <"+req.body.email+">",
+  subject: "Nueva Relacion Definitiva",
+  attachment: 
+   [
+      {data:"<html>Se adjunta la siguiente relacion definitiva enviado por:<B> "+req.body.email+"</B> con número de teléfono: <B> "+req.body.telefono+"</B> </html>", alternative:true},
+      {path:"output_Relacion_Definitiva.pdf", type:"application/pdf", name:"Relacion_Definitiva.pdf"}
+   ]
+}, function(err, message) { console.log(err || message); });
+});
+
+app.post('/visualizacionCandidatosEntrevistas', function(request, response){
+  var tempFile="./output_Candidatos_Entrevistas.pdf";
+  fs.readFile(tempFile, function (err,data){
+     response.contentType("application/pdf");
+     response.send(data);
+  });
+});
+
+app.post('/enviarCorreoCandidatosEntrevistas', function(req, res){
+  server.send({
+  text:    "Candidatos seleccionados para entrevista", 
+  from:    "organizacionMRG <organizacionMRG@gmail.com>", 
+  to:      "empleado <marruigut@alum.us.es>",
+  cc:      "usted <"+req.body.email+">",
+  subject: "Candidatos seleccionados para entrevista",
+  attachment: 
+   [
+      {data:"<html>Se adjunta la siguiente lista de los Candidatos seleccionados para entrevista enviado por:<B> "+req.body.email+"</B> con número de teléfono: <B> "+req.body.telefono+"</B> </html>", alternative:true},
+      {path:"output_Candidatos_Entrevistas.pdf", type:"application/pdf", name:"Candidatos_Seleccionados_Entrevistas.pdf"}
+   ]
+}, function(err, message) { console.log(err || message); });
+});
+
+app.post('/visualizacionActaComision', function(request, response){
+  var tempFile="./output_Acta_Comision.pdf";
+  fs.readFile(tempFile, function (err,data){
+     response.contentType("application/pdf");
+     response.send(data);
+  });
+});
+
+app.post('/enviarCorreoActaComision', function(req, res){
+  server.send({
+  text:    "Acta de Comisión", 
+  from:    "organizacionMRG <organizacionMRG@gmail.com>", 
+  to:      "empleado <marruigut@alum.us.es>",
+  cc:      "usted <"+req.body.email+">",
+  subject: "Nueva Acta de Comisión",
+  attachment: 
+   [
+      {data:"<html>Se adjunta la siguiente Acta de Comisión enviada por:<B> "+req.body.email+"</B> con número de teléfono: <B> "+req.body.telefono+"</B> </html>", alternative:true},
+      {path:"output_Acta_Comision.pdf", type:"application/pdf", name:"Acta_Comision.pdf"}
+   ]
+}, function(err, message) { console.log(err || message); });
+});
+
+
 
   //PDF DE ANEXO DE CONTRATACIÓN
   app.post('/anexoContratacion', function(req, res){
@@ -895,21 +1012,9 @@ doc.font('CALIBRI.TTF')
 
 // Finalize PDF file
 doc.end();
-res.sendFile(path.join(__dirname,'/public/responsables.html'));
+res.sendFile(path.join(__dirname,'/public/VisualizacionYEnvio/generarPDFRelacionProvisional.html'));
 });
-// server.send({
-//   text:    "i hope this works", 
-//   from:    "you <tatoohus@gmail.com>", 
-//   to:      "someone <marikichi1996@gmail.com>",
-//   subject: "testing emailjs",
-//   attachment: 
-//    [
-//       {data:"<html>i <i>hope</i> this works!</html>", alternative:true},
-//       {path:"output_Anexo_Contratacion.pdf", type:"application/pdf", name:"renamed.pdf"}
-//    ]
-// }, function(err, message) { console.log(err || message); });
-//     res.sendFile(path.join(__dirname,'/public/responsables.html'));
-//   });
+
 
 
 
@@ -920,8 +1025,8 @@ app.post('/relacionDefinitiva', function(req, res){
   // Aquí empieza la parte de crear el documento 
   docu  = "Convocatoria de selección para la contratación temporal de personal "+req.body.personal+" para la ejecución del "+req.body.ejecucion+" de investigación “"+req.body.nombre+", "+req.body.referencia+". En el caso de que la contratación sea financiada por un proyecto de investigación, el contrato se formalizará una vez se publique la resolución definitiva de concesión del proyecto (siendo el gasto para la contratación elegible) y la orgánica disponga de la cuantía para sufragarlo. La Universidad de Sevilla no se hará responsable de aquellas contrataciones que no lleguen a materializarse por no cumplirse los requisitos exigidos."
   parrf2 ="Convocatoria del Mes: "+req.body.mes+" y Año: "+req.body.ayo+""
-  parrf3 ="Referencia: "
-  parrf4 ="RELACIÓN PROVISIONAL DE ASPIRANTES ADMITIDOS Y EXCLUIDOS"
+  parrf3 ="Referencia: "+req.body.referencia+""
+  parrf4 ="RELACIÓN DEFINITIVA DE ASPIRANTES ADMITIDOS Y EXCLUIDOS"
   parrf5 ="Lista de admitidos y excluidos"
   parrf6 =""+req.body.aspirantes+""
   parrf7 ="Contra esta Resolución se podrán formular reclamaciones dentro del plazo máximo de tres días hábiles desde el día posterior a su publicación. Una vez resueltas las reclamaciones se procederá a la publicación del listado definitivo de admitidos y excluidos."
@@ -1016,21 +1121,9 @@ doc.font('CALIBRI.TTF')
 
 // Finalize PDF file
 doc.end();
-res.sendFile(path.join(__dirname,'/public/responsables.html'));
+res.sendFile(path.join(__dirname,'/public/VisualizacionYEnvio/generarPDFRelacionDefinitiva.html'));
 });
-// server.send({
-//   text:    "i hope this works", 
-//   from:    "you <tatoohus@gmail.com>", 
-//   to:      "someone <marikichi1996@gmail.com>",
-//   subject: "testing emailjs",
-//   attachment: 
-//    [
-//       {data:"<html>i <i>hope</i> this works!</html>", alternative:true},
-//       {path:"output_Anexo_Contratacion.pdf", type:"application/pdf", name:"renamed.pdf"}
-//    ]
-// }, function(err, message) { console.log(err || message); });
-//     res.sendFile(path.join(__dirname,'/public/responsables.html'));
-//   });
+
 
 
 //Aquí es para crear el pdf de convocatoria a entrevista
@@ -1040,7 +1133,7 @@ app.post('/candidatosEntrevistas', function(req, res){
   // Aquí empieza la parte de crear el documento 
   docu  = "Convocatoria de selección para la contratación temporal de personal "+req.body.personal+" para la ejecución del "+req.body.ejecucion+" de investigación “"+req.body.nombre+", "+req.body.referencia+". En el caso de que la contratación sea financiada por un proyecto de investigación, el contrato se formalizará una vez se publique la resolución definitiva de concesión del proyecto (siendo el gasto para la contratación elegible) y la orgánica disponga de la cuantía para sufragarlo. La Universidad de Sevilla no se hará responsable de aquellas contrataciones que no lleguen a materializarse por no cumplirse los requisitos exigidos."
   parrf2 ="Convocatoria del Mes: "+req.body.mes+" y Año: "+req.body.ayo+""
-  parrf3 ="Referencia: "
+  parrf3 ="Referencia: "+req.body.referencia+""
   parrf4 ="CANDIDATOS SELECCIONADOS PARA ENTREVISTAS"
   parrf5 =""+req.body.seleccionados+""
   parrf6 ="Lugar Entrevistas"
@@ -1157,21 +1250,123 @@ doc.font('CALIBRI.TTF')
 
 // Finalize PDF file
 doc.end();
-res.sendFile(path.join(__dirname,'/public/responsables.html'));
+res.sendFile(path.join(__dirname,'/public/VisualizacionYEnvio/generarPDFCandidatosEntrevistas.html'));
 });
-// server.send({
-//   text:    "i hope this works", 
-//   from:    "you <tatoohus@gmail.com>", 
-//   to:      "someone <marikichi1996@gmail.com>",
-//   subject: "testing emailjs",
-//   attachment: 
-//    [
-//       {data:"<html>i <i>hope</i> this works!</html>", alternative:true},
-//       {path:"output_Anexo_Contratacion.pdf", type:"application/pdf", name:"renamed.pdf"}
-//    ]
-// }, function(err, message) { console.log(err || message); });
-//     res.sendFile(path.join(__dirname,'/public/responsables.html'));
-//   });
+
+
+//Aquí es para crear el pdf de acta de comision
+app.post('/actaComision', function(req, res){
+  console.log(req.body);
+
+  // Aquí empieza la parte de crear el documento 
+  docu  = "Convocatoria de selección para la contratación temporal de personal "+req.body.personal+" para la ejecución del "+req.body.ejecucion+" de investigación “"+req.body.nombre+", "+req.body.referencia+". En el caso de que la contratación sea financiada por un proyecto de investigación, el contrato se formalizará una vez se publique la resolución definitiva de concesión del proyecto (siendo el gasto para la contratación elegible) y la orgánica disponga de la cuantía para sufragarlo. La Universidad de Sevilla no se hará responsable de aquellas contrataciones que no lleguen a materializarse por no cumplirse los requisitos exigidos."
+  parrf2 ="Convocatoria del Mes: "+req.body.mes+" y Año: "+req.body.ayo+""
+  parrf3 ="Referencia: "
+  parrf4 ="ACTA"
+  parrf5 ="La Comisión de Valoración para la Convocatoria referida anteriormente:"
+  parrf6 ="• Presidente: Apellidos, Nombre. Categoría laboral"
+  parrf7 ="• Vocal 1: : Apellidos, Nombre. Categoría laboral"
+  parrf8 ="• Vocal 12: : Apellidos, Nombre. Categoría laboral"
+  parrf9="se reúne el día "+req.body.dia+" para evaluar los méritos de los candidatos."
+  parrf10="La Comisión otorga las puntuaciones que se recogen en el Anexo de este Acta y propone la contratación de:"
+  parrf11="APELLIDOS, NOMBRE"
+  parrf11=""+req.body.gente+""
+  // parrf12="ANEXO"
+  // parrf13="Según el Anexo de la Convocatoria, se evalúan los siguientes apartados:"
+
+
+const doc = new pdf;
+
+doc.pipe(fs.createWriteStream('output_Acta_Comision.pdf'));
+
+
+doc.image('public/img/MRG.png', 250, 10, {fit: [110, 110], align: 'center', valign: 'center'})
+
+doc.font('CALIBRI.TTF')
+ .fontSize(11)
+ .text(docu, 70,125, {
+  // height: 100,
+  width: 465,
+  align: 'justify',
+  
+ });
+
+//  doc.font('CALIBRI.TTF')
+//  .fontSize(11)
+//  .text(parrf2, 70,228, {
+//   // height: 100,
+//   width: 465,
+//   align: 'justify'
+
+//  });
+
+//  doc.font('CALIBRI.TTF')
+//  .fontSize(11)
+//  .text(parrf3, 70,248, {
+//   // height: 100,
+//   width: 465,
+//   align: 'justify'
+
+//  });
+
+//  doc.font('CALIBRI.TTF')
+//  .fontSize(11)
+//  .text(parrf4, 70,268, {
+//   // height: 100,
+//   width: 465,
+//   align: 'justify'
+
+//  });
+
+//  doc.font('CALIBRI.TTF')
+//  .fontSize(11)
+//  .text(parrf5, 70,300, {
+//   // height: 100,
+//   width: 465,
+//   align: 'justify',
+//   underline:(20, 0, {color: 'blue'})
+
+//  });
+
+//  doc.font('CALIBRI.TTF')
+//  .fontSize(11)
+//  .text(parrf6, 70,330, {
+//   // height: 100,
+//   width: 465,
+//   align: 'justify'
+//  });
+//  doc.rect(45, 325, 520, 270).stroke();
+
+//  doc.font('CALIBRI.TTF')
+//  .fontSize(11)
+//  .text(parrf7, 70,630, {
+//   // height: 100,
+//   width: 465,
+//   align: 'justify'
+//  });
+
+//  var dat= new Date(); //Obtienes la fecha
+//    var dat4=dat.getFullYear();
+//    var dat5=dat.getMonth() + 1;
+//    var dat2= dat.getDate();
+//    var dat3= dat2.toString();
+//   //  console.log(dat2);
+//    parrf8="En Sevilla, a "+dat2+"/"+dat5+"/"+dat4+""
+
+//    doc.font('CALIBRI.TTF')
+//    .fontSize(11)
+//    .text(parrf8, 70,700, {
+//     // height: 100,
+//     width: 465,
+//     align: 'justify',
+
+//    });
+
+// Finalize PDF file
+doc.end();
+res.sendFile(path.join(__dirname,'/public/VisualizacionYEnvio/generarPDFActaComision.html'));
+});
+
 
 
 
