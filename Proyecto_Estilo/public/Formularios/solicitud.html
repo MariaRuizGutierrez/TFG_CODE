@@ -144,9 +144,13 @@
         <input class="input100" type="text" name="nombre" placeholder="Nombre " maxlength="30">
       </div>
 
-      <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
+      <!-- <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
         <span class="label-input100">DNI/Pasaporte*</span>
         <input class="input100" type="text" name="dni" placeholder="Ejemplo: 29514456H" maxlength="20">
+      </div> -->
+      <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
+        <span class="label-input100">NIF*</span>
+        <input class="input100" type="text" name="dni" placeholder="29567777H" maxlength="9" required pattern="(([X-Z]{1})([-]?)(\d{7})([-]?)([A-Z]{1}))|((\d{8})([-]?)([A-Z]{1}))">
       </div>
 
       <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
@@ -171,12 +175,12 @@
 
       <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
           <span class="label-input100">Código Postal*</span>
-          <input class="input100" type="text" name="codigo" placeholder="Ejemplo: 41008" maxlength="20">
+          <input class="input100" type="text" name="codigo" placeholder="Ejemplo: 41008" maxlength="6">
       </div>
 
       <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
           <span class="label-input100">Provincia *</span>
-          <input class="input100" type="text" name="provinvia" placeholder="Ejemplo: Sevilla" maxlength="20">
+          <input class="input100" type="text" name="provincia" placeholder="Ejemplo: Sevilla" maxlength="20">
       </div>
 
       <div class="wrap-input100 validate-input ">
@@ -196,17 +200,17 @@
     
       <div class="wrap-input100 validate-input " data-validate = "Esta campo no puede estar en blanco">
           <span class="label-input100">Área de Conocimiento por la que concurre *</span>
-          <input class="input100" type="text" name="areaconocimiento" placeholder="Área de conocimiento">
+          <input class="input100" type="text" name="areaconocimiento" placeholder="Área de conocimiento" maxlength="60">
         </div>
 
       <div class="wrap-input100 validate-input " data-validate = "Esta campo no puede estar en blanco">
           <span class="label-input100">Departamento al que se adscribiría *</span>
-          <input class="input100" type="text" name="departamento" placeholder="Nombre del departamento">
+          <input class="input100" type="text" name="departamento" placeholder="Nombre del departamento" maxlength="60">
         </div>
 
       <div class="wrap-input100 validate-input bg0 rs1-alert-validate" data-validate = "Esta campo no puede estar en blanco">
         <span class="label-input100">Observaciones *</span>
-        <textarea class="input100" name="observaciones" placeholder="1. Primera observación..." maxlength="1300"></textarea>
+        <textarea class="input100" name="observaciones" placeholder="1. Primera observación..." maxlength="1200"></textarea>
       </div>
 
       <div class="form-check">

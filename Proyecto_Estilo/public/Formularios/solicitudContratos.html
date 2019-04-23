@@ -138,9 +138,9 @@
           <li class="nav-item active px-lg-4">
             <a class="nav-link text-uppercase text-expanded" href="interesados.html">Interesados</a>
           </li>
-          <li class="nav-item px-lg-4">
+          <!-- <li class="nav-item px-lg-4">
             <a class="nav-link text-uppercase text-expanded" href="store.html">Store</a>
-          </li>
+          </li> -->
         </ul>
       </div>
     </div>
@@ -168,28 +168,244 @@
 
       <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
         <span class="label-input100">Primer apellido *</span>
-        <input class="input100" type="text" name="primer" placeholder="Primer apellido" maxlength="20">
+        <input class="input100" type="text" name="primer" placeholder="Primer apellido" maxlength="40">
       </div>
 
       <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
         <span class="label-input100">Segundo apellido *</span>
-        <input class="input100" type="text" name="segundo" placeholder="Segundo apellido" maxlength="20">
+        <input class="input100" type="text" name="segundo" placeholder="Segundo apellido" maxlength="40">
       </div>
 
       <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
         <span class="label-input100">Nombre *</span>
-        <input class="input100" type="text" name="nombre" placeholder="Nombre" maxlength="20">
+        <input class="input100" type="text" name="nombre" placeholder="Nombre" maxlength="40">
       </div>
 
-      <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
+      <!-- <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
         <span class="label-input100">DNI/Pasaporte*</span>
         <input class="input100" type="text" name="dni" placeholder="Ejemplo: 29514456H" maxlength="20">
+      </div> -->
+      <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
+        <span class="label-input100">NIF*</span>
+        <input class="input100" type="text" name="dni" placeholder="29567777H" maxlength="9" required pattern="(([X-Z]{1})([-]?)(\d{7})([-]?)([A-Z]{1}))|((\d{8})([-]?)([A-Z]{1}))">
       </div>
 
-      <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
+      <!-- <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
           <span class="label-input100">Nacionalidad*</span>
           <input class="input100" type="text" name="nacionalidad" placeholder="Ejemplo: España" maxlength="20">
+      </div> -->
+
+      <div class="wrap-input100 input100-select bg1 rs1-wrap-input100">
+        <span class="label-input100">Nacionalidad *</span> 
+        <div>
+          <select class="js-select2" name="nacionalidad">
+            <!-- <option disabled value="">Seleccione</option>  -->
+            <option value="Argentina">Argentina</option> 
+            <option value="Afganistán">Afganistán</option> 
+            <option value="Albania">Albania</option> 
+            <option value="Alemania">Alemania</option> 
+            <option value="Andorra">Andorra</option> 
+            <option value="Angola">Angola</option> 
+            <option value="Anguilla">Anguilla</option> 
+            <option value="Antártida Argentina">Antártida Argentina</option> 
+            <option value="Antigua y Barbuda">Antigua y Barbuda</option> 
+            <option value="Antillas Holandesas">Antillas Holandesas</option> 
+            <option value="Arabia Saudita">Arabia Saudita</option> 
+            <option value="Argelia">Argelia</option> 
+            <option value="Armenia">Armenia</option> 
+            <option value="Aruba">Aruba</option> 
+            <option value="Australia">Australia</option> 
+            <option value="Austria">Austria</option> 
+            <option value="Azerbaiján">Azerbaiján</option> 
+            <option value="Bahamas">Bahamas</option> 
+            <option value="Bahrain">Bahrain</option> 
+            <option value="Bangladesh">Bangladesh</option> 
+            <option value="Barbados">Barbados</option> 
+            <option value="220">Bélgica</option> 
+            <option value="230">Belice</option> 
+            <option value="240">Benin</option> 
+            <option value="250">Bhutan</option> 
+            <option value="260">Bielorusia</option> 
+            <option value="bolivia">Bolivia</option> 
+            <option value="280">Bosnia Herzegovina</option> 
+            <option value="290">Botswana</option> 
+            <option value="brasil">Brasil</option> 
+            <option value="310">Brunei</option> 
+            <option value="320">Bulgaria</option> 
+            <option value="330">Burkina Faso</option> 
+            <option value="340">Burundi</option> 
+            <option value="350">Cabo Verde</option> 
+            <option value="360">Camboya</option> 
+            <option value="370">Camerún</option> 
+            <option value="380">Canadá</option> 
+            <option value="390">Chad</option> 
+            <option value="chile">Chile</option> 
+            <option value="410">China</option> 
+            <option value="420">Chipre</option> 
+            <option value="430">Colombia</option> 
+            <option value="440">Comoros</option> 
+            <option value="450">Congo</option> 
+            <option value="460">Corea del Norte</option> 
+            <option value="470">Corea del Sur</option> 
+            <option value="480">Costa de Marfil</option> 
+            <option value="490">Costa Rica</option> 
+            <option value="500">Croacia</option> 
+            <option value="510">Cuba</option> 
+            <option value="520">Darussalam</option> 
+            <option value="530">Dinamarca</option> 
+            <option value="540">Djibouti</option> 
+            <option value="550">Dominica</option> 
+            <option value="560">Ecuador</option> 
+            <option value="570">Egipto</option> 
+            <option value="580">El Salvador</option> 
+            <option value="590">Em. Arabes Un.</option> 
+            <option value="600">Eritrea</option> 
+            <option value="610">Eslovaquia</option> 
+            <option value="620">Eslovenia</option> 
+            <option value="España">España</option> 
+            <option value="640">Estados Unidos</option> 
+            <option value="650">Estonia</option> 
+            <option value="660">Etiopía</option> 
+            <option value="670">Fiji</option> 
+            <option value="680">Filipinas</option> 
+            <option value="690">Finlandia</option> 
+            <option value="700">Francia</option> 
+            <option value="710">Gabón</option> 
+            <option value="720">Gambia</option> 
+            <option value="730">Georgia</option> 
+            <option value="740">Ghana</option> 
+            <option value="750">Gibraltar</option> 
+            <option value="760">Grecia</option> 
+            <option value="770">Grenada</option> 
+            <option value="780">Groenlandia</option> 
+            <option value="790">Guadalupe</option> 
+            <option value="800">Guam</option> 
+            <option value="810">Guatemala</option> 
+            <option value="820">Guayana Francesa</option> 
+            <option value="830">Guinea</option> 
+            <option value="840">Guinea Ecuatorial</option> 
+            <option value="850">Guinea-Bissau</option> 
+            <option value="860">Guyana</option> 
+            <option value="870">Haití</option> 
+            <option value="880">Holanda</option> 
+            <option value="890">Honduras</option> 
+            <option value="900">Hong Kong</option> 
+            <option value="910">Hungría</option> 
+            <option value="920">India</option> 
+            <option value="930">Indonesia</option> 
+            <option value="940">Irak</option> 
+            <option value="950">Irán</option> 
+            <option value="960">Irlanda</option> 
+            <option value="970">Islandia</option> 
+            <option value="980">Islas Cayman</option> 
+            <option value="990">Islas Cook</option> 
+            <option value="1000">Islas Faroe</option> 
+            <option value="1010">Islas Marianas del Norte</option> 
+            <option value="1020">Islas Marshall</option> 
+            <option value="1030">Islas Solomon</option> 
+            <option value="1040">Islas Turcas y Caicos</option> 
+            <option value="1050">Islas Vírgenes</option> 
+            <option value="1060">Islas Wallis y Futuna</option> 
+            <option value="1070">Israel</option> 
+            <option value="1080">Italia</option> 
+            <option value="1090">Jamaica</option> 
+            <option value="1100">Japón</option> 
+            <option value="1110">Jordania</option> 
+            <option value="1120">Kazajstán</option> 
+            <option value="1130">Kenya</option> 
+            <option value="1140">Kirguistán</option> 
+            <option value="1150">Kiribati</option> 
+            <option value="1160">Kuwait</option> 
+            <option value="1170">Laos</option> 
+            <option value="1180">Lesotho</option> 
+            <option value="1190">Letonia</option> 
+            <option value="1200">Líbano</option> 
+            <option value="1210">Liberia</option> 
+            <option value="1220">Libia</option> 
+            <option value="1230">Liechtenstein</option> 
+            <option value="1240">Lituania</option> 
+            <option value="1250">Luxemburgo</option> 
+            <option value="1260">Macao</option> 
+            <option value="1270">Macedonia</option> 
+            <option value="1280">Madagascar</option> 
+            <option value="1290">Malasia</option> 
+            <option value="1300">Malawi</option> 
+            <option value="1310">Mali</option> 
+            <option value="1320">Malta</option> 
+            <option value="1330">Marruecos</option> 
+            <option value="1340">Martinica</option> 
+            <option value="1350">Mauricio</option> 
+            <option value="1360">Mauritania</option> 
+            <option value="1370">Mayotte</option> 
+            <option value="1380">México</option> 
+            <option value="1390">Micronesia</option> 
+            <option value="1400">Moldova</option> 
+            <option value="1410">Mónaco</option> 
+            <option value="1420">Mongolia</option> 
+            <option value="1430">Montserrat</option> 
+            <option value="1440">Mozambique</option> 
+            <option value="1450">Myanmar</option> 
+            <option value="1460">Namibia</option> 
+            <option value="1470">Nauru</option> 
+            <option value="1480">Nepal</option> 
+            <option value="1490">Nicaragua</option> 
+            <option value="1500">Níger</option> 
+            <option value="1510">Nigeria</option> 
+            <option value="1520">Noruega</option> 
+            <option value="1530">Nueva Caledonia</option> 
+            <option value="1540">Nueva Zelandia</option> 
+            <option value="1550">Omán</option> 
+            <option value="1570">Pakistán</option> 
+            <option value="1580">Panamá</option> 
+            <option value="1590">Papua Nueva Guinea</option> 
+            <option value="paraguay">Paraguay</option> 
+            <option value="1610">Perú</option> 
+            <option value="1620">Pitcairn</option> 
+            <option value="1630">Polinesia Francesa</option> 
+            <option value="1640">Polonia</option> 
+            <option value="1650">Portugal</option> 
+            <option value="1660">Puerto Rico</option> 
+            <option value="1670">Qatar</option> 
+            <option value="1680">RD Congo</option> 
+            <option value="1690">Reino Unido</option> 
+            <option value="1700">República Centroafricana</option> 
+            <option value="1710">República Checa</option> 
+            <option value="1720">República Dominicana</option> 
+            <option value="1730">Reunión</option> 
+            <option value="1740">Rumania</option> 
+            <option value="1750">Rusia</option> 
+            <option value="1760">Rwanda</option> 
+            <option value="1770">Sahara Occidental</option> 
+            <option value="1780">Saint Pierre y Miquelon</option> 
+            <option value="1790">Samoa</option> 
+            <option value="1800">Samoa Americana</option> 
+            <option value="1810">San Cristóbal y Nevis</option> 
+            <option value="1820">San Marino</option> 
+            <option value="Santa Elena">Santa Elena</option> 
+            <option value="Santa Lucía">Santa Lucía</option> 
+            <option value="Sao Tomé y Príncipe">Sao Tomé y Príncipe</option> 
+            <option value="Senegal">Senegal</option> 
+            <option value="Serbia y Montenegro">Serbia y Montenegro</option> 
+            <option value="Seychelles">Seychelles</option> 
+            <option value="Sierra Leona">Sierra Leona</option> 
+            <option value="Singapur">Singapur</option> 
+            <option value="Siria">Siria</option> 
+            <option value="Somalia">Somalia</option> 
+            <option value="Sri Lanka">Sri Lanka</option> 
+            <option value="Sudáfrica">Sudáfrica</option> 
+            <option value="Sudán">Sudán</option> 
+            <option value="Suecia">Suecia</option> 
+            <option value="Suiza">Suiza</option> 
+            <option value="Suriname">Suriname</option> 
+            <option value="Swazilandia">Swazilandia</option> 
+            <option value="Taiwán">Taiwán</option> 
+            <option value="Uruguay">Uruguay</option> 
+            </select> 
+          </select>
+          <div class="dropDownSelect2"></div>
+        </div>
       </div>
+
 
       <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
           <span class="label-input100">Fecha de Nacimiento*</span>
@@ -198,7 +414,7 @@
 
       <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
           <span class="label-input100">Dirección Postal*</span>
-          <input class="input100" type="text" name="direccion" placeholder="Ejemplo: Calle, Nº, Bloque" maxlength="50">
+          <input class="input100" type="text" name="direccion" placeholder="Ejemplo: Calle, Nº, Bloque" maxlength="60">
       </div>
 
       <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
@@ -208,7 +424,7 @@
 
       <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
           <span class="label-input100">Código Postal*</span>
-          <input class="input100" type="text" name="codigo" placeholder="Ejemplo: 41008" maxlength="10">
+          <input class="input100" type="text" name="codigo" placeholder="Ejemplo: 41008" maxlength="6">
       </div>
 
       <!-- <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
@@ -220,58 +436,58 @@
         <span class="label-input100">Provincia *</span> 
         <div>
           <select class="js-select2" name="provincia">
-    <option value='alava'>Álava</option>
-    <option value='albacete'>Albacete</option>
-    <option value='alicante'>Alicante/Alacant</option>
-    <option value='almeria'>Almería</option>
-    <option value='asturias'>Asturias</option>
-    <option value='avila'>Ávila</option>
-    <option value='badajoz'>Badajoz</option>
-    <option value='barcelona'>Barcelona</option>
-    <option value='burgos'>Burgos</option>
-    <option value='caceres'>Cáceres</option>
-    <option value='cadiz'>Cádiz</option>
-    <option value='cantabria'>Cantabria</option>
-    <option value='castellon'>Castellón/Castelló</option>
-    <option value='ceuta'>Ceuta</option>
-    <option value='ciudadreal'>Ciudad Real</option>
-    <option value='cordoba'>Córdoba</option>
+    <option value='Álava'>Álava</option>
+    <option value='Albacete'>Albacete</option>
+    <option value='Alicante'>Alicante/Alacant</option>
+    <option value='Almeria'>Almería</option>
+    <option value='Asturias'>Asturias</option>
+    <option value='Ávila'>Ávila</option>
+    <option value='Badajoz'>Badajoz</option>
+    <option value='Barcelona'>Barcelona</option>
+    <option value='Burgos'>Burgos</option>
+    <option value='Cáceres'>Cáceres</option>
+    <option value='Cádiz'>Cádiz</option>
+    <option value='Cantabria'>Cantabria</option>
+    <option value='Castellon'>Castellón/Castelló</option>
+    <option value='Ceuta'>Ceuta</option>
+    <option value='Ciudad Real'>Ciudad Real</option>
+    <option value='Córdoba'>Córdoba</option>
     <option value='cuenca'>Cuenca</option>
-    <option value='girona'>Girona</option>
-    <option value='laspalmas'>Las Palmas</option>
-    <option value='granada'>Granada</option>
-    <option value='guadalajara'>Guadalajara</option>
-    <option value='guipuzcoa'>Guipúzcoa</option>
-    <option value='huelva'>Huelva</option>
-    <option value='huesca'>Huesca</option>
-    <option value='illesbalears'>Illes Balears</option>
-    <option value='jaen'>Jaén</option>
-    <option value='acoruña'>A Coruña</option>
-    <option value='larioja'>La Rioja</option>
-    <option value='leon'>León</option>
-    <option value='lleida'>Lleida</option>
-    <option value='lugo'>Lugo</option>
-    <option value='madrid'>Madrid</option>
-    <option value='malaga'>Málaga</option>
-    <option value='melilla'>Melilla</option>
-    <option value='murcia'>Murcia</option>
-    <option value='navarra'>Navarra</option>
-    <option value='ourense'>Ourense</option>
-    <option value='palencia'>Palencia</option>
-    <option value='pontevedra'>Pontevedra</option>
-    <option value='salamanca'>Salamanca</option>
-    <option value='segovia'>Segovia</option>
-    <option value='sevilla'>Sevilla</option>
-    <option value='soria'>Soria</option>
-    <option value='tarragona'>Tarragona</option>
-    <option value='santacruztenerife'>Santa Cruz de Tenerife</option>
-    <option value='teruel'>Teruel</option>
-    <option value='toledo'>Toledo</option>
-    <option value='valencia'>Valencia/Valéncia</option>
-    <option value='valladolid'>Valladolid</option>
-    <option value='vizcaya'>Vizcaya</option>
-    <option value='zamora'>Zamora</option>
-    <option value='zaragoza'>Zaragoza</option>
+    <option value='Girona'>Girona</option>
+    <option value='Las Palmas'>Las Palmas</option>
+    <option value='Granada'>Granada</option>
+    <option value='Guadalajara'>Guadalajara</option>
+    <option value='Guipuzcoa'>Guipúzcoa</option>
+    <option value='Huelva'>Huelva</option>
+    <option value='Huesca'>Huesca</option>
+    <option value='Islas Baleares'>Islas Baleares</option>
+    <option value='Jaén'>Jaén</option>
+    <option value='A Coruña'>A Coruña</option>
+    <option value='La Rioja'>La Rioja</option>
+    <option value='León'>León</option>
+    <option value='Lleida'>Lleida</option>
+    <option value='Lugo'>Lugo</option>
+    <option value='Madrid'>Madrid</option>
+    <option value='Málaga'>Málaga</option>
+    <option value='Melilla'>Melilla</option>
+    <option value='Murcia'>Murcia</option>
+    <option value='Navarra'>Navarra</option>
+    <option value='Ourense'>Ourense</option>
+    <option value='Palencia'>Palencia</option>
+    <option value='Pontevedra'>Pontevedra</option>
+    <option value='Salamanca'>Salamanca</option>
+    <option value='Segovia'>Segovia</option>
+    <option value='Sevilla'>Sevilla</option>
+    <option value='Soria'>Soria</option>
+    <option value='Tarragona'>Tarragona</option>
+    <option value='Santa Cruz de Tenerife'>Santa Cruz de Tenerife</option>
+    <option value='Teruel'>Teruel</option>
+    <option value='Toledo'>Toledo</option>
+    <option value='Valencia'>Valencia/Valéncia</option>
+    <option value='Valladolid'>Valladolid</option>
+    <option value='Vizcaya'>Vizcaya</option>
+    <option value='Zamora'>Zamora</option>
+    <option value='Zaragoza'>Zaragoza</option>
           </select>
           <div class="dropDownSelect2"></div>
         </div>
@@ -320,12 +536,12 @@
 
       <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar vacío">
           <span class="label-input100">Referencia *</span>
-          <input class="input100" type="text" name="referenciaContratos" placeholder="Ejemplo: CGL2017-90770-REDE">
+          <input class="input100" type="text" name="referenciaContratos" placeholder="Ejemplo: CGL2017-90770-REDE" maxlength="50">
       </div>
 
       <div class="wrap-input100 validate-input bg0 rs1-alert-validate" data-validate = "Esta campo no puede estar en blanco">
         <span class="label-input100">Observaciones *</span>
-        <textarea class="input100" name="observaciones" placeholder="Redacta tus observaciones aquí..." maxlength="1300"></textarea>
+        <textarea class="input100" name="observaciones" placeholder="Redacta tus observaciones aquí..." maxlength="600"></textarea>
       </div>
 
       <div class="form-check">

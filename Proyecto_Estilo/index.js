@@ -1017,10 +1017,11 @@ doc.font('CALIBRI.TTF')
 
  doc.font('CALIBRI.TTF')
  .fontSize(11)
- .text(parrf4, 70,268, {
+ .text(parrf4, 70,275, {
   // height: 100,
   width: 465,
-  align: 'justify'
+  align: 'justify',
+  stroke:10
 
  });
 
@@ -1083,7 +1084,7 @@ app.post('/relacionDefinitiva', function(req, res){
   // Aquí empieza la parte de crear el documento 
   docu  = "Convocatoria de selección para la contratación temporal de personal "+req.body.personal+" para la ejecución del "+req.body.ejecucion+" de investigación “"+req.body.nombre+", "+req.body.referencia+". En el caso de que la contratación sea financiada por un proyecto de investigación, el contrato se formalizará una vez se publique la resolución definitiva de concesión del proyecto (siendo el gasto para la contratación elegible) y la orgánica disponga de la cuantía para sufragarlo. La Universidad de Sevilla no se hará responsable de aquellas contrataciones que no lleguen a materializarse por no cumplirse los requisitos exigidos."
   parrf2 ="Convocatoria del Mes: "+req.body.mes+" y Año: "+req.body.ayo+""
-  parrf3 ="Referencia: "+req.body.referencia+""
+  parrf3 ="Referencia: "
   parrf4 ="RELACIÓN DEFINITIVA DE ASPIRANTES ADMITIDOS Y EXCLUIDOS"
   parrf5 ="Lista de admitidos y excluidos"
   parrf6 =""+req.body.aspirantes+""
@@ -1126,10 +1127,11 @@ doc.font('CALIBRI.TTF')
 
  doc.font('CALIBRI.TTF')
  .fontSize(11)
- .text(parrf4, 70,268, {
+ .text(parrf4, 70,275, {
   // height: 100,
   width: 465,
-  align: 'justify'
+  align: 'justify',
+  stroke:10
 
  });
 
@@ -1191,7 +1193,7 @@ app.post('/candidatosEntrevistas', function(req, res){
   // Aquí empieza la parte de crear el documento 
   docu  = "Convocatoria de selección para la contratación temporal de personal "+req.body.personal+" para la ejecución del "+req.body.ejecucion+" de investigación “"+req.body.nombre+", "+req.body.referencia+". En el caso de que la contratación sea financiada por un proyecto de investigación, el contrato se formalizará una vez se publique la resolución definitiva de concesión del proyecto (siendo el gasto para la contratación elegible) y la orgánica disponga de la cuantía para sufragarlo. La Universidad de Sevilla no se hará responsable de aquellas contrataciones que no lleguen a materializarse por no cumplirse los requisitos exigidos."
   parrf2 ="Convocatoria del Mes: "+req.body.mes+" y Año: "+req.body.ayo+""
-  parrf3 ="Referencia: "+req.body.referencia+""
+  parrf3 ="Referencia: "
   parrf4 ="CANDIDATOS SELECCIONADOS PARA ENTREVISTAS"
   parrf5 =""+req.body.seleccionados+""
   parrf6 ="Lugar Entrevistas"
@@ -1489,7 +1491,6 @@ app.post('/solicitudContratos', function(req, res){
   parrf10="Provincia: "+req.body.provincia+""
   parrf11="Dirección Postal: "+req.body.direccion+""
   docu2  = "CONTACTO"
-  parrf12 ="Correo electrónico: "+req.body.email+""
   parrf13="Teléfono móvil: "+req.body.tlf+""
   parrf14= "Teléfono fijo: "+req.body.tlfFijo+""
   parrf15= "Titulación Académica: "+req.body.titulacion+""
@@ -1547,7 +1548,7 @@ doc.font('CALIBRI.TTF')
 // dni o pasaporte o nie
 doc.font('CALIBRI.TTF')
 .fontSize(11)
-.text(parrf5, 250,160, {
+.text(parrf5, 70,220, {
  width: 465,
  align: 'justify'
 });
@@ -1555,7 +1556,7 @@ doc.font('CALIBRI.TTF')
 // nacionalidad
 doc.font('CALIBRI.TTF')
 .fontSize(11)
-.text(parrf6, 250,180, {
+.text(parrf6, 70,240, {
  width: 465,
  align: 'justify'
 });
@@ -1563,7 +1564,7 @@ doc.font('CALIBRI.TTF')
 // fecha de nacimiento
 doc.font('CALIBRI.TTF')
 .fontSize(11)
-.text(parrf7, 250,200, {
+.text(parrf7, 70,260, {
  width: 465,
  align: 'justify'
 });
@@ -1571,7 +1572,7 @@ doc.font('CALIBRI.TTF')
 // ciudad
 doc.font('CALIBRI.TTF')
 .fontSize(11)
-.text(parrf8, 430,160, {
+.text(parrf8, 400,160, {
  width: 465,
  align: 'justify'
 });
@@ -1579,7 +1580,7 @@ doc.font('CALIBRI.TTF')
 // codigo postal
 doc.font('CALIBRI.TTF')
 .fontSize(11)
-.text(parrf9, 430,180, {
+.text(parrf9, 400,180, {
  width: 465,
  align: 'justify'
 });
@@ -1587,7 +1588,7 @@ doc.font('CALIBRI.TTF')
 // provincia
 doc.font('CALIBRI.TTF')
 .fontSize(11)
-.text(parrf10, 430,200, {
+.text(parrf10, 400,200, {
  width: 465,
  align: 'justify'
 });
@@ -1595,7 +1596,7 @@ doc.font('CALIBRI.TTF')
 // dirección
 doc.font('CALIBRI.TTF')
 .fontSize(11)
-.text(parrf11, 70,230, {
+.text(parrf11, 70,280, {
  width: 465,
  align: 'justify'
 });
@@ -1603,30 +1604,21 @@ doc.font('CALIBRI.TTF')
 // Para bajarlo o subirlo hay que tocar el segundo número
 // Para la parte izquierda el tercer número
 // Para hacerlo más ancho el cuadro hay que tocar el último numero
-doc.rect(65, 155, 465, 90).stroke();
+doc.rect(65, 155, 470, 140).stroke();
 
 // C0NTACTO
 doc.font('CALIBRI.TTF')
  .fontSize(11)
-//  .fillAndStroke("#0000","#e6a756")
- .text(docu2, 70,265, {
+ .text(docu2, 70,315, {
   width: 465,
   align: 'justify',
   stroke: 19
  });
 
- // Correo electrónico
-doc.font('CALIBRI.TTF')
-.fontSize(11)
-.text(parrf12, 70,300, {
- width: 465,
- align: 'justify'
-});
-
  // Teléfono móvil
  doc.font('CALIBRI.TTF')
  .fontSize(11)
- .text(parrf13, 70,320, {
+ .text(parrf13, 70,345, {
   width: 465,
   align: 'justify'
  });
@@ -1634,7 +1626,7 @@ doc.font('CALIBRI.TTF')
  // Teléfono fijo
  doc.font('CALIBRI.TTF')
  .fontSize(11)
- .text(parrf14, 70,340, {
+ .text(parrf14, 70,365, {
   width: 465,
   align: 'justify'
  });
@@ -1642,7 +1634,7 @@ doc.font('CALIBRI.TTF')
  // Titulación académida
  doc.font('CALIBRI.TTF')
  .fontSize(11)
- .text(parrf15, 70,360, {
+ .text(parrf15, 70,385, {
   width: 465,
   align: 'justify'
  });
@@ -1651,12 +1643,12 @@ doc.font('CALIBRI.TTF')
 // Para bajarlo o subirlo hay que tocar el segundo número
 // Para la parte izquierda el tercer número
 // Para hacerlo más ancho el cuadro hay que tocar el último numero
-doc.rect(65, 295, 465, 80).stroke();
+doc.rect(65, 340, 470, 60).stroke();
 
 // REFERENCIA DE LA PLAZA QUE SE SOLITICA
 doc.font('CALIBRI.TTF')
  .fontSize(11)
- .text(parrf16, 70,395, {
+ .text(parrf16, 70,420, {
   width: 465,
   align: 'justify',
   stroke: 19
@@ -1665,7 +1657,7 @@ doc.font('CALIBRI.TTF')
  // Convocatoria titulo
 doc.font('CALIBRI.TTF')
 .fontSize(11)
-.text(parrf17, 70,430, {
+.text(parrf17, 70,455, {
  width: 465,
  align: 'justify'
 });
@@ -1673,7 +1665,7 @@ doc.font('CALIBRI.TTF')
  // titulo plaza
  doc.font('CALIBRI.TTF')
  .fontSize(11)
- .text(parrf18, 70,450, {
+ .text(parrf18, 70,475, {
   width: 465,
   align: 'justify'
  });
@@ -1681,7 +1673,7 @@ doc.font('CALIBRI.TTF')
  // fecha publicacion
 doc.font('CALIBRI.TTF')
 .fontSize(11)
-.text(parrf19, 70,470, {
+.text(parrf19, 70,495, {
  width: 465,
  align: 'justify'
 });
@@ -1689,7 +1681,7 @@ doc.font('CALIBRI.TTF')
  // referencia
  doc.font('CALIBRI.TTF')
  .fontSize(11)
- .text(parrf20, 70,490, {
+ .text(parrf20, 70,515, {
   width: 465,
   align: 'justify'
  });
@@ -1698,12 +1690,12 @@ doc.font('CALIBRI.TTF')
 // Para bajarlo o subirlo hay que tocar el segundo número
 // Para la parte izquierda el tercer número
 // Para hacerlo más ancho el cuadro hay que tocar el último numero
-doc.rect(65, 425, 465, 80).stroke();
+doc.rect(65, 450, 470, 80).stroke();
 
 // OBSERVACIONES el titulo
 doc.font('CALIBRI.TTF')
  .fontSize(11)
- .text(parrf21, 70,525, {
+ .text(parrf21, 70,550, {
   width: 465,
   align: 'justify',
   stroke:19,
@@ -1712,7 +1704,7 @@ doc.font('CALIBRI.TTF')
 //  observaciones
  doc.font('CALIBRI.TTF')
  .fontSize(11)
- .text(parrf22, 70,560, {
+ .text(parrf22, 70,585, {
   width: 465,
   align: 'justify'
  });
@@ -1721,7 +1713,7 @@ doc.font('CALIBRI.TTF')
 // Para bajarlo o subirlo hay que tocar el segundo número
 // Para la parte izquierda el tercer número
 // Para hacerlo más ancho el cuadro hay que tocar el último numero
-doc.rect(65, 555, 465, 100).stroke();
+// doc.rect(65, 580, 470, 100).stroke();
 
 var dat= new Date(); //Obtienes la fecha
    var dat4=dat.getFullYear();
@@ -1822,7 +1814,7 @@ doc.font('CALIBRI.TTF')
 // dni o pasaporte o nie
 doc.font('CALIBRI.TTF')
 .fontSize(11)
-.text(parrf5, 250,160, {
+.text(parrf5, 70,220, {
  width: 465,
  align: 'justify'
 });
@@ -1830,7 +1822,7 @@ doc.font('CALIBRI.TTF')
 // nacionalidad
 doc.font('CALIBRI.TTF')
 .fontSize(11)
-.text(parrf6, 250,180, {
+.text(parrf6, 70,240, {
  width: 465,
  align: 'justify'
 });
@@ -1838,7 +1830,7 @@ doc.font('CALIBRI.TTF')
 // fecha de nacimiento
 doc.font('CALIBRI.TTF')
 .fontSize(11)
-.text(parrf7, 250,200, {
+.text(parrf7, 70,260, {
  width: 465,
  align: 'justify'
 });
@@ -1846,7 +1838,7 @@ doc.font('CALIBRI.TTF')
 // ciudad
 doc.font('CALIBRI.TTF')
 .fontSize(11)
-.text(parrf8, 430,160, {
+.text(parrf8, 400,160, {
  width: 465,
  align: 'justify'
 });
@@ -1854,7 +1846,7 @@ doc.font('CALIBRI.TTF')
 // codigo postal
 doc.font('CALIBRI.TTF')
 .fontSize(11)
-.text(parrf9, 430,180, {
+.text(parrf9, 400,180, {
  width: 465,
  align: 'justify'
 });
@@ -1862,7 +1854,7 @@ doc.font('CALIBRI.TTF')
 // provincia
 doc.font('CALIBRI.TTF')
 .fontSize(11)
-.text(parrf10, 430,200, {
+.text(parrf10, 400,200, {
  width: 465,
  align: 'justify'
 });
@@ -1870,7 +1862,7 @@ doc.font('CALIBRI.TTF')
 // dirección
 doc.font('CALIBRI.TTF')
 .fontSize(11)
-.text(parrf11, 70,230, {
+.text(parrf11, 70,280, {
  width: 465,
  align: 'justify'
 });
@@ -1878,13 +1870,13 @@ doc.font('CALIBRI.TTF')
 // Para bajarlo o subirlo hay que tocar el segundo número
 // Para la parte izquierda el tercer número
 // Para hacerlo más ancho el cuadro hay que tocar el último numero
-doc.rect(65, 155, 465, 90).stroke();
+doc.rect(65, 155, 470, 140).stroke();
 
 // C0NTACTO
 doc.font('CALIBRI.TTF')
  .fontSize(11)
 //  .fillAndStroke("#0000","#e6a756")
- .text(docu2, 70,265, {
+ .text(docu2, 70,320, {
   width: 465,
   align: 'justify',
   stroke: 19
@@ -1893,7 +1885,7 @@ doc.font('CALIBRI.TTF')
  // Teléfono móvil
  doc.font('CALIBRI.TTF')
  .fontSize(11)
- .text(parrf13, 70,320, {
+ .text(parrf13, 70,355, {
   width: 465,
   align: 'justify'
  });
@@ -1901,38 +1893,38 @@ doc.font('CALIBRI.TTF')
  // Teléfono fijo
  doc.font('CALIBRI.TTF')
  .fontSize(11)
- .text(parrf14, 70,340, {
+ .text(parrf14, 70,375, {
   width: 465,
   align: 'justify'
  });
 
- // Titulación académida
+ // Área de Conocimiento por la que concurre
  doc.font('CALIBRI.TTF')
  .fontSize(11)
- .text(parrf15, 70,360, {
+ .text(parrf15, 70,395, {
   width: 465,
-  align: 'justify'
+  align: 'left'
  });
 
 // departamento al que se inscribiría
 doc.font('CALIBRI.TTF')
  .fontSize(11)
- .text(parrf16, 70,390, {
+ .text(parrf16, 70,425, {
   width: 465,
-  align: 'justify',
+  align: 'left',
  });
 
  // Para la parte derecha el primer número
 // Para bajarlo o subirlo hay que tocar el segundo número
 // Para la parte izquierda el tercer número
 // Para hacerlo más ancho el cuadro hay que tocar el último numero
-doc.rect(65, 295, 465, 130).stroke();
+doc.rect(65, 350, 470, 100).stroke();
 
 
 // OBSERVACIONES el titulo
 doc.font('CALIBRI.TTF')
  .fontSize(11)
- .text(parrf21, 70,460, {
+ .text(parrf21, 70,470, {
   width: 465,
   align: 'justify',
   stroke:19,
@@ -1950,7 +1942,7 @@ doc.font('CALIBRI.TTF')
 // Para bajarlo o subirlo hay que tocar el segundo número
 // Para la parte izquierda el tercer número
 // Para hacerlo más ancho el cuadro hay que tocar el último numero
-doc.rect(65, 490, 465, 100).stroke();
+doc.rect(65, 490, 470, 190).stroke();
 
 var dat= new Date(); //Obtienes la fecha
    var dat4=dat.getFullYear();
