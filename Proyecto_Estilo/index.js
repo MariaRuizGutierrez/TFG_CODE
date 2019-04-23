@@ -1942,7 +1942,7 @@ doc.font('CALIBRI.TTF')
 // Para bajarlo o subirlo hay que tocar el segundo número
 // Para la parte izquierda el tercer número
 // Para hacerlo más ancho el cuadro hay que tocar el último numero
-doc.rect(65, 490, 470, 190).stroke();
+// doc.rect(65, 490, 470, 190).stroke();
 
 var dat= new Date(); //Obtienes la fecha
    var dat4=dat.getFullYear();
