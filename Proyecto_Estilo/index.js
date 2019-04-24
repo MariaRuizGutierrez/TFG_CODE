@@ -363,10 +363,22 @@ app.post('/enviarCorreoSolicitud', function(req, res){
   app.post('/anexoContratacion', function(req, res){
     console.log(req.body);
 
+  //Generamos la referencia aleatoria 
+  var caracteres = "abcdefghijkmnpqrtuvwxyzABCDEFGHJKMNPQRTUVWXYZ2346789";
+  var mayus = "ABCDEFGHJKMNPQRTUVWXYZ";
+  var solomayus ="";
+  for (i=0; i<3; i++) solomayus +=mayus.charAt(Math.floor(Math.random()*mayus.length));
+  var contraseña = "";
+  for (i=0; i<10; i++) contraseña +=caracteres.charAt(Math.floor(Math.random()*caracteres.length)); 
+  var dat= new Date(); //Obtienes la fecha
+  var ayo=dat.getFullYear();
+  var entero = ""+solomayus+"-"+contraseña+"-"+ayo+""
+  console.log(entero)
+
     // Aquí empieza la parte de crear el documento 
     docu  = "Convocatoria de selección para la contratación temporal de personal "+req.body.personal+" para la ejecución del "+req.body.ejecucion+" de investigación “"+req.body.nombre+", "+req.body.referencia+". En el caso de que la contratación sea financiada por un proyecto de investigación, el contrato se formalizará una vez se publique la resolución definitiva de concesión del proyecto (siendo el gasto para la contratación elegible) y la orgánica disponga de la cuantía para sufragarlo. La Universidad de Sevilla no se hará responsable de aquellas contrataciones que no lleguen a materializarse por no cumplirse los requisitos exigidos."
     parrf2 ="Convocatoria del Mes: "+req.body.mes+" y Año: "+req.body.ayo+""
-    parrf3 ="Referencia: "
+    parrf3 ="Referencia: "+entero+""
     parrf4 ="Nº de plazas ofertadas: "+req.body.plazas+" "
     parrf5 ="ANEXO"
     parrf6 ="Retribuciones"
@@ -401,6 +413,10 @@ app.post('/enviarCorreoSolicitud', function(req, res){
   
   doc.pipe(fs.createWriteStream('output_Anexo_Contratacion.pdf'));
 
+  var caracteres = "abcdefghijkmnpqrtuvwxyzABCDEFGHJKMNPQRTUVWXYZ2346789";
+  var contraseña = "";
+  for (i=0; i<20; i++) contraseña +=caracteres.charAt(Math.floor(Math.random()*caracteres.length)); 
+  console.log(contraseña)
 
 doc.image('public/img/MRG.png', 250, 10, {fit: [110, 110], align: 'center', valign: 'center'})
   doc.font('CALIBRI.TTF')
