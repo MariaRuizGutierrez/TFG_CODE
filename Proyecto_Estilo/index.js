@@ -677,7 +677,7 @@ doc.image('public/img/MRG.png', 250, 10, {fit: [110, 110], align: 'center', vali
     width: 465,
     align: 'justify',
    });
-   doc.rect(45, 210, 520, 270).stroke();
+  //  doc.rect(45, 210, 520, 270).stroke();
   //  COMISIÓN DE VALORACIÓN
    doc.font('CALIBRI.TTF')
    .fontSize(11)
@@ -717,7 +717,7 @@ doc.image('public/img/MRG.png', 250, 10, {fit: [110, 110], align: 'center', vali
     width: 465,
     align: 'justify',
    });
-   doc.rect(45, 90, 520, 270).stroke();
+  //  doc.rect(45, 90, 520, 270).stroke();
    
    var dat= new Date(); //Obtienes la fecha
    var dat4=dat.getFullYear();
