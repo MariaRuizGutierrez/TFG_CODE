@@ -6,7 +6,11 @@ var pdf = require("pdf-creator-node");
 var fs = require('fs');
 var pdf = require('pdfkit')
 var email 	= require("emailjs/email");
-var nodemailer = require('nodemailer')
+var nodemailer = require('nodemailer');
+var formidable = require("express-formidable");
+const fileUpload = require('express-fileupload')
+
+
 
 
 var server 	= email.server.connect({
@@ -44,6 +48,15 @@ app.use("/",express.static(path.join(__dirname,"public")));
 app.set('port', process.env.PORT || 3300);
 app.set('host', process.env.YOUR_HOST || '0.0.0.0');
 
+// app.use(formidable.bodyParser({ keepExtensions:true}));
+app.use(express.json({ keepExtensions:true}));
+// app.use(express.bodyParser())
+
+app.use(fileUpload())
+
+app.get("/public/images", function(req,res){
+  res.render("app/public/new");
+  });
 
 app.get('/', function(req, res){
   res.send('principal.html');
@@ -56,7 +69,6 @@ app.get('/', function(req, res){
 app.get('/anexoContratacion', function(req, res){
   res.sendFile(path.join(__dirname,'/public/Formularios/anexoContratacion.html'));
 });
-
 
 app.get('/solicitudContratos', function(req, res){
   res.sendFile(path.join(__dirname,'/public/Formularios/solicitudContratos.html'));
@@ -330,8 +342,10 @@ app.post('/enviarCorreoSolicitudContratos', function(req, res){
       {data:"<html>Se adjunta la siguiente solicitud de contrato nviada por:<B> "+req.body.email+"</B> con número de teléfono: <B> "+req.body.telefono+"</B> </html>", alternative:true},
       {path:"output_Solicitud_Contratos.pdf", type:"application/pdf", name:"Solicitud_Contrato.pdf"}
    ]
-}, function(err, message) { console.log(err || message); });
+} , function(err, message) { console.log(err || message); });
 });
+
+
 
 
 app.post('/visualizacionSolicitud', function(request, response){
@@ -358,6 +372,37 @@ app.post('/enviarCorreoSolicitud', function(req, res){
 });
 
 
+app.post("/public/images", function(req,res){
+  console.log(req.body.archivo);
+  let EDFile = req.files.file
+    EDFile.mv(`./files/${EDFile.name}`,err => {
+        if(err) return res.status(500).send({ message : err })
+
+        return res.status(200).send({ message : 'File upload' })
+    })
+})
+// 
+app.post('/upload', function(req, res) {
+  let sampleFile;
+  let uploadPath;
+
+  if (Object.keys(req.files).length == 0) {
+    res.status(400).send('No files were uploaded.');
+    return;
+  }
+  console.log('req.files >>>', req.files); // eslint-disable-line
+
+  sampleFile = req.files.sampleFile;
+  uploadPath = path.join(__dirname,"public") + '/images/' + sampleFile.name;
+
+  sampleFile.mv(uploadPath, function(err) {
+    if (err) {
+      return res.status(500).send(err);
+    }
+
+    res.send('File uploaded to ' + uploadPath);
+  });
+});
 
   //PDF DE ANEXO DE CONTRATACIÓN
   app.post('/anexoContratacion', function(req, res){
@@ -417,6 +462,8 @@ app.post('/enviarCorreoSolicitud', function(req, res){
   var contraseña = "";
   for (i=0; i<20; i++) contraseña +=caracteres.charAt(Math.floor(Math.random()*caracteres.length)); 
   console.log(contraseña)
+
+  // doc.image('files',  250, 10, {fit: [110, 110], align: 'center', valign: 'center'})
 
 doc.image('public/img/MRG.png', 250, 10, {fit: [110, 110], align: 'center', valign: 'center'})
   doc.font('CALIBRI.TTF')
