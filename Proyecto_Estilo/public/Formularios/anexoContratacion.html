@@ -230,6 +230,45 @@
         <textarea class="input100" name="tareas" placeholder="Tus tareas aquí..." maxlength="1300"></textarea>
       </div>
 
+      <div id="divInputLoad">
+        <h1>Prueba de subir firma</h1>
+        <div id="divFileUpload">
+            <input id="file-upload" type="file" accept="image/*" multiple="false" />
+        </div>
+        <div id="file-preview-zone">
+        </div>
+    </div>
+<br>
+
+
+  
+  
+    <!-- <script>
+      function readFile(input) {
+          if (input.files && input.files[0]) {
+              var reader = new FileReader();
+   
+              reader.onload = function (e) {
+                  var filePreview = document.createElement('img');
+                  filePreview.id = 'file-preview';
+                  //e.target.result contents the base64 data from the image uploaded
+                  filePreview.src = e.target.result;
+                  console.log(e.target.result);
+   
+                  var previewZone = document.getElementById('file-preview-zone');
+                  previewZone.appendChild(filePreview);
+              }
+   
+              reader.readAsDataURL(input.files[0]);
+          }
+      }
+   
+      var fileUpload = document.getElementById('file-upload');
+      fileUpload.onchange = function (e) {
+          readFile(e.srcElement);
+      }
+  </script> -->
+
 
       <div class="form-check">
           <input type="checkbox" required name="RGPD" class="form-check-input" id="exampleCheck1">

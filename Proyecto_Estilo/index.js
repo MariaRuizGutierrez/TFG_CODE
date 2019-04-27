@@ -1502,7 +1502,7 @@ app.post('/solicitudContratos', function(req, res){
   parrf5="DNI/Pasaporte/NIE: "+req.body.dni+""
   parrf6="Nacionalidad: "+req.body.nacionalidad+""
   parrf7="Fecha de nacimiento: "+req.body.nacimiento+""
-  parrf8="Ciudad: "+req.body.ciudad+""
+  // parrf8="Ciudad: "+req.body.ciudad+""
   parrf9="Código Postal: "+req.body.codigo+""
   parrf10="Provincia: "+req.body.provincia+""
   parrf11="Dirección Postal: "+req.body.direccion+""
@@ -1517,6 +1517,7 @@ app.post('/solicitudContratos', function(req, res){
   parrf20="Referencia: "+req.body.referenciaContratos+""
   parrf21="OBSERVACIONES"
   parrf22=""+req.body.observaciones+""
+
 
   
 const doc = new pdf;
@@ -1586,12 +1587,12 @@ doc.font('CALIBRI.TTF')
 });
 
 // ciudad
-doc.font('CALIBRI.TTF')
-.fontSize(11)
-.text(parrf8, 400,160, {
- width: 465,
- align: 'justify'
-});
+// doc.font('CALIBRI.TTF')
+// .fontSize(11)
+// .text(parrf8, 400,160, {
+//  width: 465,
+//  align: 'justify'
+// });
 
 // codigo postal
 doc.font('CALIBRI.TTF')
@@ -1724,6 +1725,7 @@ doc.font('CALIBRI.TTF')
   width: 465,
   align: 'justify'
  });
+
  
 // Para la parte derecha el primer número
 // Para bajarlo o subirlo hay que tocar el segundo número
