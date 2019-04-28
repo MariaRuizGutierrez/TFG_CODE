@@ -791,6 +791,9 @@ doc.image('public/img/MRG.png', 250, 10, {fit: [110, 110], align: 'center', vali
 // Finalize PDF file
 doc.end();
 res.sendFile(path.join(__dirname,'/public/VisualizacionYEnvio/generarPDF.html'),{datos:req.body.email});
+let removeFile;
+removeFile = path.join(__dirname,"public") + '/images/' + 'firma.png'
+console.log("borrado")
 
 // server.send({
 //   text:    "Anexo de contratación", 
