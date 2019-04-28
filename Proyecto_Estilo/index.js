@@ -393,14 +393,15 @@ app.post('/upload', function(req, res) {
   console.log('req.files >>>', req.files); // eslint-disable-line
 
   sampleFile = req.files.sampleFile;
-  uploadPath = path.join(__dirname,"public") + '/images/' + sampleFile.name;
+  // uploadPath = path.join(__dirname,"public") + '/images/' + sampleFile.name;
+  uploadPath = path.join(__dirname,"public") + '/images/' + 'firma.png'
 
   sampleFile.mv(uploadPath, function(err) {
     if (err) {
       return res.status(500).send(err);
     }
 
-    res.send('File uploaded to ' + uploadPath);
+    // res.send('File uploaded to ' + uploadPath);
   });
 });
 
@@ -765,6 +766,7 @@ doc.image('public/img/MRG.png', 250, 10, {fit: [110, 110], align: 'center', vali
     align: 'justify',
    });
   //  doc.rect(45, 90, 520, 270).stroke();
+  
    
    var dat= new Date(); //Obtienes la fecha
    var dat4=dat.getFullYear();
@@ -774,14 +776,17 @@ doc.image('public/img/MRG.png', 250, 10, {fit: [110, 110], align: 'center', vali
    console.log("maria");
    parrf32="Sevilla, a "+dat2+"/"+dat5+"/"+dat4+""
 
+   
+
    doc.font('CALIBRI.TTF')
    .fontSize(11)
    .text(parrf32, 70,390, {
     // height: 100,
     width: 465,
     align: 'justify',
-
    });
+
+   doc.image('public/images/firma.png', 70, 400, {fit: [110, 110], align: 'center', valign: 'center'})
 
 // Finalize PDF file
 doc.end();
