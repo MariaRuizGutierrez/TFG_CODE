@@ -331,6 +331,14 @@ app.post('/visualizacionSolicitudContratos', function(request, response){
   fs.readFile(tempFile, function (err,data){
      response.contentType("application/pdf");
      response.send(data);
+    });
+});
+
+app.post('/visualizacionCV', function(request, response){
+  var tempFile='public/images/cv.pdf';
+  fs.readFile(tempFile, function (err,data){
+     response.contentType("application/pdf");
+     response.send(data);
   });
 });
 

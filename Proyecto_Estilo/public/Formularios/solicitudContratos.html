@@ -110,7 +110,6 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
 
 </head>
-
 <body>
 
   <h1 class="site-heading text-center text-white d-none d-lg-block">
@@ -190,6 +189,8 @@
         <span class="label-input100">NIF*</span>
         <input class="input100" type="text" name="dni" placeholder="29567777H" maxlength="9" required pattern="(([X-Z]{1})([-]?)(\d{7})([-]?)([A-Z]{1}))|((\d{8})([-]?)([A-Z]{1}))">
       </div>
+
+      
 
       <!-- <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
           <span class="label-input100">Nacionalidad*</span>
@@ -564,7 +565,7 @@
 
       <!-- Este es el botón de enviar -->
        <div class="container-contact100-form-btn">
-        <button type="submit" class="contact100-form-btn">
+        <button type="submit" class="contact100-form-btn" onclick="validateDNI()">
           <span>
             Pulse para seguir
             <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
@@ -573,23 +574,43 @@
         </button> 
       </div> 
 
-      <!-- Lo del mensaje de success -->
-<!-- <input type=button onclick="pregunta()" value="Enviar" class="contact100-form-btn">
-<script language="JavaScript"> 
-function pregunta(){  
-swal({
-  title: "Success!",
-  text: "Redirecting in 2 seconds.",
-  type: "success",
-  timer: 2000,
-  showConfirmButton: false
-}, function(){
-      window.location.href = "./about.html";
-});
-     } 
-</script> -->
+      <!-- <script language="JavaScript">
+        // Comprueba si es un DNI correcto (entre 5 y 8 letras seguidas de la letra que corresponda).
+        
+        // Acepta NIEs (Extranjeros con X, Y o Z al principio)
+        function validateDNI() {
+          console.log(document.getElementById('dni').value)
+          var dni = document.getElementById('dni').value;
+            var numero, let, letra;
+            var expresion_regular_dni = /^[XYZ]?\d{5,8}[A-Z]$/;
+        
+            dni = document.getElementById('dni').value.toUpperCase();
+        
+            if(expresion_regular_dni.test(document.getElementById('dni').value) === true){
+                numero = dni.substr(0,dni.length-1);
+                numero = numero.replace('X', 0);
+                numero = numero.replace('Y', 1);
+                numero = numero.replace('Z', 2);
+                let = dni.substr(dni.length-1, 1);
+                numero = numero % 23;
+                letra = 'TRWAGMYFPDXBNJZSQVHLCKET';
+                letra = letra.substring(numero, numero+1);
+                if (letra != let) {
+                    //alert('Dni erroneo, la letra del NIF no se corresponde');
+                    return false;
+                }else{
+                    //alert('Dni correcto');
+                    return true;
+                }
+            }else{
+                //alert('Dni erroneo, formato no válido');
+                return false;
+            }
+        }
+        </script> -->
+        
 
-
+      
     </form>
     
 </div>
