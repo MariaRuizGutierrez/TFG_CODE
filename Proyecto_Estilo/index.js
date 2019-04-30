@@ -343,8 +343,9 @@ app.post('/enviarCorreoSolicitudContratos', function(req, res){
   subject: "Nueva solicitud de contrato",
   attachment: 
    [
-      {data:"<html>Se adjunta la siguiente solicitud de contrato nviada por:<B> "+req.body.email+"</B> con número de teléfono: <B> "+req.body.telefono+"</B> </html>", alternative:true},
-      {path:"output_Solicitud_Contratos.pdf", type:"application/pdf", name:"Solicitud_Contrato.pdf"}
+      {data:"<html>Se adjunta la siguiente solicitud de contrato enviada por:<B> "+req.body.email+"</B> con número de teléfono: <B>"+req.body.telefono+"</B>. También se adjunta el CV. </html>", alternative:true},
+      {path:"output_Solicitud_Contratos.pdf", type:"application/pdf", name:"Solicitud_Contrato.pdf"},
+      {path:'public/images/cv.pdf', type:"application/pdf", name:"CV_Interesado.pdf"}
    ]
 } , function(err, message) { console.log(err || message); });
 });
@@ -1675,7 +1676,9 @@ app.post('/solicitudContratos', function(req, res){
   console.log(req.body);
 
   let sampleFile;
+  let cv;
   let uploadPath;
+  let uploadPath2;
 
   if (Object.keys(req.files).length == 0) {
     res.status(400).send('No files were uploaded.');
@@ -1684,13 +1687,20 @@ app.post('/solicitudContratos', function(req, res){
   console.log('req.files >>>', req.files); // eslint-disable-line
 
   sampleFile = req.files.sampleFile;
+  cv = req.files.cv;
   // uploadPath = path.join(__dirname,"public") + '/images/' + sampleFile.name;
   uploadPath = path.join(__dirname,"public") + '/images/' + 'firma.png'
+  uploadPath2 = path.join(__dirname,"public") + '/images/' + 'cv.pdf'
 
   sampleFile.mv(uploadPath, function(err) {
     if (err) {
       return res.status(500).send(err);
     }
+
+    cv.mv(uploadPath2, function(err) {
+      if (err) {
+        return res.status(500).send(err);
+      }
 
   // Aquí empieza la parte de crear el documento 
   num1 ="1"
@@ -1720,6 +1730,7 @@ app.post('/solicitudContratos', function(req, res){
 
   
 const doc = new pdf;
+
 
 doc.pipe(fs.createWriteStream('output_Solicitud_Contratos.pdf'));
 
@@ -1959,8 +1970,12 @@ res.sendFile(path.join(__dirname,'/public/VisualizacionYEnvio/generarPDFSolicitu
 let removeFile;
 removeFile = path.join(__dirname,"public") + '/images/' + 'firma.png'
 console.log("borrado")
+
+let removeFile2;
+removeFile2 = path.join(__dirname,"public") + '/images/' + 'cv.pdf'
+console.log("borrado2")
 });
-});
+});});
 
 
 //Aquí es para crear el pdf de solicitud asecas
