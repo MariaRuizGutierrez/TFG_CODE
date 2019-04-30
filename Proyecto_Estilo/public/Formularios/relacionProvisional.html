@@ -78,9 +78,9 @@
           <li class="nav-item px-lg-4">
             <a class="nav-link text-uppercase text-expanded" href="interesados.html">Interesados</a>
           </li>
-          <!-- <li class="nav-item px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="store.html">Store</a>
-          </li> -->
+          <li class="nav-item px-lg-4">
+              <a class="nav-link text-uppercase text-expanded" href="preguntas.html">Preguntas Frecuentes</a>
+            </li> 
         </ul>
       </div>
     </div>
@@ -89,7 +89,7 @@
 
 <div class="container-contact100">
   <div class="wrap-contact100">
-    <form class="contact100-form validate-form" action="/relacionProvisional" method="POST">
+    <form class="contact100-form validate-form" action="/relacionProvisional" method="POST" encType="multipart/form-data">
       <span class="contact100-form-title">
         Rellene el siguiente formulario
       </span>
@@ -183,6 +183,10 @@
         <textarea class="input100" name="aspirantes" placeholder="1. Jiménez Pérez, Paula  -> ADMITIDA -> Causas" maxlength="1300"></textarea>
       </div>
 
+      <div class="wrap-input100 validate-input bg1 ">
+          <span class="label-input100">Seleccione su firma *</span>
+        <input class="input100" type="file" required name="sampleFile" accept=".png, .jpg, .jpeg"/>
+        </div>
       
 
       <div class="form-check">

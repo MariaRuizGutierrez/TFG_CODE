@@ -10,9 +10,9 @@
   <title>Acta de Comisión</title>
 
   <!-- PARA LOS CALENDARIOS -->
-  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+  <!-- <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script> -->
 
 <script>
   $(function () {
@@ -109,9 +109,9 @@
           <li class="nav-item px-lg-4">
             <a class="nav-link text-uppercase text-expanded" href="interesados.html">Interesados</a>
           </li>
-          <!-- <li class="nav-item px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="store.html">Store</a>
-          </li> -->
+          <li class="nav-item px-lg-4">
+              <a class="nav-link text-uppercase text-expanded" href="preguntas.html">Preguntas Frecuentes</a>
+            </li> 
         </ul>
       </div>
     </div>
@@ -120,15 +120,10 @@
 
 <div class="container-contact100">
   <div class="wrap-contact100">
-    <form class="contact100-form validate-form" action="/actaComision" method="POST">
+    <form class="contact100-form validate-form" action="/actaComision" method="POST" encType="multipart/form-data">
       <span class="contact100-form-title">
         Rellene el siguiente formulario
       </span>
-
-      <!-- <div class="wrap-input100 validate-input bg1" data-validate="Please Type Your Name">
-        <span class="label-input100">Investigador responsable *</span>
-        <input class="input100" type="text" name="nombre" placeholder="Nombre del investigador responsable">
-      </div> -->
 
       <div class="wrap-input100 validate-input bg1 " data-validate = "Este campo no puede estar en blanco">
         <span class="label-input100">Nombre del proyecto *</span>
@@ -221,7 +216,7 @@
 
       <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
         <span class="label-input100">Seleccione el día de la reunión *</span> <img src="images/help2.png" width="25" data-toggle="modal" data-target="#myModal4"/>
-        <input type="text" name="dia" id="datepicker2" placeholder="dd-mm-aaaa" style="background-color:#F7F6F6;width:350px;height:35px;font-family:Montserrat-Bold;">
+        <input type="date" name="dia" pattern="\d{1,2}/\d{1,2}/\d{4}" placeholder="dd-mm-aaaa" style="background-color:#F7F6F6;width:350px;height:35px;font-family:Montserrat-Bold;">
       </div>
 
        <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
@@ -235,6 +230,10 @@
         <textarea class="input100" name="gente" placeholder="1. Apellidos, Nombre" maxlength="1300"></textarea>
       </div>
 
+      <div class="wrap-input100 validate-input bg1 ">
+          <span class="label-input100">Seleccione su firma *</span>
+        <input class="input100" type="file" required name="sampleFile" accept=".png, .jpg, .jpeg"/>
+        </div>
       
 
       <div class="form-check">
@@ -519,7 +518,7 @@
 
 
 <!--===============================================================================================-->
-<!-- <script src="vendor2/jquery/jquery-3.2.1.min.js"></script> -->
+ <script src="vendor2/jquery/jquery-3.2.1.min.js"></script> 
 <!--===============================================================================================-->
 <script src="vendor2/animsition/js/animsition.min.js"></script>
 <!--===============================================================================================-->
@@ -600,7 +599,7 @@ gtag('config', 'UA-23581568-13');
   </footer>
 
   <!-- Bootstrap core JavaScript -->
-  <!-- <script src="vendor2/jquery/jquery.min.js"></script> -->
+  <script src="vendor2/jquery/jquery.min.js"></script>
   <script src="vendor2/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>

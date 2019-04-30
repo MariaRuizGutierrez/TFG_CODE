@@ -70,6 +70,10 @@ app.get('/anexoContratacion', function(req, res){
   res.sendFile(path.join(__dirname,'/public/Formularios/anexoContratacion.html'));
 });
 
+app.get('/anexoContratacion.1', function(req, res){
+  res.sendFile(path.join(__dirname,'/public/Formularios/anexoContratacion.1.html'));
+});
+
 app.get('/solicitudContratos', function(req, res){
   res.sendFile(path.join(__dirname,'/public/Formularios/solicitudContratos.html'));
 });
@@ -402,14 +406,9 @@ app.post('/upload', function(req, res) {
     }
 
     // res.send('File uploaded to ' + uploadPath);
-  });
-});
-
-  //PDF DE ANEXO DE CONTRATACIÓN
-  app.post('/anexoContratacion', function(req, res){
-    console.log(req.body);
-
+  
   //Generamos la referencia aleatoria 
+  console.log(req.body);
   var caracteres = "abcdefghijkmnpqrtuvwxyzABCDEFGHJKMNPQRTUVWXYZ2346789";
   var mayus = "ABCDEFGHJKMNPQRTUVWXYZ";
   var solomayus ="";
@@ -786,8 +785,8 @@ doc.image('public/img/MRG.png', 250, 10, {fit: [110, 110], align: 'center', vali
     align: 'justify',
    });
 
-   doc.image('public/images/firma.png', 70, 400, {fit: [110, 110], align: 'center', valign: 'center'})
-
+  doc.image('public/images/firma.png', 70, 400, {fit: [110, 110], align: 'center', valign: 'center'})
+  
 // Finalize PDF file
 doc.end();
 res.sendFile(path.join(__dirname,'/public/VisualizacionYEnvio/generarPDF.html'),{datos:req.body.email});
@@ -795,24 +794,30 @@ let removeFile;
 removeFile = path.join(__dirname,"public") + '/images/' + 'firma.png'
 console.log("borrado")
 
-// server.send({
-//   text:    "Anexo de contratación", 
-//   from:    "you <organizacionMRG@gmail.com>", 
-//   to:      "someone <marruigut@alum.us.es>",
-//   subject: "Nuevo anexo de contratación",
-//   attachment: 
-//    [
-//       {data:"<html>Se adjunta el anexo de contratación enviado por:<B> "+req.body.email+"</B></html>", alternative:true},
-//       {path:"output_Anexo_Contratacion.pdf", type:"application/pdf", name:"Anexo_Contratacion.pdf"}
-//    ]
-// }, function(err, message) { console.log(err || message); });
-//     res.sendFile(path.join(__dirname,'/public/responsables.html'));
   });
-
+});
 
 // Aquí es para crear el pdf del compromiso
 app.post('/compromiso', function(req, res){
   console.log(req.body);
+  let sampleFile;
+  let uploadPath;
+
+  if (Object.keys(req.files).length == 0) {
+    res.status(400).send('No files were uploaded.');
+    return;
+  }
+  console.log('req.files >>>', req.files); // eslint-disable-line
+
+  sampleFile = req.files.sampleFile;
+  // uploadPath = path.join(__dirname,"public") + '/images/' + sampleFile.name;
+  uploadPath = path.join(__dirname,"public") + '/images/' + 'firma.png'
+
+  sampleFile.mv(uploadPath, function(err) {
+    if (err) {
+      return res.status(500).send(err);
+    }
+
 
   // Aquí empieza la parte de crear el documento 
   parrf0 ="ANEXO II"
@@ -891,15 +896,42 @@ doc2.font('CALIBRI.TTF')
 
    });
 
+   doc2.image('public/images/firma.png', 70, 400, {fit: [110, 110], align: 'center', valign: 'center'})
 // Finalize PDF file
 doc2.end();
-
+let removeFile;
+removeFile = path.join(__dirname,"public") + '/images/' + 'firma.png'
+console.log("borrado")
 res.sendFile(path.join(__dirname,'/public/VisualizacionYEnvio/generarPDFCompromiso.html'));
+
 });
+});
+
+
+
+
 
 // Aquí es para crear el pdf del compromiso IP PRL
 app.post('/compromisoPRL', function(req, res){
   console.log(req.body);
+  let sampleFile;
+  let uploadPath;
+
+  if (Object.keys(req.files).length == 0) {
+    res.status(400).send('No files were uploaded.');
+    return;
+  }
+  console.log('req.files >>>', req.files); // eslint-disable-line
+
+  sampleFile = req.files.sampleFile;
+  // uploadPath = path.join(__dirname,"public") + '/images/' + sampleFile.name;
+  uploadPath = path.join(__dirname,"public") + '/images/' + 'firma.png'
+
+  sampleFile.mv(uploadPath, function(err) {
+    if (err) {
+      return res.status(500).send(err);
+    }
+
 
   // Aquí empieza la parte de crear el documento 
   parrf0 ="ANEXO III"
@@ -1031,16 +1063,42 @@ doc2.font('CALIBRI.TTF')
 
    });
 
+   doc2.image('public/images/firma.png', 70, 610, {fit: [110, 110], align: 'center', valign: 'center'})
 // Finalize PDF file
 doc2.end();
 
 res.sendFile(path.join(__dirname,'/public/VisualizacionYEnvio/generarPDFCompromisoPRL.html'));
+
+
+let removeFile;
+removeFile = path.join(__dirname,"public") + '/images/' + 'firma.png'
+console.log("borrado")
+});
 });
 
 
 //Aquí es para crear el pdf de relación provisional
 app.post('/relacionProvisional', function(req, res){
   console.log(req.body);
+
+  let sampleFile;
+  let uploadPath;
+
+  if (Object.keys(req.files).length == 0) {
+    res.status(400).send('No files were uploaded.');
+    return;
+  }
+  console.log('req.files >>>', req.files); // eslint-disable-line
+
+  sampleFile = req.files.sampleFile;
+  // uploadPath = path.join(__dirname,"public") + '/images/' + sampleFile.name;
+  uploadPath = path.join(__dirname,"public") + '/images/' + 'firma.png'
+
+  sampleFile.mv(uploadPath, function(err) {
+    if (err) {
+      return res.status(500).send(err);
+    }
+
 
   // Aquí empieza la parte de crear el documento 
   docu  = "Convocatoria de selección para la contratación temporal de personal "+req.body.personal+" para la ejecución del "+req.body.ejecucion+" de investigación “"+req.body.nombre+", "+req.body.referencia+". En el caso de que la contratación sea financiada por un proyecto de investigación, el contrato se formalizará una vez se publique la resolución definitiva de concesión del proyecto (siendo el gasto para la contratación elegible) y la orgánica disponga de la cuantía para sufragarlo. La Universidad de Sevilla no se hará responsable de aquellas contrataciones que no lleguen a materializarse por no cumplirse los requisitos exigidos."
@@ -1113,11 +1171,11 @@ doc.font('CALIBRI.TTF')
   width: 465,
   align: 'justify'
  });
- doc.rect(45, 325, 520, 270).stroke();
+//  doc.rect(45, 325, 520, 270).stroke();
 
  doc.font('CALIBRI.TTF')
  .fontSize(11)
- .text(parrf7, 70,630, {
+ .text(parrf7, 70,710, {
   // height: 100,
   width: 465,
   align: 'justify'
@@ -1133,17 +1191,21 @@ doc.font('CALIBRI.TTF')
 
    doc.font('CALIBRI.TTF')
    .fontSize(11)
-   .text(parrf8, 70,700, {
+   .text(parrf8, 70,130, {
     // height: 100,
     width: 465,
     align: 'justify',
 
    });
 
+  doc.image('public/images/firma.png', 70, 160, {fit: [110, 110], align: 'center', valign: 'center'})
 // Finalize PDF file
 doc.end();
 res.sendFile(path.join(__dirname,'/public/VisualizacionYEnvio/generarPDFRelacionProvisional.html'));
-});
+let removeFile;
+removeFile = path.join(__dirname,"public") + '/images/' + 'firma.png'
+console.log("borrado")
+}); });
 
 
 
@@ -1151,6 +1213,24 @@ res.sendFile(path.join(__dirname,'/public/VisualizacionYEnvio/generarPDFRelacion
 //Aquí es para crear el pdf de relación definitiva
 app.post('/relacionDefinitiva', function(req, res){
   console.log(req.body);
+
+  let sampleFile;
+  let uploadPath;
+
+  if (Object.keys(req.files).length == 0) {
+    res.status(400).send('No files were uploaded.');
+    return;
+  }
+  console.log('req.files >>>', req.files); // eslint-disable-line
+
+  sampleFile = req.files.sampleFile;
+  // uploadPath = path.join(__dirname,"public") + '/images/' + sampleFile.name;
+  uploadPath = path.join(__dirname,"public") + '/images/' + 'firma.png'
+
+  sampleFile.mv(uploadPath, function(err) {
+    if (err) {
+      return res.status(500).send(err);
+    }
 
   // Aquí empieza la parte de crear el documento 
   docu  = "Convocatoria de selección para la contratación temporal de personal "+req.body.personal+" para la ejecución del "+req.body.ejecucion+" de investigación “"+req.body.nombre+", "+req.body.referencia+". En el caso de que la contratación sea financiada por un proyecto de investigación, el contrato se formalizará una vez se publique la resolución definitiva de concesión del proyecto (siendo el gasto para la contratación elegible) y la orgánica disponga de la cuantía para sufragarlo. La Universidad de Sevilla no se hará responsable de aquellas contrataciones que no lleguen a materializarse por no cumplirse los requisitos exigidos."
@@ -1223,11 +1303,11 @@ doc.font('CALIBRI.TTF')
   width: 465,
   align: 'justify'
  });
- doc.rect(45, 325, 520, 270).stroke();
+//  doc.rect(45, 325, 520, 270).stroke();
 
  doc.font('CALIBRI.TTF')
  .fontSize(11)
- .text(parrf7, 70,630, {
+ .text(parrf7, 70,710, {
   // height: 100,
   width: 465,
   align: 'justify'
@@ -1243,23 +1323,44 @@ doc.font('CALIBRI.TTF')
 
    doc.font('CALIBRI.TTF')
    .fontSize(11)
-   .text(parrf8, 70,700, {
+   .text(parrf8, 70,130, {
     // height: 100,
     width: 465,
     align: 'justify',
 
    });
-
+   doc.image('public/images/firma.png', 70, 160, {fit: [110, 110], align: 'center', valign: 'center'})
 // Finalize PDF file
 doc.end();
 res.sendFile(path.join(__dirname,'/public/VisualizacionYEnvio/generarPDFRelacionDefinitiva.html'));
-});
+let removeFile;
+removeFile = path.join(__dirname,"public") + '/images/' + 'firma.png'
+console.log("borrado")
+}); });
 
 
 
 //Aquí es para crear el pdf de convocatoria a entrevista
 app.post('/candidatosEntrevistas', function(req, res){
   console.log(req.body);
+
+  let sampleFile;
+  let uploadPath;
+
+  if (Object.keys(req.files).length == 0) {
+    res.status(400).send('No files were uploaded.');
+    return;
+  }
+  console.log('req.files >>>', req.files); // eslint-disable-line
+
+  sampleFile = req.files.sampleFile;
+  // uploadPath = path.join(__dirname,"public") + '/images/' + sampleFile.name;
+  uploadPath = path.join(__dirname,"public") + '/images/' + 'firma.png'
+
+  sampleFile.mv(uploadPath, function(err) {
+    if (err) {
+      return res.status(500).send(err);
+    }
 
   // Aquí empieza la parte de crear el documento 
   docu  = "Convocatoria de selección para la contratación temporal de personal "+req.body.personal+" para la ejecución del "+req.body.ejecucion+" de investigación “"+req.body.nombre+", "+req.body.referencia+". En el caso de que la contratación sea financiada por un proyecto de investigación, el contrato se formalizará una vez se publique la resolución definitiva de concesión del proyecto (siendo el gasto para la contratación elegible) y la orgánica disponga de la cuantía para sufragarlo. La Universidad de Sevilla no se hará responsable de aquellas contrataciones que no lleguen a materializarse por no cumplirse los requisitos exigidos."
@@ -1315,7 +1416,7 @@ doc.font('CALIBRI.TTF')
   stroke:19
 
  });
- doc.rect(45, 315, 510, 270).stroke();
+//  doc.rect(45, 315, 510, 270).stroke();
  doc.font('CALIBRI.TTF')
  .fontSize(11)
  .text(parrf5, 70,330, {
@@ -1361,7 +1462,7 @@ doc.font('CALIBRI.TTF')
   width: 465,
   align: 'justify'
  });
- doc.rect(45, 105, 510, 120).stroke();
+//  doc.rect(45, 105, 510, 120).stroke();
 
  var dat= new Date(); //Obtienes la fecha
    var dat4=dat.getFullYear();
@@ -1379,15 +1480,37 @@ doc.font('CALIBRI.TTF')
 
    });
 
+   doc.image('public/images/firma.png', 70, 270, {fit: [110, 110], align: 'center', valign: 'center'})
+
 // Finalize PDF file
 doc.end();
 res.sendFile(path.join(__dirname,'/public/VisualizacionYEnvio/generarPDFCandidatosEntrevistas.html'));
-});
+let removeFile;
+removeFile = path.join(__dirname,"public") + '/images/' + 'firma.png'
+console.log("borrado")
+});});
 
 
 //Aquí es para crear el pdf de acta de comision
 app.post('/actaComision', function(req, res){
   console.log(req.body);
+  let sampleFile;
+  let uploadPath;
+
+  if (Object.keys(req.files).length == 0) {
+    res.status(400).send('No files were uploaded.');
+    return;
+  }
+  console.log('req.files >>>', req.files); // eslint-disable-line
+
+  sampleFile = req.files.sampleFile;
+  // uploadPath = path.join(__dirname,"public") + '/images/' + sampleFile.name;
+  uploadPath = path.join(__dirname,"public") + '/images/' + 'firma.png'
+
+  sampleFile.mv(uploadPath, function(err) {
+    if (err) {
+      return res.status(500).send(err);
+    }
 
   // Aquí empieza la parte de crear el documento 
   docu  = "Convocatoria de selección para la contratación temporal de personal "+req.body.personal+" para la ejecución del "+req.body.ejecucion+" de investigación “"+req.body.nombre+", "+req.body.referencia+". En el caso de que la contratación sea financiada por un proyecto de investigación, el contrato se formalizará una vez se publique la resolución definitiva de concesión del proyecto (siendo el gasto para la contratación elegible) y la orgánica disponga de la cuantía para sufragarlo. La Universidad de Sevilla no se hará responsable de aquellas contrataciones que no lleguen a materializarse por no cumplirse los requisitos exigidos."
@@ -1517,7 +1640,7 @@ doc.font('CALIBRI.TTF')
 // Para bajarlo o subirlo hay que tocar el segundo número
 // Para la parte izquierda el tercer número
 // Para hacerlo más ancho el cuadro hay que tocar el último numero
-doc.rect(65, 505, 465, 250).stroke();
+// doc.rect(65, 505, 465, 250).stroke();
 
  var dat= new Date(); //Obtienes la fecha
    var dat4=dat.getFullYear();
@@ -1528,17 +1651,20 @@ doc.rect(65, 505, 465, 250).stroke();
 
    doc.font('CALIBRI.TTF')
    .fontSize(11)
-   .text(parrf13, 70,100, {
+   .text(parrf13, 70,710, {
     // height: 100,
     width: 465,
     align: 'justify',
 
    });
-
+   doc.image('public/images/firma.png', 70, 100, {fit: [110, 110], align: 'center', valign: 'center'})
 // Finalize PDF file
 doc.end();
 res.sendFile(path.join(__dirname,'/public/VisualizacionYEnvio/generarPDFActaComision.html'));
-});
+let removeFile;
+removeFile = path.join(__dirname,"public") + '/images/' + 'firma.png'
+console.log("borrado")
+}); });
 
 
 

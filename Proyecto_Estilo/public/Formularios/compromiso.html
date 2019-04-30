@@ -78,9 +78,9 @@
           <li class="nav-item px-lg-4">
             <a class="nav-link text-uppercase text-expanded" href="interesados.html">Interesados</a>
           </li>
-          <!-- <li class="nav-item px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="store.html">Store</a>
-          </li> -->
+          <li class="nav-item px-lg-4">
+              <a class="nav-link text-uppercase text-expanded" href="preguntas.html">Preguntas Frecuentes</a>
+            </li> 
         </ul>
       </div>
     </div>
@@ -89,15 +89,10 @@
 
 <div class="container-contact100">
   <div class="wrap-contact100">
-    <form class="contact100-form validate-form" action="/compromiso" method="POST">
+    <form class="contact100-form validate-form" action="/compromiso" method="POST"  encType="multipart/form-data">
       <span class="contact100-form-title">
         Rellene el siguiente formulario
       </span>
-
-      <!-- <div class="wrap-input100 validate-input bg1" data-validate="Please Type Your Name">
-        <span class="label-input100">Investigador responsable *</span>
-        <input class="input100" type="text" name="nombre" placeholder="Nombre del investigador responsable">
-      </div> -->
 
       <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
         <span class="label-input100">Don/Doña*</span>
@@ -128,8 +123,11 @@
           <div class="dropDownSelect2"></div>
         </div>
       </div>
-
-
+      
+      <div class="wrap-input100 validate-input bg1 ">
+          <span class="label-input100">Seleccione su firma *</span>
+        <input class="input100" type="file" required name="sampleFile" accept=".png, .jpg, .jpeg"/>
+        </div>
 
       <div class="form-check">
           <input type="checkbox" required name="RGPD" class="form-check-input" id="exampleCheck1">
