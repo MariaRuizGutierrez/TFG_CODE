@@ -110,6 +110,10 @@ app.get('/actaComision', function(req, res){
   res.sendFile(path.join(__dirname,'/public/Formularios/actaComision.html'));
 });
 
+app.get('/contrato', function(req, res){
+  res.sendFile(path.join(__dirname,'/public/Formularios/contrato.html'));
+});
+
 // Aquí es es donde el usuario visualiza y envía el anexo de contratación
 app.get('/generarPDF', function(req, res){
   res.sendFile(path.join(__dirname,'/public/VisualizacionYEnvio/generarPDF.html'));

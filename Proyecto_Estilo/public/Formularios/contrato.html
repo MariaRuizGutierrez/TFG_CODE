@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Anexo de Contratación</title>
+
+
+  <!-- PARA EL BOTÓN DE ENVIAR -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css" />
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/business-casual.min.css" rel="stylesheet">
+
+  <!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="images/icons/form.ico"/>
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor2/bootstrap/css/bootstrap.min.css">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor2/animate/animate.css">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor2/css-hamburgers/hamburgers.min.css">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor2/animsition/css/animsition.min.css">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor2/select2/select2.min.css">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor2/daterangepicker/daterangepicker.css">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor2/noui/nouislider.min.css">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+
+</head>
+
+<body>
+
+  <h1 class="site-heading text-center text-white d-none d-lg-block">
+    <span class="site-heading-upper text-primary mb-3"><img src="img/MRG.png" width="200" height="100"></span>
+    
+    <!-- <span class="site-heading-lower">Business Casual</span> -->
+  </h1>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none" href="#">Inicio</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="index.html">Contratos Personal
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item active px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="responsables.html">Responsables</a>
+          </li>
+          <li class="nav-item px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="interesados.html">Interesados</a>
+          </li>
+          <li class="nav-item px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="preguntas.html">Preguntas Frecuentes</a>
+          </li> 
+        </ul>
+      </div>
+    </div>
+  </nav>
+<!-- Aquí se termina el índice y comienza el cuerpo -->
+
+<div class="container-contact100">
+  <div class="wrap-contact100">
+    <form class="contact100-form validate-form" action="/solicitudContratos" method="POST" encType="multipart/form-data">
+      <span class="contact100-form-title">
+        Rellene el siguiente formulario
+      <br><br>
+        <p class="text-justify" class="mb-3" style="color:#FF0000";>
+           <B>ATENCIÓN:</B>
+        </p>
+        <p class="text-justify" class="mb-3">
+           <B>La propuesta se debe presentar como mínimo 1 día antes del inicio de la actividad y dicha fecha de inicio debe ser posterior, por lo menos en un día, a la fecha de la resolución de la convocatoria. En el caso de presentar una prórroga, contemplada en la convocatoria, este debe presentarse como mínimo 15 días antes de la finalización del contrato que se prorroga.</B>
+        </p>
+      </span> 
+
+        
+<div class="wrap-input100 validate-input ">
+  <span class="label-input100" style="color:#e6a756";>DATOS DEL PROYECTO</span>
+</div> 
+
+<div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
+  <span class="label-input100">Investigador Responsable*</span> 
+  <input class="input100" type="text" required name="responsable" placeholder="Nombre y apellidos" maxlength="50">
+</div>
+
+<div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
+  <span class="label-input100">Referencia del proyecto *</span>
+  <input class="input100" type="text" required name="referencia" placeholder="Ejemplo: CGL2017-90770-REDE" maxlength="50">
+</div>
+
+<div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
+  <span class="label-input100">Organismo financiador *</span>
+  <input class="input100" type="text" required name="organismo" placeholder="Nombre del organismo financiador" maxlength="50">
+</div>
+
+<div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
+  <span class="label-input100">Nombre del proyecto *</span>
+  <input class="input100" type="text" name="nombre" placeholder="Nombre del proyecto" maxlength="60">
+</div>
+
+      <div class="wrap-input100 validate-input ">
+          <span class="label-input100" style="color:#e6a756";>DATOS DEL CONTRATADO/A</span>
+      </div> 
+
+      <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
+        <span class="label-input100">Nombre y Apellidos*</span>
+        <input class="input100" type="text" name="nombre" placeholder="Nombre y Apellidos" maxlength="60">
+      </div>
+
+      <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
+        <span class="label-input100">NIF*</span>
+        <input class="input100" type="text" name="dni" placeholder="29567777H" maxlength="9" required pattern="(([X-Z]{1})([-]?)(\d{7})([-]?)([A-Z]{1}))|((\d{8})([-]?)([A-Z]{1}))">
+      </div>
+
+      <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
+        <span class="label-input100">Titulación*</span>
+        <input class="input100" type="text" name="titulacion" placeholder="Ej:Ingeniería del Software" maxlength="60">
+      </div>
+
+      <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
+        <span class="label-input100">Fecha de Nacimiento*</span>
+        <input  pattern="\d{1,2}/\d{1,2}/\d{4}" type="date" required name="nacimiento" placeholder="dd-mm-aaaa" style="background-color:#F7F6F6;width:350px;height:35px;font-family:Montserrat-Bold;">
+    </div>
+
+    <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
+      <span class="label-input100">Domicilio*</span>
+      <input class="input100" type="text" name="domicilio" placeholder="Ej:Calle Amalia Torrijos, N1, 7ºB" maxlength="60">
+    </div>
+
+    <div class="wrap-input100 input100-select bg1 rs1-wrap-input100">
+      <span class="label-input100">Provincia *</span> 
+      <div>
+        <select class="js-select2" name="provincia">
+  <option value='Álava'>Álava</option>
+  <option value='Albacete'>Albacete</option>
+  <option value='Alicante'>Alicante/Alacant</option>
+  <option value='Almeria'>Almería</option>
+  <option value='Asturias'>Asturias</option>
+  <option value='Ávila'>Ávila</option>
+  <option value='Badajoz'>Badajoz</option>
+  <option value='Barcelona'>Barcelona</option>
+  <option value='Burgos'>Burgos</option>
+  <option value='Cáceres'>Cáceres</option>
+  <option value='Cádiz'>Cádiz</option>
+  <option value='Cantabria'>Cantabria</option>
+  <option value='Castellon'>Castellón/Castelló</option>
+  <option value='Ceuta'>Ceuta</option>
+  <option value='Ciudad Real'>Ciudad Real</option>
+  <option value='Córdoba'>Córdoba</option>
+  <option value='Cuenca'>Cuenca</option>
+  <option value='Girona'>Girona</option>
+  <option value='Las Palmas'>Las Palmas</option>
+  <option value='Granada'>Granada</option>
+  <option value='Guadalajara'>Guadalajara</option>
+  <option value='Guipuzcoa'>Guipúzcoa</option>
+  <option value='Huelva'>Huelva</option>
+  <option value='Huesca'>Huesca</option>
+  <option value='Islas Baleares'>Islas Baleares</option>
+  <option value='Jaén'>Jaén</option>
+  <option value='A Coruña'>A Coruña</option>
+  <option value='La Rioja'>La Rioja</option>
+  <option value='León'>León</option>
+  <option value='Lleida'>Lleida</option>
+  <option value='Lugo'>Lugo</option>
+  <option value='Madrid'>Madrid</option>
+  <option value='Málaga'>Málaga</option>
+  <option value='Melilla'>Melilla</option>
+  <option value='Murcia'>Murcia</option>
+  <option value='Navarra'>Navarra</option>
+  <option value='Ourense'>Ourense</option>
+  <option value='Palencia'>Palencia</option>
+  <option value='Pontevedra'>Pontevedra</option>
+  <option value='Salamanca'>Salamanca</option>
+  <option value='Segovia'>Segovia</option>
+  <option value='Sevilla'>Sevilla</option>
+  <option value='Soria'>Soria</option>
+  <option value='Tarragona'>Tarragona</option>
+  <option value='Santa Cruz de Tenerife'>Santa Cruz de Tenerife</option>
+  <option value='Teruel'>Teruel</option>
+  <option value='Toledo'>Toledo</option>
+  <option value='Valencia'>Valencia/Valéncia</option>
+  <option value='Valladolid'>Valladolid</option>
+  <option value='Vizcaya'>Vizcaya</option>
+  <option value='Zamora'>Zamora</option>
+  <option value='Zaragoza'>Zaragoza</option>
+        </select>
+        <div class="dropDownSelect2"></div>
+      </div>
+    </div>
+
+    <div class="wrap-input100 input100-select bg1 rs1-wrap-input100">
+      <span class="label-input100">Provincia *</span> 
+      <div>
+        <select class="js-select2" name="provincia">
+  <option value='Álava'>Álava</option>
+  <option value='Albacete'>Albacete</option>
+  <option value='Alicante'>Alicante/Alacant</option>
+  <option value='Almeria'>Almería</option>
+  <option value='Asturias'>Asturias</option>
+  <option value='Ávila'>Ávila</option>
+  <option value='Badajoz'>Badajoz</option>
+  <option value='Barcelona'>Barcelona</option>
+  <option value='Burgos'>Burgos</option>
+  <option value='Cáceres'>Cáceres</option>
+  <option value='Cádiz'>Cádiz</option>
+  <option value='Cantabria'>Cantabria</option>
+  <option value='Castellon'>Castellón/Castelló</option>
+  <option value='Ceuta'>Ceuta</option>
+  <option value='Ciudad Real'>Ciudad Real</option>
+  <option value='Córdoba'>Córdoba</option>
+  <option value='Cuenca'>Cuenca</option>
+  <option value='Girona'>Girona</option>
+  <option value='Las Palmas'>Las Palmas</option>
+  <option value='Granada'>Granada</option>
+  <option value='Guadalajara'>Guadalajara</option>
+  <option value='Guipuzcoa'>Guipúzcoa</option>
+  <option value='Huelva'>Huelva</option>
+  <option value='Huesca'>Huesca</option>
+  <option value='Islas Baleares'>Islas Baleares</option>
+  <option value='Jaén'>Jaén</option>
+  <option value='A Coruña'>A Coruña</option>
+  <option value='La Rioja'>La Rioja</option>
+  <option value='León'>León</option>
+  <option value='Lleida'>Lleida</option>
+  <option value='Lugo'>Lugo</option>
+  <option value='Madrid'>Madrid</option>
+  <option value='Málaga'>Málaga</option>
+  <option value='Melilla'>Melilla</option>
+  <option value='Murcia'>Murcia</option>
+  <option value='Navarra'>Navarra</option>
+  <option value='Ourense'>Ourense</option>
+  <option value='Palencia'>Palencia</option>
+  <option value='Pontevedra'>Pontevedra</option>
+  <option value='Salamanca'>Salamanca</option>
+  <option value='Segovia'>Segovia</option>
+  <option value='Sevilla'>Sevilla</option>
+  <option value='Soria'>Soria</option>
+  <option value='Tarragona'>Tarragona</option>
+  <option value='Santa Cruz de Tenerife'>Santa Cruz de Tenerife</option>
+  <option value='Teruel'>Teruel</option>
+  <option value='Toledo'>Toledo</option>
+  <option value='Valencia'>Valencia/Valéncia</option>
+  <option value='Valladolid'>Valladolid</option>
+  <option value='Vizcaya'>Vizcaya</option>
+  <option value='Zamora'>Zamora</option>
+  <option value='Zaragoza'>Zaragoza</option>
+        </select>
+        <div class="dropDownSelect2"></div>
+      </div>
+    </div>
+
+
+      <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
+          <span class="label-input100">Teléfono Móvil*</span>
+          <input class="input100" type="phone" name="tlf" placeholder="Ejemplo:657487533" required pattern="^[9|6|7][0-9]{8}$">
+      </div>
+
+      <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar vacío">
+          <span class="label-input100">Teléfono fijo*</span>
+          <input class="input100" type="phone" name="tlfFijo" placeholder="Ejemplo:954370007" required pattern="^[9|6|7][0-9]{8}$" >
+      </div>
+    
+      <div class="wrap-input100 validate-input bg1 " data-validate = "Este campo no puede estar vacío">
+          <span class="label-input100">Centro de trabajo*</span>
+          <input class="input100" type="text" name="centro" placeholder="Nombre del centro de trabajo" maxlength="50">
+      </div>
+
+      <div class="wrap-input100 validate-input bg1 " data-validate = "Este campo no puede estar vacío">
+        <span class="label-input100">Departamento*</span>
+        <input class="input100" type="text" name="departamento" placeholder="Nombre del departamento" maxlength="50">
+    </div>
+      
+      <div class="wrap-input100 validate-input ">
+          <span class="label-input100" style="color:#e6a756";>DATOS ESPECÍFICOS DE LA CONTRATACIÓN</span>
+      </div> 
+
+      <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar vacío">
+          <span class="label-input100">Convocatoria (Título) *</span>
+          <input class="input100" type="text" name="convocatoria" placeholder="Título de la Convocatoria" maxlength="50">
+      </div>
+         <!-- F9F9F9 -->
+      <div class="wrap-input100 validate-input bg1 rs1-wrap-input100">
+          <span class="label-input100">Fecha Publicación*</span><br>
+          <input  type="date" pattern="\d{1,2}/\d{1,2}/\d{4}"  required name="fechapublicacion" placeholder="dd-mm-aaaa" style="background-color:#F7F6F6;width:350px;height:35px;font-family:Montserrat-Bold;">
+      </div> 
+
+
+      <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar vacío">
+          <span class="label-input100">Título Plaza *</span>
+          <input class="input100" type="text" name="tituloPlaza" placeholder="Título de la plaza" maxlength="50">
+      </div>
+
+      <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar vacío">
+          <span class="label-input100">Referencia *</span>
+          <input class="input100" type="text" name="referenciaContratos" placeholder="Ejemplo: CGL2017-90770-REDE" maxlength="50">
+      </div>
+
+      <div class="wrap-input100 validate-input bg0 rs1-alert-validate" data-validate = "Esta campo no puede estar en blanco">
+        <span class="label-input100">Observaciones *</span>
+        <textarea class="input100" name="observaciones" placeholder="Redacta tus observaciones aquí..." maxlength="600"></textarea>
+      </div>
+
+      <div class="wrap-input100 validate-input bg1 ">
+          <span class="label-input100">Seleccione su firma *</span>
+        <input class="input100" type="file" required name="sampleFile" accept=".png, .jpg, .jpeg"/>
+        </div>
+
+        <div class="wrap-input100 validate-input bg1 ">
+            <span class="label-input100">Añada su curriculum *</span>
+          <input class="input100" type="file" required name="cv" accept=".pdf"/>
+          </div>
+          
+
+      <div class="form-check">
+          <input type="checkbox" required name="RGPD" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1"><a href="./anexoContratacion">Aceptos los términos y condiciones de uso</a></label>
+        </div>
+      
+
+      <!-- Este es el botón de enviar -->
+       <div class="container-contact100-form-btn">
+        <button type="submit" class="contact100-form-btn" onclick="validateDNI()">
+          <span>
+            Pulse para seguir
+            <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+          </span>
+          
+        </button> 
+      </div> 
+
+      <!-- <script language="JavaScript">
+        // Comprueba si es un DNI correcto (entre 5 y 8 letras seguidas de la letra que corresponda).
+        
+        // Acepta NIEs (Extranjeros con X, Y o Z al principio)
+        function validateDNI() {
+          console.log(document.getElementById('dni').value)
+          var dni = document.getElementById('dni').value;
+            var numero, let, letra;
+            var expresion_regular_dni = /^[XYZ]?\d{5,8}[A-Z]$/;
+        
+            dni = document.getElementById('dni').value.toUpperCase();
+        
+            if(expresion_regular_dni.test(document.getElementById('dni').value) === true){
+                numero = dni.substr(0,dni.length-1);
+                numero = numero.replace('X', 0);
+                numero = numero.replace('Y', 1);
+                numero = numero.replace('Z', 2);
+                let = dni.substr(dni.length-1, 1);
+                numero = numero % 23;
+                letra = 'TRWAGMYFPDXBNJZSQVHLCKET';
+                letra = letra.substring(numero, numero+1);
+                if (letra != let) {
+                    //alert('Dni erroneo, la letra del NIF no se corresponde');
+                    return false;
+                }else{
+                    //alert('Dni correcto');
+                    return true;
+                }
+            }else{
+                //alert('Dni erroneo, formato no válido');
+                return false;
+            }
+        }
+        </script> -->
+        
+
+      
+    </form>
+    
+</div>
+</div>
+
+
+
+<!-- 
+<form ref='uploadForm' id='uploadForm' action='/upload' method='post' encType="multipart/form-data">
+        
+  <input type="file" name="sampleFile" />
+	<input type='submit' value='Upload!' />
+		</form>	 -->
+
+
+<!--===============================================================================================-->
+<script src="vendor2/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+<script src="vendor2/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+<script src="vendor2/bootstrap/js/popper.js"></script>
+<script src="vendor2/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+<script src="vendor2/select2/select2.min.js"></script>
+<script>
+  $(".js-select2").each(function(){
+    $(this).select2({
+      minimumResultsForSearch: 20,
+      dropdownParent: $(this).next('.dropDownSelect2')
+    });
+
+
+    $(".js-select2").each(function(){
+      $(this).on('select2:close', function (e){
+        if($(this).val() == "Please chooses") {
+          $('.js-show-service').slideUp();
+        }
+        else {
+          $('.js-show-service').slideUp();
+          $('.js-show-service').slideDown();
+        }
+      });
+    });
+  })
+</script>
+<!--===============================================================================================-->
+<script src="vendor2/daterangepicker/moment.min.js"></script>
+<script src="vendor2/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+<script src="vendor2/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+<script src="vendor2/noui/nouislider.min.js"></script>
+<script>
+    var filterBar = document.getElementById('filter-bar');
+
+    noUiSlider.create(filterBar, {
+        start: [ 1500, 3900 ],
+        connect: true,
+        range: {
+            'min': 1500,
+            'max': 7500
+        }
+    });
+
+    var skipValues = [
+    document.getElementById('value-lower'),
+    document.getElementById('value-upper')
+    ];
+
+    filterBar.noUiSlider.on('update', function( values, handle ) {
+        skipValues[handle].innerHTML = Math.round(values[handle]);
+        $('.contact100-form-range-value input[name="from-value"]').val($('#value-lower').html());
+        $('.contact100-form-range-value input[name="to-value"]').val($('#value-upper').html());
+    });
+</script>
+<!--===============================================================================================-->
+<script src="js/main.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-23581568-13');
+</script>
+
+
+<!-- Aquí se termina el cuerpo y empieza el footer -->
+  <footer class="footer text-faded text-center py-5">
+    <div class="container">
+      <p class="m-0 small">Copyright &copy; Organización MRG 2019</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor2/jquery/jquery.min.js"></script>
+  <script src="vendor2/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
