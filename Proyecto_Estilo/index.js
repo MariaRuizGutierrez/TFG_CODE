@@ -1674,6 +1674,24 @@ console.log("borrado")
 app.post('/solicitudContratos', function(req, res){
   console.log(req.body);
 
+  let sampleFile;
+  let uploadPath;
+
+  if (Object.keys(req.files).length == 0) {
+    res.status(400).send('No files were uploaded.');
+    return;
+  }
+  console.log('req.files >>>', req.files); // eslint-disable-line
+
+  sampleFile = req.files.sampleFile;
+  // uploadPath = path.join(__dirname,"public") + '/images/' + sampleFile.name;
+  uploadPath = path.join(__dirname,"public") + '/images/' + 'firma.png'
+
+  sampleFile.mv(uploadPath, function(err) {
+    if (err) {
+      return res.status(500).send(err);
+    }
+
   // Aquí empieza la parte de crear el documento 
   num1 ="1"
   docu  = "DATOS PERSONALES"
@@ -1922,12 +1940,12 @@ var dat= new Date(); //Obtienes la fecha
 
    doc.font('CALIBRI.TTF')
    .fontSize(11)
-   .text(parrf23, 70,700, {
+   .text(parrf23, 70,710, {
     // height: 100,
     width: 465,
     align: 'justify',
    });
-
+   doc.image('public/images/firma.png', 70, 100, {fit: [110, 110], align: 'center', valign: 'center'})
 // // número 1
 // doc.font('CALIBRI.TTF')
 //  .fontSize(11)
@@ -1938,7 +1956,10 @@ var dat= new Date(); //Obtienes la fecha
 // Finalize PDF file
 doc.end();
 res.sendFile(path.join(__dirname,'/public/VisualizacionYEnvio/generarPDFSolicitudContratos.html'));
-
+let removeFile;
+removeFile = path.join(__dirname,"public") + '/images/' + 'firma.png'
+console.log("borrado")
+});
 });
 
 
