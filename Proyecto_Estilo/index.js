@@ -843,7 +843,16 @@ doc.image('public/img/MRG.png', 250, 10, {fit: [110, 110], align: 'center', vali
     align: 'justify',
    });
 
-  doc.image('public/images/firma.png', 70, 400, {fit: [110, 110], align: 'center', valign: 'center'})
+   parrf33="Firma:"
+
+   doc.font('CALIBRI.TTF')
+   .fontSize(11)
+   .text(parrf33, 70,410, {
+    // height: 100,
+    width: 465,
+    align: 'justify',
+   });
+  doc.image('public/images/firma.png', 70, 440, {fit: [110, 110], align: 'center', valign: 'center'})
   
 // Finalize PDF file
 doc.end();
@@ -954,7 +963,17 @@ doc2.font('CALIBRI.TTF')
 
    });
 
-   doc2.image('public/images/firma.png', 70, 400, {fit: [110, 110], align: 'center', valign: 'center'})
+   parrf33="Firma:"
+
+   doc2.font('CALIBRI.TTF')
+   .fontSize(11)
+   .text(parrf33, 70,410, {
+    // height: 100,
+    width: 465,
+    align: 'justify',
+   });
+
+   doc2.image('public/images/firma.png', 70, 440, {fit: [110, 110], align: 'center', valign: 'center'})
 // Finalize PDF file
 doc2.end();
 let removeFile;
@@ -1121,7 +1140,17 @@ doc2.font('CALIBRI.TTF')
 
    });
 
-   doc2.image('public/images/firma.png', 70, 610, {fit: [110, 110], align: 'center', valign: 'center'})
+   parrf33="Firma:"
+
+   doc2.font('CALIBRI.TTF')
+   .fontSize(11)
+   .text(parrf33, 70,620, {
+    // height: 100,
+    width: 465,
+    align: 'justify',
+   });
+
+   doc2.image('public/images/firma.png', 70, 650, {fit: [110, 110], align: 'center', valign: 'center'})
 // Finalize PDF file
 doc2.end();
 
@@ -1256,7 +1285,17 @@ doc.font('CALIBRI.TTF')
 
    });
 
-  doc.image('public/images/firma.png', 70, 160, {fit: [110, 110], align: 'center', valign: 'center'})
+   parrf33="Firma:"
+
+   doc.font('CALIBRI.TTF')
+   .fontSize(11)
+   .text(parrf33, 70,150, {
+    // height: 100,
+    width: 465,
+    align: 'justify',
+   });
+
+  doc.image('public/images/firma.png', 70, 180, {fit: [110, 110], align: 'center', valign: 'center'})
 // Finalize PDF file
 doc.end();
 res.sendFile(path.join(__dirname,'/public/VisualizacionYEnvio/generarPDFRelacionProvisional.html'));
@@ -1387,7 +1426,17 @@ doc.font('CALIBRI.TTF')
     align: 'justify',
 
    });
-   doc.image('public/images/firma.png', 70, 160, {fit: [110, 110], align: 'center', valign: 'center'})
+
+   parrf33="Firma:"
+
+   doc.font('CALIBRI.TTF')
+   .fontSize(11)
+   .text(parrf33, 70,150, {
+    // height: 100,
+    width: 465,
+    align: 'justify',
+   });
+   doc.image('public/images/firma.png', 70, 180, {fit: [110, 110], align: 'center', valign: 'center'})
 // Finalize PDF file
 doc.end();
 res.sendFile(path.join(__dirname,'/public/VisualizacionYEnvio/generarPDFRelacionDefinitiva.html'));
@@ -1538,7 +1587,17 @@ doc.font('CALIBRI.TTF')
 
    });
 
-   doc.image('public/images/firma.png', 70, 270, {fit: [110, 110], align: 'center', valign: 'center'})
+
+   parrf33="Firma:"
+
+   doc.font('CALIBRI.TTF')
+   .fontSize(11)
+   .text(parrf33, 70,270, {
+    // height: 100,
+    width: 465,
+    align: 'justify',
+   });
+   doc.image('public/images/firma.png', 70, 300, {fit: [110, 110], align: 'center', valign: 'center'})
 
 // Finalize PDF file
 doc.end();
@@ -1715,7 +1774,17 @@ doc.font('CALIBRI.TTF')
     align: 'justify',
 
    });
-   doc.image('public/images/firma.png', 70, 100, {fit: [110, 110], align: 'center', valign: 'center'})
+
+   parrf33="Firma:"
+
+   doc.font('CALIBRI.TTF')
+   .fontSize(11)
+   .text(parrf33, 70,120, {
+    // height: 100,
+    width: 465,
+    align: 'justify',
+   });
+   doc.image('public/images/firma.png', 70, 140, {fit: [110, 110], align: 'center', valign: 'center'})
 // Finalize PDF file
 doc.end();
 res.sendFile(path.join(__dirname,'/public/VisualizacionYEnvio/generarPDFActaComision.html'));
@@ -2013,7 +2082,17 @@ var dat= new Date(); //Obtienes la fecha
     width: 465,
     align: 'justify',
    });
-   doc.image('public/images/firma.png', 70, 100, {fit: [110, 110], align: 'center', valign: 'center'})
+
+   parrf33="Firma:"
+
+   doc.font('CALIBRI.TTF')
+   .fontSize(11)
+   .text(parrf33, 70,130, {
+    // height: 100,
+    width: 465,
+    align: 'justify',
+   });
+   doc.image('public/images/firma.png', 70, 150, {fit: [110, 110], align: 'center', valign: 'center'})
 // // número 1
 // doc.font('CALIBRI.TTF')
 //  .fontSize(11)
