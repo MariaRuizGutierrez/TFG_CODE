@@ -110,6 +110,10 @@ app.get('/actaComision', function(req, res){
   res.sendFile(path.join(__dirname,'/public/Formularios/actaComision.html'));
 });
 
+app.get('/identificacion', function(req, res){
+  res.sendFile(path.join(__dirname,'/public/identificacion.html'));
+});
+
 app.get('/contrato', function(req, res){
   res.sendFile(path.join(__dirname,'/public/Formularios/contrato.html'));
 });
@@ -159,6 +163,15 @@ app.get('/generarPDFSolicitud', function(req, res){
   res.sendFile(path.join(__dirname,'/public/VisualizacionYEnvio/generarPDFSolicitud.html'));
 });
 
+app.post('/identificacion', function(req, res){
+console.log(req.body)
+if(req.body.estado =="Interesado/a"){
+  res.sendFile(path.join(__dirname,'/public/preguntas.html'));
+}
+if(req.body.estado =="Responsable"){
+  res.sendFile(path.join(__dirname,'/public/responsables.html'));
+}
+  });
 
 app.post('/visualizacionAnexoContratacion', function(request, response){
   var tempFile="./output_Anexo_Contratacion.pdf";
