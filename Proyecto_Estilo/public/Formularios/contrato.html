@@ -123,7 +123,7 @@
 
 <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
   <span class="label-input100">Nombre del proyecto *</span>
-  <input class="input100" type="text" name="nombre" placeholder="Nombre del proyecto" maxlength="60">
+  <input class="input100" type="text" required name="nombre" placeholder="Nombre del proyecto" maxlength="60">
 </div>
 
       <div class="wrap-input100 validate-input ">
@@ -132,17 +132,17 @@
 
       <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
         <span class="label-input100">Nombre y Apellidos*</span>
-        <input class="input100" type="text" name="nombre" placeholder="Nombre y Apellidos" maxlength="60">
+        <input class="input100" type="text" required name="nombreapellidos" placeholder="Nombre y Apellidos" maxlength="60">
       </div>
 
       <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
         <span class="label-input100">NIF*</span>
-        <input class="input100" type="text" name="dni" placeholder="29567777H" maxlength="9" required pattern="(([X-Z]{1})([-]?)(\d{7})([-]?)([A-Z]{1}))|((\d{8})([-]?)([A-Z]{1}))">
+        <input class="input100" type="text" required name="dni" placeholder="29567777H" maxlength="9" required pattern="(([X-Z]{1})([-]?)(\d{7})([-]?)([A-Z]{1}))|((\d{8})([-]?)([A-Z]{1}))">
       </div>
 
       <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
         <span class="label-input100">Titulación*</span>
-        <input class="input100" type="text" name="titulacion" placeholder="Ej:Ingeniería del Software" maxlength="60">
+        <input class="input100" type="text" required name="titulacion" placeholder="Ej:Ingeniería del Software" maxlength="60">
       </div>
 
       <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
@@ -152,7 +152,7 @@
 
     <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
       <span class="label-input100">Domicilio*</span>
-      <input class="input100" type="text" name="domicilio" placeholder="Ej:Calle Amalia Torrijos, N1, 7ºB" maxlength="60">
+      <input class="input100" type="text" required name="domicilio" placeholder="Ej:Calle Amalia Torrijos, N1, 7ºB" maxlength="60">
     </div>
 
     <div class="wrap-input100 input100-select bg1 rs1-wrap-input100">
@@ -216,138 +216,84 @@
       </div>
     </div>
 
-    <div class="wrap-input100 input100-select bg1 rs1-wrap-input100">
-      <span class="label-input100">Provincia *</span> 
-      <div>
-        <select class="js-select2" name="provincia">
-  <option value='Álava'>Álava</option>
-  <option value='Albacete'>Albacete</option>
-  <option value='Alicante'>Alicante/Alacant</option>
-  <option value='Almeria'>Almería</option>
-  <option value='Asturias'>Asturias</option>
-  <option value='Ávila'>Ávila</option>
-  <option value='Badajoz'>Badajoz</option>
-  <option value='Barcelona'>Barcelona</option>
-  <option value='Burgos'>Burgos</option>
-  <option value='Cáceres'>Cáceres</option>
-  <option value='Cádiz'>Cádiz</option>
-  <option value='Cantabria'>Cantabria</option>
-  <option value='Castellon'>Castellón/Castelló</option>
-  <option value='Ceuta'>Ceuta</option>
-  <option value='Ciudad Real'>Ciudad Real</option>
-  <option value='Córdoba'>Córdoba</option>
-  <option value='Cuenca'>Cuenca</option>
-  <option value='Girona'>Girona</option>
-  <option value='Las Palmas'>Las Palmas</option>
-  <option value='Granada'>Granada</option>
-  <option value='Guadalajara'>Guadalajara</option>
-  <option value='Guipuzcoa'>Guipúzcoa</option>
-  <option value='Huelva'>Huelva</option>
-  <option value='Huesca'>Huesca</option>
-  <option value='Islas Baleares'>Islas Baleares</option>
-  <option value='Jaén'>Jaén</option>
-  <option value='A Coruña'>A Coruña</option>
-  <option value='La Rioja'>La Rioja</option>
-  <option value='León'>León</option>
-  <option value='Lleida'>Lleida</option>
-  <option value='Lugo'>Lugo</option>
-  <option value='Madrid'>Madrid</option>
-  <option value='Málaga'>Málaga</option>
-  <option value='Melilla'>Melilla</option>
-  <option value='Murcia'>Murcia</option>
-  <option value='Navarra'>Navarra</option>
-  <option value='Ourense'>Ourense</option>
-  <option value='Palencia'>Palencia</option>
-  <option value='Pontevedra'>Pontevedra</option>
-  <option value='Salamanca'>Salamanca</option>
-  <option value='Segovia'>Segovia</option>
-  <option value='Sevilla'>Sevilla</option>
-  <option value='Soria'>Soria</option>
-  <option value='Tarragona'>Tarragona</option>
-  <option value='Santa Cruz de Tenerife'>Santa Cruz de Tenerife</option>
-  <option value='Teruel'>Teruel</option>
-  <option value='Toledo'>Toledo</option>
-  <option value='Valencia'>Valencia/Valéncia</option>
-  <option value='Valladolid'>Valladolid</option>
-  <option value='Vizcaya'>Vizcaya</option>
-  <option value='Zamora'>Zamora</option>
-  <option value='Zaragoza'>Zaragoza</option>
-        </select>
-        <div class="dropDownSelect2"></div>
-      </div>
-    </div>
-
-
+   
       <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar en blanco">
           <span class="label-input100">Teléfono Móvil*</span>
-          <input class="input100" type="phone" name="tlf" placeholder="Ejemplo:657487533" required pattern="^[9|6|7][0-9]{8}$">
+          <input class="input100" type="phone" required name="tlf" placeholder="Ejemplo:657487533" required pattern="^[9|6|7][0-9]{8}$">
       </div>
 
       <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar vacío">
           <span class="label-input100">Teléfono fijo*</span>
-          <input class="input100" type="phone" name="tlfFijo" placeholder="Ejemplo:954370007" required pattern="^[9|6|7][0-9]{8}$" >
+          <input class="input100" type="phone" required name="tlfFijo" placeholder="Ejemplo:954370007" required pattern="^[9|6|7][0-9]{8}$" >
       </div>
     
       <div class="wrap-input100 validate-input bg1 " data-validate = "Este campo no puede estar vacío">
           <span class="label-input100">Centro de trabajo*</span>
-          <input class="input100" type="text" name="centro" placeholder="Nombre del centro de trabajo" maxlength="50">
+          <input class="input100" type="text" required name="centro" placeholder="Nombre del centro de trabajo" maxlength="50">
       </div>
 
       <div class="wrap-input100 validate-input bg1 " data-validate = "Este campo no puede estar vacío">
         <span class="label-input100">Departamento*</span>
-        <input class="input100" type="text" name="departamento" placeholder="Nombre del departamento" maxlength="50">
+        <input class="input100" type="text" required name="departamento" placeholder="Nombre del departamento" maxlength="50">
     </div>
       
       <div class="wrap-input100 validate-input ">
           <span class="label-input100" style="color:#e6a756";>DATOS ESPECÍFICOS DE LA CONTRATACIÓN</span>
       </div> 
 
-      <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar vacío">
-          <span class="label-input100">Convocatoria (Título) *</span>
-          <input class="input100" type="text" name="convocatoria" placeholder="Título de la Convocatoria" maxlength="50">
-      </div>
-         <!-- F9F9F9 -->
-      <div class="wrap-input100 validate-input bg1 rs1-wrap-input100">
-          <span class="label-input100">Fecha Publicación*</span><br>
-          <input  type="date" pattern="\d{1,2}/\d{1,2}/\d{4}"  required name="fechapublicacion" placeholder="dd-mm-aaaa" style="background-color:#F7F6F6;width:350px;height:35px;font-family:Montserrat-Bold;">
-      </div> 
-
-
-      <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar vacío">
-          <span class="label-input100">Título Plaza *</span>
-          <input class="input100" type="text" name="tituloPlaza" placeholder="Título de la plaza" maxlength="50">
+      <div class="wrap-input100 input100-select bg1 rs1-wrap-input100">
+        <span class="label-input100">Tiempo dedicado *</span> 
+        <div>
+          <select class="js-select2" name="tiempo">
+            <option>Jornada completa(37.50 Horas/semana)</option>
+            <option>Tiempo parcial</option>
+          </select>
+          <div class="dropDownSelect2"></div>
+        </div>
       </div>
 
       <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Este campo no puede estar vacío">
-          <span class="label-input100">Referencia *</span>
-          <input class="input100" type="text" name="referenciaContratos" placeholder="Ejemplo: CGL2017-90770-REDE" maxlength="50">
-      </div>
+        <span class="label-input100">Horario diario*</span>
+        <input class="input100" required type="text" name="horario"  maxlength="50">
+    </div>
 
-      <div class="wrap-input100 validate-input bg0 rs1-alert-validate" data-validate = "Esta campo no puede estar en blanco">
-        <span class="label-input100">Observaciones *</span>
-        <textarea class="input100" name="observaciones" placeholder="Redacta tus observaciones aquí..." maxlength="600"></textarea>
-      </div>
+    <div class="wrap-input100 validate-input ">
+      <span class="label-input100" style="color:#e6a756";>DECLARACIÓN DE NO ESTAR AFECTADO DE INCOMPATIBILIDAD</span>
+  </div>
 
       <div class="wrap-input100 validate-input bg1 ">
           <span class="label-input100">Seleccione su firma *</span>
-        <input class="input100" type="file" required name="sampleFile" accept=".png, .jpg, .jpeg"/>
+        <input class="input100" required type="file" required name="sampleFile" accept=".png, .jpg, .jpeg"/>
         </div>
 
-        <div class="wrap-input100 validate-input bg1 ">
-            <span class="label-input100">Añada su curriculum *</span>
-          <input class="input100" type="file" required name="cv" accept=".pdf"/>
-          </div>
+        <div class="wrap-input100 validate-input ">
+          <span class="label-input100" style="color:#e6a756";>DATOS RETRIBUTIVOS</span>
+      </div>
           
+      <div class="wrap-input100 validate-input bg1 " data-validate = "Este campo no puede estar vacío">
+        <span class="label-input100">Entidad*</span>
+        <input class="input100" required type="text" name="entidad" maxlength="50" placeholder="Nombre de la entidad">
+    </div>
+
+    <div class="wrap-input100 validate-input bg1 " data-validate = "Este campo no puede estar vacío">
+      <span class="label-input100">Sucursal*</span>
+      <input class="input100" required type="text" name="sucursal" maxlength="50" placeholder="Dirección, población y código postal">
+  </div>
+
+  <div class="wrap-input100 validate-input bg1 " data-validate = "Este campo no puede estar vacío">
+    <span class="label-input100">Código IBAN*</span>
+    <input class="input100" required type="text" name="iban" pattern="^([0-9]){24}$">
+</div>
 
       <div class="form-check">
           <input type="checkbox" required name="RGPD" class="form-check-input" id="exampleCheck1">
-          <label class="form-check-label" for="exampleCheck1"><a href="./anexoContratacion">Aceptos los términos y condiciones de uso</a></label>
+          <label class="form-check-label" for="exampleCheck1"><a href="./terminosYCondiciones">Aceptos los términos y condiciones de uso</a></label>
         </div>
       
 
       <!-- Este es el botón de enviar -->
-       <div class="container-contact100-form-btn">
-        <button type="submit" class="contact100-form-btn" onclick="validateDNI()">
+      <div class="container-contact100-form-btn">
+        <button type="submit" class="contact100-form-btn" >
           <span>
             Pulse para seguir
             <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
@@ -355,57 +301,11 @@
           
         </button> 
       </div> 
-
-      <!-- <script language="JavaScript">
-        // Comprueba si es un DNI correcto (entre 5 y 8 letras seguidas de la letra que corresponda).
-        
-        // Acepta NIEs (Extranjeros con X, Y o Z al principio)
-        function validateDNI() {
-          console.log(document.getElementById('dni').value)
-          var dni = document.getElementById('dni').value;
-            var numero, let, letra;
-            var expresion_regular_dni = /^[XYZ]?\d{5,8}[A-Z]$/;
-        
-            dni = document.getElementById('dni').value.toUpperCase();
-        
-            if(expresion_regular_dni.test(document.getElementById('dni').value) === true){
-                numero = dni.substr(0,dni.length-1);
-                numero = numero.replace('X', 0);
-                numero = numero.replace('Y', 1);
-                numero = numero.replace('Z', 2);
-                let = dni.substr(dni.length-1, 1);
-                numero = numero % 23;
-                letra = 'TRWAGMYFPDXBNJZSQVHLCKET';
-                letra = letra.substring(numero, numero+1);
-                if (letra != let) {
-                    //alert('Dni erroneo, la letra del NIF no se corresponde');
-                    return false;
-                }else{
-                    //alert('Dni correcto');
-                    return true;
-                }
-            }else{
-                //alert('Dni erroneo, formato no válido');
-                return false;
-            }
-        }
-        </script> -->
-        
-
-      
     </form>
     
 </div>
 </div>
 
-
-
-<!-- 
-<form ref='uploadForm' id='uploadForm' action='/upload' method='post' encType="multipart/form-data">
-        
-  <input type="file" name="sampleFile" />
-	<input type='submit' value='Upload!' />
-		</form>	 -->
 
 
 <!--===============================================================================================-->

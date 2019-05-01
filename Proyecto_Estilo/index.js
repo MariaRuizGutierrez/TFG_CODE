@@ -83,7 +83,7 @@ app.get('/solicitud', function(req, res){
 });
 
 app.get('/terminosYCondiciones', function(req, res){
-  res.sendFile(path.join(__dirname,'/public/Formularios/terminosYCondiciones.html'));
+  res.sendFile(path.join(__dirname,'/public/terminosYCondiciones.html'));
 });
 
 app.get('/compromisoPRL', function(req, res){
@@ -121,6 +121,11 @@ app.get('/contrato', function(req, res){
 // Aquí es es donde el usuario visualiza y envía el anexo de contratación
 app.get('/generarPDF', function(req, res){
   res.sendFile(path.join(__dirname,'/public/VisualizacionYEnvio/generarPDF.html'));
+});
+
+// Aquí es es donde el responsable visualiza y envia el contrato
+app.get('/generarPDFCompromiso', function(req, res){
+  res.sendFile(path.join(__dirname,'/public/VisualizacionYEnvio/generarPDFContrato.html'));
 });
 
 // Aquí es es donde el usuario visualiza y envía el compromiso del ip
@@ -197,6 +202,33 @@ app.post('/enviarCorreoAnexoContratacion', function(req, res){
  
   // res.sendFile(path.join(__dirname,'/public/responsables.html'));
 });
+
+
+app.post('/visualizacionContrato', function(request, response){
+  var tempFile="./output_Contrato.pdf";
+  fs.readFile(tempFile, function (err,data){
+     response.contentType("application/pdf");
+     response.send(data);
+  });
+});
+
+app.post('/enviarCorreoContrato', function(req, res){
+  server.send({
+  text:    "Contrato por obras y servicios", 
+  from:    "organizacionMRG <organizacionMRG@gmail.com>", 
+  to:      "empleado <marruigut@alum.us.es>",
+  cc:      "usted <"+req.body.email+">",
+  subject: "Nuevo Contrato por obras y servicios",
+  attachment: 
+   [
+      {data:"<html>Se adjunta el Contrato por obras y servicios enviado por:<B> "+req.body.email+"</B> con número de teléfono: <B> "+req.body.telefono+"</B> </html>", alternative:true},
+      {path:"output_Contrato.pdf", type:"application/pdf", name:"Contrato.pdf"}
+   ]
+}, function(err, message) { console.log(err || message); });
+ 
+  // res.sendFile(path.join(__dirname,'/public/responsables.html'));
+});
+
 
 app.post('/visualizacionCompromisoIP', function(request, response){
   var tempFile="./output_Compromiso_IP.pdf";
@@ -2242,6 +2274,292 @@ res.sendFile(path.join(__dirname,'/public/VisualizacionYEnvio/generarPDFSolicitu
 //    ]
 // }, function(err, message) { console.log(err || message); });
 });
+
+
+// Realizar pdf del contrato
+app.post('/contrato', function(req, res) {
+  let sampleFile;
+  let uploadPath;
+
+  if (Object.keys(req.files).length == 0) {
+    res.status(400).send('No files were uploaded.');
+    return;
+  }
+  console.log('req.files >>>', req.files); // eslint-disable-line
+
+  sampleFile = req.files.sampleFile;
+  // uploadPath = path.join(__dirname,"public") + '/images/' + sampleFile.name;
+  uploadPath = path.join(__dirname,"public") + '/images/' + 'firma.png'
+
+  sampleFile.mv(uploadPath, function(err) {
+    if (err) {
+      return res.status(500).send(err);
+    }
+
+    // res.send('File uploaded to ' + uploadPath);
+  
+  //Generamos la referencia aleatoria 
+  console.log(req.body);
+  
+
+    // Aquí empieza la parte de crear el documento 
+    docu  = "SOLICITUD DE CONTRATACIÓN PARA LA REALIZACIÓN DE UN PROYECTO ESPECÍFICO DE INVESTIGACIÓN"
+    parrf2 ="Datos del proyecto"
+    parrf3 ="Investigador responsable: "+req.body.responsable+""
+    parrf4 ="Referencia del proyecto: "+req.body.referencia+""
+    parrf5 ="Organismo financiador: "+req.body.organismo+""
+    parrf6 ="Nombre del proyecto: "+req.body.nombre+""
+    parrf7 ="Datos del contratado"
+    parrf8="Nombre y apellidos: "+req.body.nombreapellidos+""
+    parrf9="NIF: "+req.body.dni+""
+    parrf10="Titulacion: "+req.body.titulacion+""
+    parrf11="Fecha de nacimiento: "+req.body.nacimiento+""
+    parrf12="Domicilio: "+req.body.domicilio+""
+    parrf13="Provincia: "+req.body.provincia+""
+    parrf14="Teléfono móvil: "+req.body.tlf+""
+    parrf15="Teléfono fijo: "+req.body.tlfFijo+""
+    parrf16="Centro de trabajo: "+req.body.centro+""
+    parrf17="Departamento: "+req.body.departamento+""
+    parrf18 ="Datos específicos de la contratación"
+    parrf19="Tiempo dedicado: "+req.body.tiempo+""
+    parrf20="Horario diario: "+req.body.horario+""
+    parrf21 ="Declaración de no estar afectado de incopatibilidad"
+    parrf22= "El que suscribe declara que no percibe en la actualidad alguna beca o ayuda financiada con fondos públicos o privados españoles o comunitarios, así como sueldos o salarios que impliquen vinculación contractual o estatutaria, y que son ciertos los datos indicados y FIRMO la presente declaración"
+    parrf23 ="Datos retributivos"
+    parrf24="Entidad: "+req.body.entidad+""
+    parrf25="Sucursal: "+req.body.sucursal+""
+    parrf26="Código IBAN: "+req.body.iban+""
+    
+  const doc = new pdf;
+  
+  doc.pipe(fs.createWriteStream('output_Contrato.pdf'));
+
+doc.image('public/img/MRG.png', 250, 10, {fit: [110, 110], align: 'center', valign: 'center'})
+  doc.font('CALIBRI.TTF')
+   .fontSize(11)
+   .text(docu, 70,125, {
+    width: 465,
+    align: 'justify',
+    stroke:19
+   });
+
+   doc.font('CALIBRI.TTF')
+   .fontSize(13)
+   .text(parrf2, 70,145, {
+    width: 465,
+    align: 'justify',
+    underline:(20, 0, {color: 'blue'})
+   });
+
+   doc.font('CALIBRI.TTF')
+   .fontSize(11)
+   .text(parrf3, 70,175, {
+    width: 465,
+    align: 'justify'
+   });
+
+   doc.font('CALIBRI.TTF')
+   .fontSize(11)
+   .text(parrf4, 70,195, {
+    width: 465,
+    align: 'justify'
+   });
+
+   doc.font('CALIBRI.TTF')
+   .fontSize(11)
+   .text(parrf5, 70,215, {
+    width: 465,
+    align: 'justify'
+   });
+
+   doc.font('CALIBRI.TTF')
+   .fontSize(11)
+   .text(parrf6, 70,235, {
+    width: 465,
+    align: 'justify'
+   });
+
+   doc.font('CALIBRI.TTF')
+   .fontSize(13)
+   .text(parrf7, 70,265, {
+    width: 465,
+    align: 'justify',
+    underline:(20, 0, {color: 'blue'})
+   });
+
+   doc.font('CALIBRI.TTF')
+   .fontSize(11)
+   .text(parrf8, 70,295, {
+    width: 465,
+    align: 'justify'
+   });
+
+   doc.font('CALIBRI.TTF')
+   .fontSize(11)
+   .text(parrf9, 70,315, {
+    width: 465,
+    align: 'justify'
+   });
+
+   doc.font('CALIBRI.TTF')
+   .fontSize(11)
+   .text(parrf10, 70,335, {
+    width: 465,
+    align: 'justify'
+   });
+
+   doc.font('CALIBRI.TTF')
+   .fontSize(11)
+   .text(parrf11, 70,355, {
+    width: 465,
+    align: 'justify'
+   });
+
+   doc.font('CALIBRI.TTF')
+   .fontSize(11)
+   .text(parrf12, 70,375, {
+    width: 465,
+    align: 'justify'
+   });
+
+   doc.font('CALIBRI.TTF')
+   .fontSize(11)
+   .text(parrf13, 70,395, {
+    width: 465,
+    align: 'justify'
+   });
+
+   doc.font('CALIBRI.TTF')
+   .fontSize(11)
+   .text(parrf14, 70,415, {
+    width: 465,
+    align: 'justify'
+   });
+
+   doc.font('CALIBRI.TTF')
+   .fontSize(11)
+   .text(parrf15, 70,435, {
+    width: 465,
+    align: 'justify'
+   });
+
+   doc.font('CALIBRI.TTF')
+   .fontSize(11)
+   .text(parrf16, 70,455, {
+    width: 465,
+    align: 'justify'
+   });
+
+   doc.font('CALIBRI.TTF')
+   .fontSize(11)
+   .text(parrf17, 70,475, {
+    width: 465,
+    align: 'justify'
+   });
+
+   doc.font('CALIBRI.TTF')
+   .fontSize(13)
+   .text(parrf18, 70,505, {
+    width: 465,
+    align: 'justify',
+    underline:(20, 0, {color: 'blue'})
+   });
+
+   doc.font('CALIBRI.TTF')
+   .fontSize(11)
+   .text(parrf19, 70,535, {
+    width: 465,
+    align: 'justify'
+   });
+
+   doc.font('CALIBRI.TTF')
+   .fontSize(11)
+   .text(parrf20, 70,555, {
+    width: 465,
+    align: 'justify'
+   });
+
+   doc.font('CALIBRI.TTF')
+   .fontSize(13)
+   .text(parrf21, 70,585, {
+    width: 465,
+    align: 'justify',
+    underline:(20, 0, {color: 'blue'})
+   });
+
+   doc.font('CALIBRI.TTF')
+   .fontSize(11)
+   .text(parrf22, 70,615, {
+    width: 465,
+    align: 'justify'
+   });
+
+   doc.image('public/images/firma.png', 70, 675, {fit: [110, 110], align: 'center', valign: 'center'})
+
+   doc.font('CALIBRI.TTF')
+   .fontSize(13)
+   .text(parrf23, 70,705, {
+    width: 465,
+    align: 'justify',
+    underline:(20, 0, {color: 'blue'})
+   });
+
+   doc.font('CALIBRI.TTF')
+   .fontSize(11)
+   .text(parrf24, 70,110, {
+    width: 465,
+    align: 'justify'
+   });
+
+   doc.font('CALIBRI.TTF')
+   .fontSize(11)
+   .text(parrf25, 70,130, {
+    width: 465,
+    align: 'justify'
+   });
+
+   doc.font('CALIBRI.TTF')
+   .fontSize(11)
+   .text(parrf26, 70,150, {
+    width: 465,
+    align: 'justify'
+   });
+   
+  //  var dat= new Date(); //Obtienes la fecha
+  //  var dat4=dat.getFullYear();
+  //  var dat5=dat.getMonth() + 1;
+  //  var dat2= dat.getDate();
+  //  var dat3= dat2.toString();
+  //  console.log("maria");
+  //  parrf32="Sevilla, a "+dat2+"/"+dat5+"/"+dat4+""
+
+
+  //  doc.font('CALIBRI.TTF')
+  //  .fontSize(11)
+  //  .text(parrf32, 70,390, {
+  //   // height: 100,
+  //   width: 465,
+  //   align: 'justify',
+  //  });
+
+  // doc.image('public/images/firma.png', 70, 400, {fit: [110, 110], align: 'center', valign: 'center'})
+  
+// Finalize PDF file
+doc.end();
+res.sendFile(path.join(__dirname,'/public/VisualizacionYEnvio/generarPDFContrato.html'),{datos:req.body.email});
+let removeFile;
+removeFile = path.join(__dirname,"public") + '/images/' + 'firma.png'
+console.log("borrado")
+
+  });
+});
+
+
+
+
+
+
+
 
 
 // Para el puerto
