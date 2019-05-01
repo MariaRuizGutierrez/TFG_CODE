@@ -166,10 +166,10 @@ app.get('/generarPDFSolicitud', function(req, res){
 app.post('/identificacion', function(req, res){
 console.log(req.body)
 if(req.body.estado =="Interesado/a"){
-  res.sendFile(path.join(__dirname,'/public/preguntas.html'));
+  res.sendFile(path.join(__dirname,'/public/preguntasInteresados.html'));
 }
 if(req.body.estado =="Responsable"){
-  res.sendFile(path.join(__dirname,'/public/responsables.html'));
+  res.sendFile(path.join(__dirname,'/public/preguntasResponsables.html'));
 }
   });
 
