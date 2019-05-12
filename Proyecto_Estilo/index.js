@@ -20,19 +20,7 @@ var server 	= email.server.connect({
    ssl:     true
 });
 
-// nodemailer.createTransport({
-//   host: "smtp.google.com",
-//   port: 465,
-//   secure: true, // use TLS
-//   auth: {
-//     user: "María",
-//     pass: "dedanone123"
-//   },
-//   tls: {
-//     // do not fail on invalid certs
-//     rejectUnauthorized: false
-//   }
-// });
+
 
 
 
@@ -198,9 +186,9 @@ app.post('/enviarCorreoAnexoContratacion', function(req, res){
       {data:"<html>Se adjunta el anexo de contratación enviado por:<B> "+req.body.email+"</B> con número de teléfono: <B> "+req.body.telefono+"</B> </html>", alternative:true},
       {path:"output_Anexo_Contratacion.pdf", type:"application/pdf", name:"Anexo_Contratacion.pdf"}
    ]
+
 }, function(err, message) { console.log(err || message); });
- 
-  // res.sendFile(path.join(__dirname,'/public/responsables.html'));
+
 });
 
 
@@ -1635,16 +1623,13 @@ app.post('/actaComision', function(req, res){
   parrf3 ="Referencia: "
   parrf4 ="ACTA"
   parrf5 ="La Comisión de Valoración para la Convocatoria referida anteriormente:"
-  parrf6 ="• Presidente: Apellidos, Nombre. Categoría laboral"
-  parrf7 ="• Vocal 1: Apellidos, Nombre. Categoría laboral"
-  parrf8 ="• Vocal 2: Apellidos, Nombre. Categoría laboral"
+  parrf6 ="• Presidente: "+req.body.presidente+""
+  parrf7 ="• Vocal 1: "+req.body.vocal1+""
+  parrf8 ="• Vocal 2: "+req.body.vocal2+""
   parrf9="se reúne el día "+req.body.dia+" a las "+req.body.hora+" horas para evaluar los méritos de los candidatos."
   parrf10="La Comisión otorga las puntuaciones que se recogen en el Anexo de este Acta y propone la contratación de:"
   parrf11="APELLIDOS, NOMBRE"
   parrf12=""+req.body.gente+""
-  // parrf12="ANEXO"
-  // parrf13="Según el Anexo de la Convocatoria, se evalúan los siguientes apartados:"
-
 
 const doc = new pdf;
 
