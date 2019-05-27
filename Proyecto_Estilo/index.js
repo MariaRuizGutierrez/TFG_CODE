@@ -1000,7 +1000,7 @@ app.post('/compromisoPRL', function(req, res){
 
   // Aquí empieza la parte de crear el documento 
   parrf0 ="ANEXO III"
-  parrf1 = "Don/Doña "+req.body.responsable+""
+  parrf1 ="Don/Doña "+req.body.responsable+""
   parrf2 ="NIF: "+req.body.nif+""
   parrf3="Departamento: "+req.body.departamento+""
   parrf4="Centro: "+req.body.centro+""
@@ -1178,7 +1178,6 @@ app.post('/relacionProvisional', function(req, res){
   // Aquí empieza la parte de crear el documento 
   docu  = "Convocatoria de selección para la contratación temporal de personal "+req.body.personal+" para la ejecución del "+req.body.ejecucion+" de investigación “"+req.body.nombre+", "+req.body.referencia+". En el caso de que la contratación sea financiada por un proyecto de investigación, el contrato se formalizará una vez se publique la resolución definitiva de concesión del proyecto (siendo el gasto para la contratación elegible) y la orgánica disponga de la cuantía para sufragarlo. La Universidad de Sevilla no se hará responsable de aquellas contrataciones que no lleguen a materializarse por no cumplirse los requisitos exigidos."
   parrf2 ="Convocatoria del Mes: "+req.body.mes+" y Año: "+req.body.ayo+""
-  parrf3 ="Referencia: "
   parrf4 ="RELACIÓN PROVISIONAL DE ASPIRANTES ADMITIDOS Y EXCLUIDOS"
   parrf5 ="Lista de admitidos y excluidos"
   parrf6 =""+req.body.aspirantes+""
@@ -1210,14 +1209,6 @@ doc.font('CALIBRI.TTF')
 
  });
 
- doc.font('CALIBRI.TTF')
- .fontSize(11)
- .text(parrf3, 70,248, {
-  // height: 100,
-  width: 465,
-  align: 'justify'
-
- });
 
  doc.font('CALIBRI.TTF')
  .fontSize(11)
@@ -1320,7 +1311,6 @@ app.post('/relacionDefinitiva', function(req, res){
   // Aquí empieza la parte de crear el documento 
   docu  = "Convocatoria de selección para la contratación temporal de personal "+req.body.personal+" para la ejecución del "+req.body.ejecucion+" de investigación “"+req.body.nombre+", "+req.body.referencia+". En el caso de que la contratación sea financiada por un proyecto de investigación, el contrato se formalizará una vez se publique la resolución definitiva de concesión del proyecto (siendo el gasto para la contratación elegible) y la orgánica disponga de la cuantía para sufragarlo. La Universidad de Sevilla no se hará responsable de aquellas contrataciones que no lleguen a materializarse por no cumplirse los requisitos exigidos."
   parrf2 ="Convocatoria del Mes: "+req.body.mes+" y Año: "+req.body.ayo+""
-  parrf3 ="Referencia: "
   parrf4 ="RELACIÓN DEFINITIVA DE ASPIRANTES ADMITIDOS Y EXCLUIDOS"
   parrf5 ="Lista de admitidos y excluidos"
   parrf6 =""+req.body.aspirantes+""
@@ -1352,14 +1342,6 @@ doc.font('CALIBRI.TTF')
 
  });
 
- doc.font('CALIBRI.TTF')
- .fontSize(11)
- .text(parrf3, 70,248, {
-  // height: 100,
-  width: 465,
-  align: 'justify'
-
- });
 
  doc.font('CALIBRI.TTF')
  .fontSize(11)
@@ -1460,7 +1442,6 @@ app.post('/candidatosEntrevistas', function(req, res){
   // Aquí empieza la parte de crear el documento 
   docu  = "Convocatoria de selección para la contratación temporal de personal "+req.body.personal+" para la ejecución del "+req.body.ejecucion+" de investigación “"+req.body.nombre+", "+req.body.referencia+". En el caso de que la contratación sea financiada por un proyecto de investigación, el contrato se formalizará una vez se publique la resolución definitiva de concesión del proyecto (siendo el gasto para la contratación elegible) y la orgánica disponga de la cuantía para sufragarlo. La Universidad de Sevilla no se hará responsable de aquellas contrataciones que no lleguen a materializarse por no cumplirse los requisitos exigidos."
   parrf2 ="Convocatoria del Mes: "+req.body.mes+" y Año: "+req.body.ayo+""
-  parrf3 ="Referencia: "
   parrf4 ="CANDIDATOS SELECCIONADOS PARA ENTREVISTAS"
   parrf5 =""+req.body.seleccionados+""
   parrf6 ="Lugar Entrevistas"
@@ -1492,14 +1473,6 @@ doc.font('CALIBRI.TTF')
 
  });
 
- doc.font('CALIBRI.TTF')
- .fontSize(11)
- .text(parrf3, 70,258, {
-  // height: 100,
-  width: 465,
-  align: 'justify'
-
- });
 
 //  candidatos seleccionados para entrevistas
  doc.font('CALIBRI.TTF')
@@ -1620,7 +1593,6 @@ app.post('/actaComision', function(req, res){
   // Aquí empieza la parte de crear el documento 
   docu  = "Convocatoria de selección para la contratación temporal de personal "+req.body.personal+" para la ejecución del "+req.body.ejecucion+" de investigación “"+req.body.nombre+", "+req.body.referencia+". En el caso de que la contratación sea financiada por un proyecto de investigación, el contrato se formalizará una vez se publique la resolución definitiva de concesión del proyecto (siendo el gasto para la contratación elegible) y la orgánica disponga de la cuantía para sufragarlo. La Universidad de Sevilla no se hará responsable de aquellas contrataciones que no lleguen a materializarse por no cumplirse los requisitos exigidos."
   parrf2 ="Convocatoria del Mes: "+req.body.mes+" y Año: "+req.body.ayo+""
-  parrf3 ="Referencia: "
   parrf4 ="ACTA"
   parrf5 ="La Comisión de Valoración para la Convocatoria referida anteriormente:"
   parrf6 ="• Presidente: "+req.body.presidente+""
@@ -1650,14 +1622,6 @@ doc.font('CALIBRI.TTF')
  doc.font('CALIBRI.TTF')
  .fontSize(11)
  .text(parrf2, 70,220, {
-  // height: 100,
-  width: 465,
-  align: 'justify'
- });
-
- doc.font('CALIBRI.TTF')
- .fontSize(11)
- .text(parrf3, 70,245, {
   // height: 100,
   width: 465,
   align: 'justify'
